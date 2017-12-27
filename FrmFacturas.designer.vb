@@ -153,6 +153,7 @@ Partial Class FrmFacturas
         Me.CfdI_EncabezadoTableAdapter = New Facturador33.ProductionDSTableAdapters.CFDI_EncabezadoTableAdapter()
         Me.LbCli = New System.Windows.Forms.Label()
         Me.TxtImporteFact = New System.Windows.Forms.TextBox()
+        Me.CkDoctoRel = New System.Windows.Forms.CheckBox()
         Me.GroupClientes.SuspendLayout()
         Me.GroupFinagil.SuspendLayout()
         CType(Me.ClientesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1163,7 +1164,7 @@ Partial Class FrmFacturas
         Me.GroupBox1.Controls.Add(Me.RDArfin)
         Me.GroupBox1.Controls.Add(Me.RDFinagil)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(626, 12)
+        Me.GroupBox1.Location = New System.Drawing.Point(444, 12)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(200, 50)
         Me.GroupBox1.TabIndex = 38
@@ -1320,12 +1321,23 @@ Partial Class FrmFacturas
         Me.TxtImporteFact.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.TxtImporteFact.Visible = False
         '
+        'CkDoctoRel
+        '
+        Me.CkDoctoRel.AutoSize = True
+        Me.CkDoctoRel.Location = New System.Drawing.Point(650, 45)
+        Me.CkDoctoRel.Name = "CkDoctoRel"
+        Me.CkDoctoRel.Size = New System.Drawing.Size(121, 17)
+        Me.CkDoctoRel.TabIndex = 47
+        Me.CkDoctoRel.Text = "Docto. Relacionado"
+        Me.CkDoctoRel.UseVisualStyleBackColor = True
+        '
         'FrmFacturas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
-        Me.ClientSize = New System.Drawing.Size(1062, 695)
+        Me.ClientSize = New System.Drawing.Size(1011, 695)
+        Me.Controls.Add(Me.CkDoctoRel)
         Me.Controls.Add(Me.TxtImporteFact)
         Me.Controls.Add(Me.LbCli)
         Me.Controls.Add(Me.LbFolioCFDI)
@@ -1507,4 +1519,5 @@ Partial Class FrmFacturas
     Friend WithEvents LbCli As Label
     Friend WithEvents CFDIEncabezadoBindingSource As BindingSource
     Friend WithEvents TxtImporteFact As TextBox
+    Friend WithEvents CkDoctoRel As CheckBox
 End Class

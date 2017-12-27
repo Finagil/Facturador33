@@ -87,14 +87,12 @@
         LbFolioCFDI.Visible = False
         TxtImporteFact.Visible = False
         lblFolioFiscal.Visible = False
+        CkDoctoRel.Checked = False
         Me.FinagilDS1.FacturasExternas.Clear()
     End Sub
 
     Private Sub BTAgregar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTAgregar.Click
-        'cmbUsoCfdi.Enabled = True
-        'cmbUsoCfdi.Visible = True
-        'MsgBox("Longitud :" + txbFolioFiscal.Text.Length.ToString)
-        If Trim(txbFolioFiscal.Text).Length <> 36 And CmbSerie.Text = "C" Then
+        If Trim(txbFolioFiscal.Text).Length <> 36 And (CmbSerie.Text = "C" Or CkDoctoRel.Checked = True) Then
             MessageBox.Show("Error en Folio Fiscal", "Error Logitud NO Valida", MessageBoxButtons.OK, MessageBoxIcon.Error)
             TxtSerieCFDI.Select()
             Exit Sub
@@ -150,7 +148,6 @@
         r.Factura = Consec
         r.Consec = Consec
 
-        'r.Detalle = CmbConcepto.Text
         If TxtDesc.Text.Length > 0 Then
             r.Detalle = CmbConcepto.Text & " " & TxtDesc.Text.Trim
         Else
@@ -192,13 +189,6 @@
         TotalGrid()
         TxtDesc.Text = ""
 
-        'Else
-        ''CmbMetodo.Visible = True
-        'CmbMetodo.Visible = False
-        'cmbUsoCfdi.Enabled = True
-
-        'MsgBox("Seleccione Uso CFDI Válido para Persona Moral")
-        'End If
 
     End Sub
 
@@ -284,6 +274,10 @@
             CmbSerie.Enabled = False
             Dim Folios As New FinagilDS1TableAdapters.FoliosTableAdapter
 
+            If CkDoctoRel.Checked = True Then
+                Bandera = True
+            End If
+
             If CmbSerie.Text = "B" Then
                 LbFolio.Text = Folios.SerieB
             ElseIf CmbSerie.Text = "DV" Then
@@ -291,6 +285,7 @@
             ElseIf CmbSerie.Text = "C" Then
                 LbFolio.Text = Folios.SerieC
                 Bandera = True
+                CkDoctoRel.Checked = True
             ElseIf CmbSerie.Text = "SA" Then
                 LbFolio.Text = Folios.SerieSA
             End If
@@ -308,8 +303,6 @@
     End Sub
 
     Private Sub cmbMoneda_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbMoneda.SelectedIndexChanged
-        'GroupDET.Enabled = True
-        'GroupFactura.Enabled = False
         Dim tipoCambio As String
         Dim FCambio As String = lblFechaAplica.Text.ToString
         tipoCambio = Me.FacturasExternasTableAdapter1.SacaTipoCambio(FCambio, "USD")
@@ -323,11 +316,7 @@
         'End If
 
         If cmbMoneda.Text = "USD" Then
-
-            'FinagilDS1TableAdapters.FacturasExternasTableAdapter()
-
             lblTipoCambio.Enabled = True
-
             lblTipoCambio.Text = "Tipo de Cambio: " + tipoCambio
             lblTipoCambio.Visible = True
         Else
@@ -364,19 +353,6 @@
         Dim Folios As New FinagilDS1TableAdapters.FoliosTableAdapter
         Dim Folio As Double = 0
 
-        'Dim NCredito As New ProductionDSTableAdapters.CFDI_ComplementoPagoTableAdapter
-        'Dim Credito As Integer
-
-        'Dim ROWcomplemento As Production_AUXDataSet.CFDI_ComplementoPagoRow
-        'ROWcomplemento = Production_AUXDataSet.CFDI_ComplementoPago.NewCFDI_ComplementoPagoRow()
-
-        Dim ROWcomplemento As ProductionDS.CFDI_ComplementoPagoRow
-        'ROWcomplemento =
-        'TableAdapters.CFDI_ComplementoPagoTableAdapterRow()
-        'Production_AUXDataSet.CFDI_ComplementoPagoRow()
-        ROWcomplemento = ProductionDS.CFDI_ComplementoPago.NewCFDI_ComplementoPagoRow()
-
-
         If CmbSerie.Text = "B" Then
             Folio = Folios.SerieB
             Folios.UpdateB(Folio)
@@ -385,14 +361,21 @@
             Folios.UpdateDV(Folio)
         ElseIf CmbSerie.Text = "C" Then
             Folio = Folios.SerieC
-
-            'Me.NCredito.InsertaNotaCredito("DR", "TipoRelacion", "01", txbFolioFiscal, "", "", "", "", "", "", "", "", "", "", "", "", "", "", LbFolio.Text, "C")
-            '  COMPLEMENTO DE PAGO  Registro 3
+            Folios.UpdateC(Folio)
+        ElseIf CmbSerie.Text = "SA" Then
+            Folio = Folios.SerieSA
+            Folios.UpdateSA(Folio)
+        End If
+        If CkDoctoRel.Checked = True Then
+            Dim ROWcomplemento As ProductionDS.CFDI_ComplementoPagoRow
             ROWcomplemento = ProductionDS.CFDI_ComplementoPago.NewCFDI_ComplementoPagoRow()
-
             ROWcomplemento._1_DetalleAux_Tipo = "DR"
             ROWcomplemento._2_DetalleAux_DescTipo = "TipoRelacion"
-            ROWcomplemento._3_DetalleAux_Misc01 = "01"
+            If CmbSerie.Text = "C" Then
+                ROWcomplemento._3_DetalleAux_Misc01 = "01"
+            Else
+                ROWcomplemento._3_DetalleAux_Misc01 = "04"
+            End If
             ROWcomplemento._4_DetalleAux_Misc02 = txbFolioFiscal.Text
             ROWcomplemento._5_DetalleAux_Misc03 = ""
             ROWcomplemento._6_DetalleAux_Misc04 = ""
@@ -408,37 +391,21 @@
             ROWcomplemento._17_DetalleAux_Misc15 = ""
             ROWcomplemento._18_DetalleAux_Misc16 = ""   ' la tabla NO Acepta Capo Null
             ROWcomplemento._19_DetalleAux_Folio = LbFolio.Text
-            ROWcomplemento._20_DetalleAux_Serie = "C"
-
+            ROWcomplemento._20_DetalleAux_Serie = CmbSerie.Text
             Me.ProductionDS.CFDI_ComplementoPago.Rows.Add(ROWcomplemento)
-            Me.CFDI_ComplementoPagoTableAdapter.Update(Me.ProductionDS.CFDI_ComplementoPago)
-            Folios.UpdateC(Folio)
-            MsgBox("Se guardaron Datos de Factura en BD")
-
-            'Credito = NCredito.InsertaNotaCredito("DR", "TipoRelacion", "01", txbFolioFiscal, "", "", "", "", "", "", "", "", "", "", "", "", "", "", LbFolio.Text, "C")
-
-        ElseIf CmbSerie.Text = "SA" Then
-            Folio = Folios.SerieSA
-            Folios.UpdateSA(Folio)
+            Me.CfdI_ComplementoPagoTableAdapter.Update(Me.ProductionDS.CFDI_ComplementoPago)
         End If
-        For Each r As FinagilDS1.FacturasExternasRow In Me.FinagilDS1.FacturasExternas.Rows
-            'For Each r As ProductionDS.FacturasExternasRow In Me.FinagilDS1.FacturasExternas.Rows
-            r.Factura = Folio
 
+        For Each r As FinagilDS1.FacturasExternasRow In Me.FinagilDS1.FacturasExternas.Rows
+            r.Factura = Folio
             r.UsoCFDI = txtUsoClave.Text
             If cmbPago.Text = "PPD" Then
-                'MsgBox("Fijar Clave Forma de pago 99, Por Definir")
-                'CmbMetodo.Text = "99 Por Definir"
                 r.MetodoPago = "99"
             Else
                 r.MetodoPago = UCase(CmbMetodo.SelectedValue)
             End If
-
-            'r.MetodoPago = UCase(CmbMetodo.SelectedValue)
-
         Next
         Me.FinagilDS1.FacturasExternas.GetChanges()
-        'Me.ProductionDS.FacturasExternas.GetChanges()
         Me.FacturasExternasTableAdapter.Update(Me.FinagilDS1.FacturasExternas)
         Me.FinagilDS1.FacturasExternas.Clear()
         Btcancelar_Click(Nothing, Nothing)
@@ -826,6 +793,14 @@
             TxtFolioCFDI.Text = 0
         End If
         Me.CfdI_EncabezadoTableAdapter.FillByFactura(ProductionDS.CFDI_Encabezado, TxtFolioCFDI.Text, TxtSerieCFDI.Text)
+    End Sub
+
+    Private Sub txbFolioFiscal_DoubleClick(sender As Object, e As EventArgs) Handles txbFolioFiscal.DoubleClick
+
+    End Sub
+
+    Private Sub lblFolioFiscal_DoubleClick(sender As Object, e As EventArgs) Handles lblFolioFiscal.DoubleClick
+        txbFolioFiscal.ReadOnly = False
     End Sub
 End Class
 
