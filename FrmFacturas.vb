@@ -16,21 +16,41 @@
 
     Private Sub RBTerceros_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RBTerceros.CheckedChanged
         Bloquea()
+
     End Sub
 
     Private Sub RBFinagil_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RBFinagil.CheckedChanged
         Bloquea()
+
     End Sub
 
     Sub Bloquea()
         If RBTerceros.Checked = True Then
             GroupTerceros.Enabled = True
             GroupFinagil.Enabled = False
+            Me.DescrTextBox.Visible = False
+            Me.CalleTextBox.Visible = False
+            Me.ColoniaTextBox.Visible = False
+            Me.DelegacionTextBox.Visible = False
+            Me.EstadoTextBox.Visible = False
+            Me.CoposTextBox.Visible = False
+            Me.RFCTextBox.Visible = False
+            Me.EMail1TextBox.Visible = False
+            Me.EMail2TextBox.Visible = False
         Else
             GroupTerceros.Enabled = False
             GroupFinagil.Enabled = True
+            Me.DescrTextBox.Visible = True
+            Me.CalleTextBox.Visible = True
+            Me.ColoniaTextBox.Visible = True
+            Me.DelegacionTextBox.Visible = True
+            Me.EstadoTextBox.Visible = True
+            Me.CoposTextBox.Visible = True
+            Me.RFCTextBox.Visible = True
+            Me.EMail1TextBox.Visible = True
+            Me.EMail2TextBox.Visible = True
         End If
-        TxtRS.Text = ""
+        TxtRSocial.Text = ""
         Txtcalle.Text = ""
         Txtmunici.Text = ""
         Txtcol.Text = ""
@@ -42,6 +62,8 @@
     End Sub
 
     Private Sub FrmFacturas_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        'TODO: esta línea de código carga datos en la tabla 'FinagilDS1.Clientes_ARFIN' Puede moverla o quitarla según sea necesario.
+        'Me.Clientes_ARFINTableAdapter.Fill(Me.FinagilDS1.Clientes_ARFIN)
         'TODO: This line of code loads data into the 'ProductionDS.CFDI_UsosCFDI' table. You can move, or remove it, as needed.
         Me.CFDI_UsosCFDITableAdapter.Fill(Me.ProductionDS.CFDI_UsosCFDI)
         'TODO: This line of code loads data into the 'ProductionDS.FacturasExternas' table. You can move, or remove it, as needed.
@@ -167,16 +189,29 @@
         r.Moneda = cmbMoneda.Text
         r.TasaIva = cmbIva.Text
         r.Facturado = False
-        r.Nombre = UCase(TxtRS.Text)
-        r.Calle = UCase(Txtcalle.Text)
-        r.Colonia = UCase(Txtcol.Text)
-        r.Municipio = UCase(Txtmunici.Text)
-        r.Estado = UCase(TxtEdo.Text)
-        r.CP = UCase(TxtCP.Text)
-        r.RFC = UCase(TxtRFC.Text)
-        r.Mail1 = TxtMail1.Text
-        r.Mail2 = TxtMail2.Text
+        If RBFinagil.Checked = False Then
+            r.Nombre = UCase(TxtRSocial.Text)
+            r.Calle = UCase(Txtcalle.Text)
+            r.Colonia = UCase(Txtcol.Text)
+            r.Municipio = UCase(Txtmunici.Text)
+            r.Estado = UCase(TxtEdo.Text)
+            r.CP = UCase(TxtCP.Text)
+            r.RFC = UCase(TxtRFC.Text)
+            r.Mail1 = TxtMail1.Text
+            r.Mail2 = TxtMail2.Text
+        Else
+            r.Nombre = UCase(DescrTextBox.Text)
+            r.Calle = UCase(CalleTextBox.Text)
+            r.Colonia = UCase(ColoniaTextBox.Text)
+            r.Municipio = UCase(DelegacionTextBox.Text)
+            r.Estado = UCase(EstadoTextBox.Text)
+            r.CP = UCase(CoposTextBox.Text)
+            r.RFC = UCase(RFCTextBox.Text)
+            r.Mail1 = EMail1TextBox.Text
+            r.Mail2 = EMail2TextBox.Text
+        End If
         r.Unidad = TxtUnidad.Text
+        r.UnidadInterna = txtUnidadInterna.Text
         r.MetodoPagoSAT = cmbPago.Text
         r.CodigoART = CmbConcepto.SelectedValue
         r.UsoCFDI = txtUsoClave.Text 'cmbUsoCfdi.SelectedValue
@@ -189,115 +224,222 @@
         TotalGrid()
         TxtDesc.Text = ""
 
-
     End Sub
 
     Private Sub CmbSerie_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CmbSerie.SelectedIndexChanged
         Dim Bandera As Boolean = False
         If CmbSerie.SelectedIndex <> -1 Then
-            If TxtRS.Text = "" And RBFinagil.Checked = True Then
-                MessageBox.Show("Falta seleccionar un Cliente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                TxtRS.Select()
-                CmbSerie.SelectedIndex = -1
-                Exit Sub
-            End If
-            If TxtRS.Text = "" And RBTerceros.Checked = True Then
-                MessageBox.Show("Falta el nombre o razon social", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                TxtRS.Select()
-                CmbSerie.SelectedIndex = -1
-                Exit Sub
-            End If
-            If Txtcalle.Text = "" And RBTerceros.Checked = True Then
-                MessageBox.Show("Falta la calle", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                Txtcalle.Select()
-                CmbSerie.SelectedIndex = -1
-                Exit Sub
-            End If
-            If Txtcol.Text = "" And RBTerceros.Checked = True Then
-                MessageBox.Show("Falta la colonia", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                Txtcol.Select()
-                CmbSerie.SelectedIndex = -1
-                Exit Sub
-            End If
-            If Txtmunici.Text = "" And RBTerceros.Checked = True Then
-                MessageBox.Show("Falta el municipio", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                Txtmunici.Select()
-                CmbSerie.SelectedIndex = -1
-                Exit Sub
-            End If
-            If TxtEdo.Text = "" And RBTerceros.Checked = True Then
-                MessageBox.Show("Falta el Estado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                TxtEdo.Select()
-                CmbSerie.SelectedIndex = -1
-                Exit Sub
-            End If
-            If (TxtCP.Text = "" Or Not IsNumeric(TxtCP.Text)) And RBTerceros.Checked = True Then
-                MessageBox.Show("Error en codigo postal", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                TxtCP.Select()
-                CmbSerie.SelectedIndex = -1
-                Exit Sub
-            End If
-            If (TxtRFC.Text = "" Or (TxtRFC.Text.Length <> 10 And TxtRFC.Text.Length <> 12 And TxtRFC.Text.Length <> 13)) And RBTerceros.Checked = True Then
-                MessageBox.Show("Error en RFC", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                TxtRFC.Select()
-                CmbSerie.SelectedIndex = -1
-                Exit Sub
-            End If
-            If TxtMail1.Text.Trim.Length > 0 And InStr(TxtMail1.Text, "@") = 0 And RBTerceros.Checked = True Then
-                MessageBox.Show("Error en correo electronico", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                TxtMail1.Select()
-                CmbSerie.SelectedIndex = -1
-                Exit Sub
-            End If
-            If TxtMail2.Text.Trim.Length > 0 And InStr(TxtMail1.Text, "@") = 0 And RBTerceros.Checked = True Then
-                MessageBox.Show("Error en correo electronico", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                TxtMail2.Select()
-                CmbSerie.SelectedIndex = -1
-                Exit Sub
-            End If
-            If RDFinagil.Checked = True And CmbSerie.Text = "SA" Then
-                MessageBox.Show("Error de Serie, solo para Arfin", "Errorde Serie", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                CmbSerie.Select()
-                CmbSerie.SelectedIndex = -1
-                Exit Sub
-            End If
-            If RDFinagil.Checked = False And CmbSerie.Text <> "SA" Then
-                MessageBox.Show("Error de Serie, Arfin solo puede usar serie SA", "Errorde Serie", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                CmbSerie.Select()
-                CmbSerie.SelectedIndex = -1
-                Exit Sub
-            End If
-            GroupClientes.Enabled = False
-            GroupFinagil.Enabled = False
-            GroupTerceros.Enabled = False
-            cmbMoneda.Enabled = True
-            CmbSerie.Enabled = False
-            Dim Folios As New FinagilDS1TableAdapters.FoliosTableAdapter
+            If RBFinagil.Checked = True Then
 
-            If CkDoctoRel.Checked = True Then
-                Bandera = True
-            End If
+                If DescrTextBox.Text = "" And RBFinagil.Checked = True Then
+                    MessageBox.Show("Falta seleccionar un Cliente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    DescrTextBox.Select()
+                    CmbSerie.SelectedIndex = -1
+                    Exit Sub
+                End If
+                If DescrTextBox.Text = "" And RBTerceros.Checked = True Then
+                    MessageBox.Show("Falta el nombre o razon social", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    DescrTextBox.Select()
+                    CmbSerie.SelectedIndex = -1
+                    Exit Sub
+                End If
+                If CalleTextBox.Text = "" And RBTerceros.Checked = True Then
+                    MessageBox.Show("Falta la calle", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    CalleTextBox.Select()
+                    CmbSerie.SelectedIndex = -1
+                    Exit Sub
+                End If
+                If ColoniaTextBox.Text = "" And RBTerceros.Checked = True Then
+                    MessageBox.Show("Falta la colonia", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    ColoniaTextBox.Select()
+                    CmbSerie.SelectedIndex = -1
+                    Exit Sub
+                End If
+                If DelegacionTextBox.Text = "" And RBTerceros.Checked = True Then
+                    MessageBox.Show("Falta el municipio", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    DelegacionTextBox.Select()
+                    CmbSerie.SelectedIndex = -1
+                    Exit Sub
+                End If
+                If EstadoTextBox.Text = "" And RBTerceros.Checked = True Then
+                    MessageBox.Show("Falta el Estado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    EstadoTextBox.Select()
+                    CmbSerie.SelectedIndex = -1
+                    Exit Sub
+                End If
+                If (CoposTextBox.Text = "" Or Not IsNumeric(CoposTextBox.Text)) And RBTerceros.Checked = True Then
+                    MessageBox.Show("Error en codigo postal", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    CoposTextBox.Select()
+                    CmbSerie.SelectedIndex = -1
+                    Exit Sub
+                End If
+                If (RFCTextBox.Text = "" Or (RFCTextBox.Text.Length <> 10 And TxtRFC.Text.Length <> 12 And TxtRFC.Text.Length <> 13)) And RBTerceros.Checked = True Then
+                    MessageBox.Show("Error en RFC", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    RFCTextBox.Select()
+                    CmbSerie.SelectedIndex = -1
+                    Exit Sub
+                End If
+                If EMail1TextBox.Text.Trim.Length > 0 And InStr(EMail1TextBox.Text, "@") = 0 And RBTerceros.Checked = True Then
+                    MessageBox.Show("Error en correo electronico", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    EMail1TextBox.Select()
+                    CmbSerie.SelectedIndex = -1
+                    Exit Sub
+                End If
+                If EMail2TextBox.Text.Trim.Length > 0 And InStr(EMail2TextBox.Text, "@") = 0 And RBTerceros.Checked = True Then
+                    MessageBox.Show("Error en correo electronico", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    EMail2TextBox.Select()
+                    CmbSerie.SelectedIndex = -1
+                    Exit Sub
+                End If
+                If RDFinagil.Checked = True And CmbSerie.Text = "SA" Then
+                    MessageBox.Show("Error de Serie, solo para Arfin", "Errorde Serie", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    CmbSerie.Select()
+                    CmbSerie.SelectedIndex = -1
+                    Exit Sub
+                End If
+                If RDFinagil.Checked = False And CmbSerie.Text <> "SA" Then
+                    MessageBox.Show("Error de Serie, Arfin solo puede usar serie SA", "Errorde Serie", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    CmbSerie.Select()
+                    CmbSerie.SelectedIndex = -1
+                    Exit Sub
+                End If
+                GroupClientes.Enabled = False
+                GroupFinagil.Enabled = False
+                GroupTerceros.Enabled = False
+                cmbMoneda.Enabled = True
+                CmbSerie.Enabled = False
+                Dim Folios As New FinagilDS1TableAdapters.FoliosTableAdapter
 
-            If CmbSerie.Text = "B" Then
-                LbFolio.Text = Folios.SerieB
-            ElseIf CmbSerie.Text = "DV" Then
-                LbFolio.Text = Folios.SerieDV
-            ElseIf CmbSerie.Text = "C" Then
-                LbFolio.Text = Folios.SerieC
-                Bandera = True
-                CkDoctoRel.Checked = True
-            ElseIf CmbSerie.Text = "SA" Then
-                LbFolio.Text = Folios.SerieSA
-            End If
+                If CkDoctoRel.Checked = True Then
+                    Bandera = True
+                End If
 
-            txbFolioFiscal.Visible = Bandera
-            TxtSerieCFDI.Visible = Bandera
-            TxtFolioCFDI.Visible = Bandera
-            lblFolioFiscal.Visible = Bandera
-            LbSerie.Visible = Bandera
-            LbFolioCFDI.Visible = Bandera
-            LbCli.Visible = Bandera
-            TxtImporteFact.Visible = Bandera
+                If CmbSerie.Text = "B" Then
+                    LbFolio.Text = Folios.SerieB
+                ElseIf CmbSerie.Text = "DV" Then
+                    LbFolio.Text = Folios.SerieDV
+                ElseIf CmbSerie.Text = "C" Then
+                    LbFolio.Text = Folios.SerieC
+                    Bandera = True
+                    CkDoctoRel.Checked = True
+                ElseIf CmbSerie.Text = "SA" Then
+                    LbFolio.Text = Folios.SerieSA
+                End If
+
+                txbFolioFiscal.Visible = Bandera
+                TxtSerieCFDI.Visible = Bandera
+                TxtFolioCFDI.Visible = Bandera
+                lblFolioFiscal.Visible = Bandera
+                LbSerie.Visible = Bandera
+                LbFolioCFDI.Visible = Bandera
+                LbCli.Visible = Bandera
+                TxtImporteFact.Visible = Bandera
+            Else
+                If TxtRSocial.Text = "" And RBFinagil.Checked = True Then
+                    MessageBox.Show("Falta seleccionar un Cliente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    TxtRSocial.Select()
+                    CmbSerie.SelectedIndex = -1
+                    Exit Sub
+                End If
+                If TxtRSocial.Text = "" And RBTerceros.Checked = True Then
+                    MessageBox.Show("Falta el nombre o razon social", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    TxtRSocial.Select()
+                    CmbSerie.SelectedIndex = -1
+                    Exit Sub
+                End If
+                If Txtcalle.Text = "" And RBTerceros.Checked = True Then
+                    MessageBox.Show("Falta la calle", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Txtcalle.Select()
+                    CmbSerie.SelectedIndex = -1
+                    Exit Sub
+                End If
+                If Txtcol.Text = "" And RBTerceros.Checked = True Then
+                    MessageBox.Show("Falta la colonia", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Txtcol.Select()
+                    CmbSerie.SelectedIndex = -1
+                    Exit Sub
+                End If
+                If Txtmunici.Text = "" And RBTerceros.Checked = True Then
+                    MessageBox.Show("Falta el municipio", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Txtmunici.Select()
+                    CmbSerie.SelectedIndex = -1
+                    Exit Sub
+                End If
+                If TxtEdo.Text = "" And RBTerceros.Checked = True Then
+                    MessageBox.Show("Falta el Estado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    TxtEdo.Select()
+                    CmbSerie.SelectedIndex = -1
+                    Exit Sub
+                End If
+                If (TxtCP.Text = "" Or Not IsNumeric(TxtCP.Text)) And RBTerceros.Checked = True Then
+                    MessageBox.Show("Error en codigo postal", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    TxtCP.Select()
+                    CmbSerie.SelectedIndex = -1
+                    Exit Sub
+                End If
+                If (TxtRFC.Text = "" Or (TxtRFC.Text.Length <> 10 And TxtRFC.Text.Length <> 12 And TxtRFC.Text.Length <> 13)) And RBTerceros.Checked = True Then
+                    MessageBox.Show("Error en RFC", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    TxtRFC.Select()
+                    CmbSerie.SelectedIndex = -1
+                    Exit Sub
+                End If
+                If TxtMail1.Text.Trim.Length > 0 And InStr(TxtMail1.Text, "@") = 0 And RBTerceros.Checked = True Then
+                    MessageBox.Show("Error en correo electronico", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    TxtMail1.Select()
+                    CmbSerie.SelectedIndex = -1
+                    Exit Sub
+                End If
+                If TxtMail2.Text.Trim.Length > 0 And InStr(TxtMail2.Text, "@") = 0 And RBTerceros.Checked = True Then
+                    MessageBox.Show("Error en correo electronico", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    TxtMail2.Select()
+                    CmbSerie.SelectedIndex = -1
+                    Exit Sub
+                End If
+                If RDFinagil.Checked = True And CmbSerie.Text = "SA" Then
+                    MessageBox.Show("Error de Serie, solo para Arfin", "Errorde Serie", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    CmbSerie.Select()
+                    CmbSerie.SelectedIndex = -1
+                    Exit Sub
+                End If
+                If RDFinagil.Checked = False And CmbSerie.Text <> "SA" Then
+                    MessageBox.Show("Error de Serie, Arfin solo puede usar serie SA", "Errorde Serie", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    CmbSerie.Select()
+                    CmbSerie.SelectedIndex = -1
+                    Exit Sub
+                End If
+                GroupClientes.Enabled = False
+                GroupFinagil.Enabled = False
+                GroupTerceros.Enabled = False
+                cmbMoneda.Enabled = True
+                CmbSerie.Enabled = False
+                Dim Folios As New FinagilDS1TableAdapters.FoliosTableAdapter
+
+                If CkDoctoRel.Checked = True Then
+                    Bandera = True
+                End If
+
+                If CmbSerie.Text = "B" Then
+                    LbFolio.Text = Folios.SerieB
+                ElseIf CmbSerie.Text = "DV" Then
+                    LbFolio.Text = Folios.SerieDV
+                ElseIf CmbSerie.Text = "C" Then
+                    LbFolio.Text = Folios.SerieC
+                    Bandera = True
+                    CkDoctoRel.Checked = True
+                ElseIf CmbSerie.Text = "SA" Then
+                    LbFolio.Text = Folios.SerieSA
+                End If
+
+                txbFolioFiscal.Visible = Bandera
+                TxtSerieCFDI.Visible = Bandera
+                TxtFolioCFDI.Visible = Bandera
+                lblFolioFiscal.Visible = Bandera
+                LbSerie.Visible = Bandera
+                LbFolioCFDI.Visible = Bandera
+                LbCli.Visible = Bandera
+                TxtImporteFact.Visible = Bandera
+
+            End If
 
         End If
     End Sub
@@ -346,6 +488,32 @@
     End Sub
 
     Private Sub BtFacturar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtFacturar.Click
+
+        'Inserta Valores en Tabla de clientes FINAGIL
+        'Dim rowArf As FinagilDS1.FacturasExternasRow
+        If RBFinagil.Checked = False Then
+            Dim rowArf As FinagilDS1.Clientes_ARFINRow
+            rowArf = Me.FinagilDS1.Clientes_ARFIN.NewClientes_ARFINRow
+
+            Try
+                rowArf.RFC = TxtRFC.Text.ToUpper
+                rowArf.nombre = TxtRSocial.Text.ToUpper
+                rowArf.direccion = Txtcalle.Text
+                rowArf.colonia = Txtcol.Text
+                rowArf.municipio = Txtmunici.Text
+                rowArf.estado = TxtEdo.Text
+                rowArf.cp = TxtCP.Text
+                rowArf.email1 = TxtMail1.Text
+                rowArf.email2 = TxtMail2.Text
+
+
+                Me.FinagilDS1.Clientes_ARFIN.Rows.Add(rowArf)
+                Me.Clientes_ARFINTableAdapter.Update(Me.FinagilDS1.Clientes_ARFIN)
+            Catch ex As Exception
+                MsgBox("Cliente existente", MsgBoxStyle.Critical, "Error al insertar nuevo Cliente")
+            End Try
+        End If
+
         If GridFactura.Rows.Count <= 0 Then
             MessageBox.Show("Factura sin Lineas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
@@ -795,13 +963,44 @@
         Me.CfdI_EncabezadoTableAdapter.FillByFactura(ProductionDS.CFDI_Encabezado, TxtFolioCFDI.Text, TxtSerieCFDI.Text)
     End Sub
 
-    Private Sub txbFolioFiscal_DoubleClick(sender As Object, e As EventArgs) Handles txbFolioFiscal.DoubleClick
-
-    End Sub
 
     Private Sub lblFolioFiscal_DoubleClick(sender As Object, e As EventArgs) Handles lblFolioFiscal.DoubleClick
         txbFolioFiscal.ReadOnly = False
     End Sub
+
+
+    Private Sub btnCreaClientes_Click(sender As Object, e As EventArgs) Handles btnCreaClientes.Click
+        FrmClientes.Show()
+    End Sub
+
+    Private Sub TxtRS_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtRS.TextChanged
+        If TxtRS.Text.Length >= 3 Then
+            Me.Clientes_ARFINTableAdapter.FillBy(Me.FinagilDS1.Clientes_ARFIN, TxtRS.Text)
+            If TxtRSocial.Text <> "" Then
+                Me.TxtRSocial.Enabled = False
+                Me.Txtcol.Enabled = False
+                Me.Txtcalle.Enabled = False
+                Me.Txtmunici.Enabled = False
+                Me.TxtEdo.Enabled = False
+                Me.TxtCP.Enabled = False
+                Me.TxtRFC.Enabled = False
+                Me.TxtMail1.Enabled = False
+                Me.TxtMail2.Enabled = False
+            Else
+                Me.TxtRSocial.Enabled = True
+                Me.Txtcol.Enabled = True
+                Me.Txtcalle.Enabled = True
+                Me.Txtmunici.Enabled = True
+                Me.TxtEdo.Enabled = True
+                Me.TxtCP.Enabled = True
+                Me.TxtRFC.Enabled = True
+                Me.TxtMail1.Enabled = True
+                Me.TxtMail2.Enabled = True
+                TxtRSocial.Text = TxtRS.Text
+            End If
+        End If
+    End Sub
+
 End Class
 
 

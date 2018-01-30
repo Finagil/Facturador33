@@ -79,6 +79,12 @@
     <Compile Include="FinagilDS1.vb">
       <DependentUpon>FinagilDS1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="FrmClientes.Designer.vb">
+      <DependentUpon>FrmClientes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmClientes.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmFacturas.designer.vb">
       <DependentUpon>FrmFacturas.vb</DependentUpon>
     </Compile>
@@ -108,8 +114,19 @@
     <Compile Include="ProductionDS.vb">
       <DependentUpon>ProductionDS.xsd</DependentUpon>
     </Compile>
+    <Compile Include="ArfinDS.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ArfinDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ArfinDS.vb">
+      <DependentUpon>ArfinDS.xsd</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FrmClientes.resx">
+      <DependentUpon>FrmClientes.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmFacturas.resx">
       <DependentUpon>FrmFacturas.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -153,6 +170,17 @@
     </None>
     <None Include="ProductionDS.xss">
       <DependentUpon>ProductionDS.xsd</DependentUpon>
+    </None>
+    <None Include="ArfinDS.xsc">
+      <DependentUpon>ArfinDS.xsd</DependentUpon>
+    </None>
+    <None Include="ArfinDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ArfinDS.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ArfinDS.xss">
+      <DependentUpon>ArfinDS.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

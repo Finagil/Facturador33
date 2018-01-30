@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class FrmFacturas
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,17 +20,17 @@ Partial Class FrmFacturas
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupClientes = New System.Windows.Forms.GroupBox()
         Me.RBTerceros = New System.Windows.Forms.RadioButton()
         Me.RBFinagil = New System.Windows.Forms.RadioButton()
@@ -42,6 +42,8 @@ Partial Class FrmFacturas
         Me.TxtFiltro = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupTerceros = New System.Windows.Forms.GroupBox()
+        Me.TxtRSocial = New System.Windows.Forms.TextBox()
+        Me.Clientes_ARFINBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TxtMail2 = New System.Windows.Forms.TextBox()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.TxtMail1 = New System.Windows.Forms.TextBox()
@@ -61,9 +63,11 @@ Partial Class FrmFacturas
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.GroupDET = New System.Windows.Forms.GroupBox()
+        Me.Label27 = New System.Windows.Forms.Label()
+        Me.txtUnidadInterna = New System.Windows.Forms.TextBox()
+        Me.CodigosSATConceptoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.lblTipoCambio = New System.Windows.Forms.Label()
         Me.CmbConcepto = New System.Windows.Forms.ComboBox()
-        Me.CodigosSATConceptoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TxtUnidad = New System.Windows.Forms.TextBox()
         Me.Label23 = New System.Windows.Forms.Label()
         Me.BTAgregar = New System.Windows.Forms.Button()
@@ -95,6 +99,7 @@ Partial Class FrmFacturas
         Me.ConsecDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DetalleDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Unidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.UnidadInterna = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CantidadDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.UnitarioDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.IvaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -154,11 +159,24 @@ Partial Class FrmFacturas
         Me.LbCli = New System.Windows.Forms.Label()
         Me.TxtImporteFact = New System.Windows.Forms.TextBox()
         Me.CkDoctoRel = New System.Windows.Forms.CheckBox()
+        Me.btnCreaClientes = New System.Windows.Forms.Button()
+        Me.Clientes_ARFINTableAdapter = New Facturador33.FinagilDS1TableAdapters.Clientes_ARFINTableAdapter()
+        Me.ClientesARFINBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DescrTextBox = New System.Windows.Forms.TextBox()
+        Me.CalleTextBox = New System.Windows.Forms.TextBox()
+        Me.ColoniaTextBox = New System.Windows.Forms.TextBox()
+        Me.DelegacionTextBox = New System.Windows.Forms.TextBox()
+        Me.EstadoTextBox = New System.Windows.Forms.TextBox()
+        Me.CoposTextBox = New System.Windows.Forms.TextBox()
+        Me.RFCTextBox = New System.Windows.Forms.TextBox()
+        Me.EMail1TextBox = New System.Windows.Forms.TextBox()
+        Me.EMail2TextBox = New System.Windows.Forms.TextBox()
         Me.GroupClientes.SuspendLayout()
         Me.GroupFinagil.SuspendLayout()
         CType(Me.ClientesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FinagilDS1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupTerceros.SuspendLayout()
+        CType(Me.Clientes_ARFINBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupDET.SuspendLayout()
         CType(Me.CodigosSATConceptoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupFactura.SuspendLayout()
@@ -170,6 +188,7 @@ Partial Class FrmFacturas
         Me.GroupBox1.SuspendLayout()
         CType(Me.CFDIEncabezadoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FacturasExternasBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ClientesARFINBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupClientes
@@ -273,6 +292,16 @@ Partial Class FrmFacturas
         '
         'GroupTerceros
         '
+        Me.GroupTerceros.Controls.Add(Me.EMail2TextBox)
+        Me.GroupTerceros.Controls.Add(Me.EMail1TextBox)
+        Me.GroupTerceros.Controls.Add(Me.RFCTextBox)
+        Me.GroupTerceros.Controls.Add(Me.CoposTextBox)
+        Me.GroupTerceros.Controls.Add(Me.EstadoTextBox)
+        Me.GroupTerceros.Controls.Add(Me.DelegacionTextBox)
+        Me.GroupTerceros.Controls.Add(Me.ColoniaTextBox)
+        Me.GroupTerceros.Controls.Add(Me.CalleTextBox)
+        Me.GroupTerceros.Controls.Add(Me.DescrTextBox)
+        Me.GroupTerceros.Controls.Add(Me.TxtRSocial)
         Me.GroupTerceros.Controls.Add(Me.TxtMail2)
         Me.GroupTerceros.Controls.Add(Me.Label13)
         Me.GroupTerceros.Controls.Add(Me.TxtMail1)
@@ -295,14 +324,28 @@ Partial Class FrmFacturas
         Me.GroupTerceros.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupTerceros.Location = New System.Drawing.Point(492, 68)
         Me.GroupTerceros.Name = "GroupTerceros"
-        Me.GroupTerceros.Size = New System.Drawing.Size(499, 229)
+        Me.GroupTerceros.Size = New System.Drawing.Size(639, 267)
         Me.GroupTerceros.TabIndex = 4
         Me.GroupTerceros.TabStop = False
         Me.GroupTerceros.Text = "Terceros"
         '
+        'TxtRSocial
+        '
+        Me.TxtRSocial.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.Clientes_ARFINBindingSource, "nombre", True))
+        Me.TxtRSocial.Location = New System.Drawing.Point(11, 41)
+        Me.TxtRSocial.Name = "TxtRSocial"
+        Me.TxtRSocial.ReadOnly = True
+        Me.TxtRSocial.Size = New System.Drawing.Size(473, 20)
+        Me.TxtRSocial.TabIndex = 40
+        '
+        'Clientes_ARFINBindingSource
+        '
+        Me.Clientes_ARFINBindingSource.DataMember = "Clientes_ARFIN"
+        Me.Clientes_ARFINBindingSource.DataSource = Me.FinagilDS1
+        '
         'TxtMail2
         '
-        Me.TxtMail2.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "EMail2", True))
+        Me.TxtMail2.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.Clientes_ARFINBindingSource, "email2", True))
         Me.TxtMail2.Location = New System.Drawing.Point(260, 200)
         Me.TxtMail2.MaxLength = 50
         Me.TxtMail2.Name = "TxtMail2"
@@ -321,7 +364,7 @@ Partial Class FrmFacturas
         '
         'TxtMail1
         '
-        Me.TxtMail1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "EMail1", True))
+        Me.TxtMail1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.Clientes_ARFINBindingSource, "email1", True))
         Me.TxtMail1.Location = New System.Drawing.Point(14, 200)
         Me.TxtMail1.MaxLength = 50
         Me.TxtMail1.Name = "TxtMail1"
@@ -340,7 +383,7 @@ Partial Class FrmFacturas
         '
         'TxtRFC
         '
-        Me.TxtRFC.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "RFC", True))
+        Me.TxtRFC.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.Clientes_ARFINBindingSource, "RFC", True))
         Me.TxtRFC.Location = New System.Drawing.Point(260, 161)
         Me.TxtRFC.MaxLength = 13
         Me.TxtRFC.Name = "TxtRFC"
@@ -349,7 +392,7 @@ Partial Class FrmFacturas
         '
         'TxtCP
         '
-        Me.TxtCP.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "Copos", True))
+        Me.TxtCP.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.Clientes_ARFINBindingSource, "cp", True))
         Me.TxtCP.Location = New System.Drawing.Point(189, 161)
         Me.TxtCP.MaxLength = 5
         Me.TxtCP.Name = "TxtCP"
@@ -358,7 +401,7 @@ Partial Class FrmFacturas
         '
         'TxtEdo
         '
-        Me.TxtEdo.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "Estado", True))
+        Me.TxtEdo.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.Clientes_ARFINBindingSource, "estado", True))
         Me.TxtEdo.Location = New System.Drawing.Point(11, 161)
         Me.TxtEdo.MaxLength = 45
         Me.TxtEdo.Name = "TxtEdo"
@@ -367,7 +410,7 @@ Partial Class FrmFacturas
         '
         'Txtmunici
         '
-        Me.Txtmunici.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "Delegacion", True))
+        Me.Txtmunici.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.Clientes_ARFINBindingSource, "municipio", True))
         Me.Txtmunici.Location = New System.Drawing.Point(273, 120)
         Me.Txtmunici.MaxLength = 45
         Me.Txtmunici.Name = "Txtmunici"
@@ -376,8 +419,8 @@ Partial Class FrmFacturas
         '
         'Txtcol
         '
-        Me.Txtcol.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "Colonia", True))
-        Me.Txtcol.Location = New System.Drawing.Point(14, 120)
+        Me.Txtcol.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.Clientes_ARFINBindingSource, "colonia", True))
+        Me.Txtcol.Location = New System.Drawing.Point(11, 120)
         Me.Txtcol.MaxLength = 45
         Me.Txtcol.Name = "Txtcol"
         Me.Txtcol.Size = New System.Drawing.Size(248, 20)
@@ -385,7 +428,7 @@ Partial Class FrmFacturas
         '
         'Txtcalle
         '
-        Me.Txtcalle.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "Calle", True))
+        Me.Txtcalle.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.Clientes_ARFINBindingSource, "direccion", True))
         Me.Txtcalle.Location = New System.Drawing.Point(11, 81)
         Me.Txtcalle.MaxLength = 120
         Me.Txtcalle.Name = "Txtcalle"
@@ -394,11 +437,10 @@ Partial Class FrmFacturas
         '
         'TxtRS
         '
-        Me.TxtRS.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "Descr", True))
-        Me.TxtRS.Location = New System.Drawing.Point(11, 42)
+        Me.TxtRS.Location = New System.Drawing.Point(99, 15)
         Me.TxtRS.MaxLength = 120
         Me.TxtRS.Name = "TxtRS"
-        Me.TxtRS.Size = New System.Drawing.Size(473, 20)
+        Me.TxtRS.Size = New System.Drawing.Size(385, 20)
         Me.TxtRS.TabIndex = 29
         '
         'Label10
@@ -465,7 +507,7 @@ Partial Class FrmFacturas
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(11, 25)
+        Me.Label11.Location = New System.Drawing.Point(11, 18)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(82, 13)
         Me.Label11.TabIndex = 22
@@ -473,6 +515,8 @@ Partial Class FrmFacturas
         '
         'GroupDET
         '
+        Me.GroupDET.Controls.Add(Me.Label27)
+        Me.GroupDET.Controls.Add(Me.txtUnidadInterna)
         Me.GroupDET.Controls.Add(Me.lblTipoCambio)
         Me.GroupDET.Controls.Add(Me.CmbConcepto)
         Me.GroupDET.Controls.Add(Me.TxtUnidad)
@@ -487,12 +531,35 @@ Partial Class FrmFacturas
         Me.GroupDET.Controls.Add(Me.Label14)
         Me.GroupDET.Enabled = False
         Me.GroupDET.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupDET.Location = New System.Drawing.Point(372, 303)
+        Me.GroupDET.Location = New System.Drawing.Point(359, 303)
         Me.GroupDET.Name = "GroupDET"
-        Me.GroupDET.Size = New System.Drawing.Size(618, 74)
+        Me.GroupDET.Size = New System.Drawing.Size(632, 74)
         Me.GroupDET.TabIndex = 3
         Me.GroupDET.TabStop = False
         Me.GroupDET.Text = "Detalles"
+        '
+        'Label27
+        '
+        Me.Label27.AutoSize = True
+        Me.Label27.Location = New System.Drawing.Point(510, 26)
+        Me.Label27.Name = "Label27"
+        Me.Label27.Size = New System.Drawing.Size(46, 13)
+        Me.Label27.TabIndex = 24
+        Me.Label27.Text = "U Inter"
+        '
+        'txtUnidadInterna
+        '
+        Me.txtUnidadInterna.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CodigosSATConceptoBindingSource, "UnidadInterna", True))
+        Me.txtUnidadInterna.Location = New System.Drawing.Point(512, 42)
+        Me.txtUnidadInterna.Name = "txtUnidadInterna"
+        Me.txtUnidadInterna.ReadOnly = True
+        Me.txtUnidadInterna.Size = New System.Drawing.Size(45, 20)
+        Me.txtUnidadInterna.TabIndex = 23
+        '
+        'CodigosSATConceptoBindingSource
+        '
+        Me.CodigosSATConceptoBindingSource.DataMember = "CodigosSAT_Concepto"
+        Me.CodigosSATConceptoBindingSource.DataSource = Me.FinagilDS1
         '
         'lblTipoCambio
         '
@@ -511,40 +578,35 @@ Partial Class FrmFacturas
         Me.CmbConcepto.FormattingEnabled = True
         Me.CmbConcepto.Location = New System.Drawing.Point(244, 42)
         Me.CmbConcepto.Name = "CmbConcepto"
-        Me.CmbConcepto.Size = New System.Drawing.Size(222, 21)
+        Me.CmbConcepto.Size = New System.Drawing.Size(210, 21)
         Me.CmbConcepto.TabIndex = 17
         Me.CmbConcepto.ValueMember = "Codigo"
-        '
-        'CodigosSATConceptoBindingSource
-        '
-        Me.CodigosSATConceptoBindingSource.DataMember = "CodigosSAT_Concepto"
-        Me.CodigosSATConceptoBindingSource.DataSource = Me.FinagilDS1
         '
         'TxtUnidad
         '
         Me.TxtUnidad.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CodigosSATConceptoBindingSource, "Unidad", True))
-        Me.TxtUnidad.Location = New System.Drawing.Point(472, 42)
+        Me.TxtUnidad.Location = New System.Drawing.Point(459, 42)
         Me.TxtUnidad.Name = "TxtUnidad"
         Me.TxtUnidad.ReadOnly = True
-        Me.TxtUnidad.Size = New System.Drawing.Size(53, 20)
+        Me.TxtUnidad.Size = New System.Drawing.Size(48, 20)
         Me.TxtUnidad.TabIndex = 21
         '
         'Label23
         '
         Me.Label23.AutoSize = True
         Me.Label23.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label23.Location = New System.Drawing.Point(469, 26)
+        Me.Label23.Location = New System.Drawing.Point(457, 26)
         Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(47, 13)
+        Me.Label23.Size = New System.Drawing.Size(44, 13)
         Me.Label23.TabIndex = 20
-        Me.Label23.Text = "Unidad"
+        Me.Label23.Text = "U SAT"
         '
         'BTAgregar
         '
         Me.BTAgregar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTAgregar.Location = New System.Drawing.Point(531, 31)
+        Me.BTAgregar.Location = New System.Drawing.Point(561, 31)
         Me.BTAgregar.Name = "BTAgregar"
-        Me.BTAgregar.Size = New System.Drawing.Size(84, 40)
+        Me.BTAgregar.Size = New System.Drawing.Size(68, 40)
         Me.BTAgregar.TabIndex = 19
         Me.BTAgregar.Text = "Agregar Detalle"
         Me.BTAgregar.UseVisualStyleBackColor = True
@@ -609,7 +671,7 @@ Partial Class FrmFacturas
         '
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.Location = New System.Drawing.Point(0, 25)
+        Me.Label14.Location = New System.Drawing.Point(1, 25)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(25, 13)
         Me.Label14.TabIndex = 11
@@ -631,7 +693,7 @@ Partial Class FrmFacturas
         Me.GroupFactura.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupFactura.Location = New System.Drawing.Point(15, 303)
         Me.GroupFactura.Name = "GroupFactura"
-        Me.GroupFactura.Size = New System.Drawing.Size(351, 74)
+        Me.GroupFactura.Size = New System.Drawing.Size(339, 74)
         Me.GroupFactura.TabIndex = 3
         Me.GroupFactura.TabStop = False
         Me.GroupFactura.Text = "Factura"
@@ -640,7 +702,7 @@ Partial Class FrmFacturas
         '
         Me.txtUsoClave.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CFDI_UsosCFDIBindingSource, "UsoCFDI", True))
         Me.txtUsoClave.Enabled = False
-        Me.txtUsoClave.Location = New System.Drawing.Point(280, 22)
+        Me.txtUsoClave.Location = New System.Drawing.Point(302, 22)
         Me.txtUsoClave.Name = "txtUsoClave"
         Me.txtUsoClave.ReadOnly = True
         Me.txtUsoClave.Size = New System.Drawing.Size(31, 20)
@@ -665,7 +727,7 @@ Partial Class FrmFacturas
         Me.cmbUsoCfdi.FormattingEnabled = True
         Me.cmbUsoCfdi.Location = New System.Drawing.Point(216, 43)
         Me.cmbUsoCfdi.Name = "cmbUsoCfdi"
-        Me.cmbUsoCfdi.Size = New System.Drawing.Size(129, 21)
+        Me.cmbUsoCfdi.Size = New System.Drawing.Size(117, 21)
         Me.cmbUsoCfdi.TabIndex = 18
         '
         'Label25
@@ -752,7 +814,7 @@ Partial Class FrmFacturas
         '
         Me.txtMoral.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CFDI_UsosCFDIBindingSource, "Moral", True))
         Me.txtMoral.Enabled = False
-        Me.txtMoral.Location = New System.Drawing.Point(288, 22)
+        Me.txtMoral.Location = New System.Drawing.Point(302, 43)
         Me.txtMoral.Name = "txtMoral"
         Me.txtMoral.ReadOnly = True
         Me.txtMoral.Size = New System.Drawing.Size(23, 20)
@@ -772,36 +834,36 @@ Partial Class FrmFacturas
         '
         Me.GridFactura.AllowUserToAddRows = False
         Me.GridFactura.AutoGenerateColumns = False
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.GridFactura.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle17.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.GridFactura.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle17
         Me.GridFactura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.GridFactura.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.SerieDataGridViewTextBoxColumn, Me.FacturaDataGridViewTextBoxColumn, Me.ConsecDataGridViewTextBoxColumn, Me.DetalleDataGridViewTextBoxColumn, Me.Unidad, Me.CantidadDataGridViewTextBoxColumn, Me.UnitarioDataGridViewTextBoxColumn, Me.IvaDataGridViewTextBoxColumn, Me.ImporteDataGridViewTextBoxColumn, Me.FechaDataGridViewTextBoxColumn, Me.MonedaDataGridViewTextBoxColumn, Me.TasaIvaDataGridViewTextBoxColumn, Me.FacturadoDataGridViewCheckBoxColumn, Me.NombreDataGridViewTextBoxColumn, Me.CalleDataGridViewTextBoxColumn, Me.ColoniaDataGridViewTextBoxColumn, Me.MunicipioDataGridViewTextBoxColumn, Me.EstadoDataGridViewTextBoxColumn, Me.CPDataGridViewTextBoxColumn, Me.RFCDataGridViewTextBoxColumn, Me.Mail1DataGridViewTextBoxColumn, Me.Mail2DataGridViewTextBoxColumn, Me.ColumnTotalX, Me.MetodoPago, Me.Cuenta})
+        Me.GridFactura.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.SerieDataGridViewTextBoxColumn, Me.FacturaDataGridViewTextBoxColumn, Me.ConsecDataGridViewTextBoxColumn, Me.DetalleDataGridViewTextBoxColumn, Me.Unidad, Me.UnidadInterna, Me.CantidadDataGridViewTextBoxColumn, Me.UnitarioDataGridViewTextBoxColumn, Me.IvaDataGridViewTextBoxColumn, Me.ImporteDataGridViewTextBoxColumn, Me.FechaDataGridViewTextBoxColumn, Me.MonedaDataGridViewTextBoxColumn, Me.TasaIvaDataGridViewTextBoxColumn, Me.FacturadoDataGridViewCheckBoxColumn, Me.NombreDataGridViewTextBoxColumn, Me.CalleDataGridViewTextBoxColumn, Me.ColoniaDataGridViewTextBoxColumn, Me.MunicipioDataGridViewTextBoxColumn, Me.EstadoDataGridViewTextBoxColumn, Me.CPDataGridViewTextBoxColumn, Me.RFCDataGridViewTextBoxColumn, Me.Mail1DataGridViewTextBoxColumn, Me.Mail2DataGridViewTextBoxColumn, Me.ColumnTotalX, Me.MetodoPago, Me.Cuenta})
         Me.GridFactura.DataSource = Me.FacturasExternasBindingSource
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.GridFactura.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle23.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.GridFactura.DefaultCellStyle = DataGridViewCellStyle23
         Me.GridFactura.Location = New System.Drawing.Point(15, 443)
         Me.GridFactura.Name = "GridFactura"
         Me.GridFactura.ReadOnly = True
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.GridFactura.RowHeadersDefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle24.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.GridFactura.RowHeadersDefaultCellStyle = DataGridViewCellStyle24
         Me.GridFactura.Size = New System.Drawing.Size(975, 148)
         Me.GridFactura.TabIndex = 6
         '
@@ -840,16 +902,24 @@ Partial Class FrmFacturas
         'Unidad
         '
         Me.Unidad.DataPropertyName = "Unidad"
-        Me.Unidad.HeaderText = "Unidad"
+        Me.Unidad.HeaderText = "Unid SAT"
         Me.Unidad.Name = "Unidad"
         Me.Unidad.ReadOnly = True
-        Me.Unidad.Width = 50
+        Me.Unidad.Width = 80
+        '
+        'UnidadInterna
+        '
+        Me.UnidadInterna.DataPropertyName = "UnidadInterna"
+        Me.UnidadInterna.HeaderText = "Unid Int"
+        Me.UnidadInterna.Name = "UnidadInterna"
+        Me.UnidadInterna.ReadOnly = True
+        Me.UnidadInterna.Width = 80
         '
         'CantidadDataGridViewTextBoxColumn
         '
         Me.CantidadDataGridViewTextBoxColumn.DataPropertyName = "Cantidad"
-        DataGridViewCellStyle2.Format = "N1"
-        Me.CantidadDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle18.Format = "N1"
+        Me.CantidadDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle18
         Me.CantidadDataGridViewTextBoxColumn.HeaderText = "Cantidad"
         Me.CantidadDataGridViewTextBoxColumn.Name = "CantidadDataGridViewTextBoxColumn"
         Me.CantidadDataGridViewTextBoxColumn.ReadOnly = True
@@ -857,8 +927,8 @@ Partial Class FrmFacturas
         'UnitarioDataGridViewTextBoxColumn
         '
         Me.UnitarioDataGridViewTextBoxColumn.DataPropertyName = "Unitario"
-        DataGridViewCellStyle3.Format = "n2"
-        Me.UnitarioDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle19.Format = "n2"
+        Me.UnitarioDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle19
         Me.UnitarioDataGridViewTextBoxColumn.HeaderText = "Precio"
         Me.UnitarioDataGridViewTextBoxColumn.Name = "UnitarioDataGridViewTextBoxColumn"
         Me.UnitarioDataGridViewTextBoxColumn.ReadOnly = True
@@ -866,8 +936,8 @@ Partial Class FrmFacturas
         'IvaDataGridViewTextBoxColumn
         '
         Me.IvaDataGridViewTextBoxColumn.DataPropertyName = "Iva"
-        DataGridViewCellStyle4.Format = "n2"
-        Me.IvaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle20.Format = "n2"
+        Me.IvaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle20
         Me.IvaDataGridViewTextBoxColumn.HeaderText = "Iva"
         Me.IvaDataGridViewTextBoxColumn.Name = "IvaDataGridViewTextBoxColumn"
         Me.IvaDataGridViewTextBoxColumn.ReadOnly = True
@@ -875,8 +945,8 @@ Partial Class FrmFacturas
         'ImporteDataGridViewTextBoxColumn
         '
         Me.ImporteDataGridViewTextBoxColumn.DataPropertyName = "Importe"
-        DataGridViewCellStyle5.Format = "n2"
-        Me.ImporteDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle21.Format = "n2"
+        Me.ImporteDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle21
         Me.ImporteDataGridViewTextBoxColumn.HeaderText = "SubTotal"
         Me.ImporteDataGridViewTextBoxColumn.Name = "ImporteDataGridViewTextBoxColumn"
         Me.ImporteDataGridViewTextBoxColumn.ReadOnly = True
@@ -903,6 +973,7 @@ Partial Class FrmFacturas
         Me.TasaIvaDataGridViewTextBoxColumn.HeaderText = "TasaIva"
         Me.TasaIvaDataGridViewTextBoxColumn.Name = "TasaIvaDataGridViewTextBoxColumn"
         Me.TasaIvaDataGridViewTextBoxColumn.ReadOnly = True
+        Me.TasaIvaDataGridViewTextBoxColumn.Width = 60
         '
         'FacturadoDataGridViewCheckBoxColumn
         '
@@ -986,8 +1057,8 @@ Partial Class FrmFacturas
         '
         'ColumnTotalX
         '
-        DataGridViewCellStyle6.Format = "n2"
-        Me.ColumnTotalX.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle22.Format = "n2"
+        Me.ColumnTotalX.DefaultCellStyle = DataGridViewCellStyle22
         Me.ColumnTotalX.HeaderText = "Total"
         Me.ColumnTotalX.Name = "ColumnTotalX"
         Me.ColumnTotalX.ReadOnly = True
@@ -1331,12 +1402,103 @@ Partial Class FrmFacturas
         Me.CkDoctoRel.Text = "Docto. Relacionado"
         Me.CkDoctoRel.UseVisualStyleBackColor = True
         '
+        'btnCreaClientes
+        '
+        Me.btnCreaClientes.Location = New System.Drawing.Point(650, 17)
+        Me.btnCreaClientes.Name = "btnCreaClientes"
+        Me.btnCreaClientes.Size = New System.Drawing.Size(75, 23)
+        Me.btnCreaClientes.TabIndex = 48
+        Me.btnCreaClientes.Text = "Clientes"
+        Me.btnCreaClientes.UseVisualStyleBackColor = True
+        '
+        'Clientes_ARFINTableAdapter
+        '
+        Me.Clientes_ARFINTableAdapter.ClearBeforeFill = True
+        '
+        'ClientesARFINBindingSource
+        '
+        Me.ClientesARFINBindingSource.DataMember = "Clientes_ARFIN"
+        Me.ClientesARFINBindingSource.DataSource = Me.FinagilDS1
+        '
+        'DescrTextBox
+        '
+        Me.DescrTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "Descr", True))
+        Me.DescrTextBox.Location = New System.Drawing.Point(11, 41)
+        Me.DescrTextBox.Name = "DescrTextBox"
+        Me.DescrTextBox.Size = New System.Drawing.Size(473, 20)
+        Me.DescrTextBox.TabIndex = 49
+        '
+        'CalleTextBox
+        '
+        Me.CalleTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "Calle", True))
+        Me.CalleTextBox.Location = New System.Drawing.Point(11, 81)
+        Me.CalleTextBox.Name = "CalleTextBox"
+        Me.CalleTextBox.Size = New System.Drawing.Size(473, 20)
+        Me.CalleTextBox.TabIndex = 50
+        '
+        'ColoniaTextBox
+        '
+        Me.ColoniaTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "Colonia", True))
+        Me.ColoniaTextBox.Location = New System.Drawing.Point(11, 120)
+        Me.ColoniaTextBox.Name = "ColoniaTextBox"
+        Me.ColoniaTextBox.Size = New System.Drawing.Size(248, 20)
+        Me.ColoniaTextBox.TabIndex = 51
+        '
+        'DelegacionTextBox
+        '
+        Me.DelegacionTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "Delegacion", True))
+        Me.DelegacionTextBox.Location = New System.Drawing.Point(273, 120)
+        Me.DelegacionTextBox.Name = "DelegacionTextBox"
+        Me.DelegacionTextBox.Size = New System.Drawing.Size(211, 20)
+        Me.DelegacionTextBox.TabIndex = 52
+        '
+        'EstadoTextBox
+        '
+        Me.EstadoTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "Estado", True))
+        Me.EstadoTextBox.Location = New System.Drawing.Point(11, 161)
+        Me.EstadoTextBox.Name = "EstadoTextBox"
+        Me.EstadoTextBox.Size = New System.Drawing.Size(169, 20)
+        Me.EstadoTextBox.TabIndex = 53
+        '
+        'CoposTextBox
+        '
+        Me.CoposTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "Copos", True))
+        Me.CoposTextBox.Location = New System.Drawing.Point(189, 161)
+        Me.CoposTextBox.Name = "CoposTextBox"
+        Me.CoposTextBox.Size = New System.Drawing.Size(62, 20)
+        Me.CoposTextBox.TabIndex = 54
+        '
+        'RFCTextBox
+        '
+        Me.RFCTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "RFC", True))
+        Me.RFCTextBox.Location = New System.Drawing.Point(260, 161)
+        Me.RFCTextBox.Name = "RFCTextBox"
+        Me.RFCTextBox.Size = New System.Drawing.Size(224, 20)
+        Me.RFCTextBox.TabIndex = 55
+        '
+        'EMail1TextBox
+        '
+        Me.EMail1TextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "EMail1", True))
+        Me.EMail1TextBox.Location = New System.Drawing.Point(14, 200)
+        Me.EMail1TextBox.Name = "EMail1TextBox"
+        Me.EMail1TextBox.Size = New System.Drawing.Size(237, 20)
+        Me.EMail1TextBox.TabIndex = 56
+        '
+        'EMail2TextBox
+        '
+        Me.EMail2TextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "EMail2", True))
+        Me.EMail2TextBox.Location = New System.Drawing.Point(260, 200)
+        Me.EMail2TextBox.Name = "EMail2TextBox"
+        Me.EMail2TextBox.Size = New System.Drawing.Size(224, 20)
+        Me.EMail2TextBox.TabIndex = 57
+        '
         'FrmFacturas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
-        Me.ClientSize = New System.Drawing.Size(1011, 695)
+        Me.ClientSize = New System.Drawing.Size(1208, 858)
+        Me.Controls.Add(Me.btnCreaClientes)
         Me.Controls.Add(Me.CkDoctoRel)
         Me.Controls.Add(Me.TxtImporteFact)
         Me.Controls.Add(Me.LbCli)
@@ -1379,6 +1541,7 @@ Partial Class FrmFacturas
         CType(Me.FinagilDS1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupTerceros.ResumeLayout(False)
         Me.GroupTerceros.PerformLayout()
+        CType(Me.Clientes_ARFINBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupDET.ResumeLayout(False)
         Me.GroupDET.PerformLayout()
         CType(Me.CodigosSATConceptoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1393,6 +1556,7 @@ Partial Class FrmFacturas
         Me.GroupBox1.PerformLayout()
         CType(Me.CFDIEncabezadoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FacturasExternasBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ClientesARFINBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1455,31 +1619,6 @@ Partial Class FrmFacturas
     Friend WithEvents Label22 As System.Windows.Forms.Label
     Friend WithEvents LbFolio As System.Windows.Forms.Label
     Friend WithEvents Label23 As System.Windows.Forms.Label
-    Friend WithEvents SerieDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents FacturaDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents ConsecDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DetalleDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Unidad As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents CantidadDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents UnitarioDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents IvaDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents ImporteDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents FechaDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents MonedaDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents TasaIvaDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents FacturadoDataGridViewCheckBoxColumn As System.Windows.Forms.DataGridViewCheckBoxColumn
-    Friend WithEvents NombreDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents CalleDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents ColoniaDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents MunicipioDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents EstadoDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents CPDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents RFCDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Mail1DataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Mail2DataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents ColumnTotalX As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents MetodoPago As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Cuenta As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents FechasAplicacionTableAdapter As FinagilDS1TableAdapters.FechasAplicacionTableAdapter
     Friend WithEvents CmbMetodo As ComboBox
     Friend WithEvents MetodoPagoBindingSource As BindingSource
@@ -1520,4 +1659,46 @@ Partial Class FrmFacturas
     Friend WithEvents CFDIEncabezadoBindingSource As BindingSource
     Friend WithEvents TxtImporteFact As TextBox
     Friend WithEvents CkDoctoRel As CheckBox
+    Friend WithEvents Label27 As Label
+    Friend WithEvents txtUnidadInterna As TextBox
+    Friend WithEvents SerieDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents FacturaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ConsecDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents DetalleDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents Unidad As DataGridViewTextBoxColumn
+    Friend WithEvents UnidadInterna As DataGridViewTextBoxColumn
+    Friend WithEvents CantidadDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents UnitarioDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents IvaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ImporteDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents FechaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents MonedaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents TasaIvaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents FacturadoDataGridViewCheckBoxColumn As DataGridViewCheckBoxColumn
+    Friend WithEvents NombreDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents CalleDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ColoniaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents MunicipioDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents EstadoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents CPDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents RFCDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents Mail1DataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents Mail2DataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ColumnTotalX As DataGridViewTextBoxColumn
+    Friend WithEvents MetodoPago As DataGridViewTextBoxColumn
+    Friend WithEvents Cuenta As DataGridViewTextBoxColumn
+    Friend WithEvents btnCreaClientes As Button
+    Friend WithEvents Clientes_ARFINBindingSource As BindingSource
+    Friend WithEvents Clientes_ARFINTableAdapter As FinagilDS1TableAdapters.Clientes_ARFINTableAdapter
+    Friend WithEvents ClientesARFINBindingSource As BindingSource
+    Friend WithEvents TxtRSocial As TextBox
+    Friend WithEvents DescrTextBox As TextBox
+    Friend WithEvents EMail2TextBox As TextBox
+    Friend WithEvents EMail1TextBox As TextBox
+    Friend WithEvents RFCTextBox As TextBox
+    Friend WithEvents CoposTextBox As TextBox
+    Friend WithEvents EstadoTextBox As TextBox
+    Friend WithEvents DelegacionTextBox As TextBox
+    Friend WithEvents ColoniaTextBox As TextBox
+    Friend WithEvents CalleTextBox As TextBox
 End Class
