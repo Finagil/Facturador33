@@ -174,6 +174,7 @@ Partial Class FrmClientes
         '
         'RFCTextBox
         '
+        Me.RFCTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.RFCTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.Clientes_ARFINBindingSource, "RFC", True))
         Me.RFCTextBox.Location = New System.Drawing.Point(86, 12)
         Me.RFCTextBox.Name = "RFCTextBox"
@@ -182,6 +183,7 @@ Partial Class FrmClientes
         '
         'NombreTextBox
         '
+        Me.NombreTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.NombreTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.Clientes_ARFINBindingSource, "nombre", True))
         Me.NombreTextBox.Location = New System.Drawing.Point(86, 38)
         Me.NombreTextBox.Name = "NombreTextBox"
@@ -190,6 +192,7 @@ Partial Class FrmClientes
         '
         'DireccionTextBox
         '
+        Me.DireccionTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.DireccionTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.Clientes_ARFINBindingSource, "direccion", True))
         Me.DireccionTextBox.Location = New System.Drawing.Point(86, 64)
         Me.DireccionTextBox.Name = "DireccionTextBox"
@@ -198,6 +201,7 @@ Partial Class FrmClientes
         '
         'ColoniaTextBox
         '
+        Me.ColoniaTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.ColoniaTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.Clientes_ARFINBindingSource, "colonia", True))
         Me.ColoniaTextBox.Location = New System.Drawing.Point(86, 90)
         Me.ColoniaTextBox.Name = "ColoniaTextBox"
@@ -206,6 +210,7 @@ Partial Class FrmClientes
         '
         'MunicipioTextBox
         '
+        Me.MunicipioTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.MunicipioTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.Clientes_ARFINBindingSource, "municipio", True))
         Me.MunicipioTextBox.Location = New System.Drawing.Point(86, 116)
         Me.MunicipioTextBox.Name = "MunicipioTextBox"
@@ -214,6 +219,7 @@ Partial Class FrmClientes
         '
         'EstadoTextBox
         '
+        Me.EstadoTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.EstadoTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.Clientes_ARFINBindingSource, "estado", True))
         Me.EstadoTextBox.Location = New System.Drawing.Point(486, 15)
         Me.EstadoTextBox.Name = "EstadoTextBox"
