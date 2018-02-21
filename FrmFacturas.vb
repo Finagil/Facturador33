@@ -324,6 +324,17 @@
                     CkDoctoRel.Checked = True
                 ElseIf CmbSerie.Text = "SA" Then
                     LbFolio.Text = Folios.SerieSA
+                ElseIf CmbSerie.Text = "F" Then
+                    Dim folioF As String
+                    folioF = InputBox("Ingrese folio consecutivo: ", "Control del folios", " ")
+                    If IsNumeric(folioF) Then
+                        LbFolio.Text = folioF
+                        Exit Sub
+                    ElseIf folioF = "" Or Not IsNumeric(folioF) Then
+                        MessageBox.Show("El valor debe de ser numerico...")
+                        CmbSerie.Enabled = True
+                        Exit Sub
+                    End If
                 End If
 
                 txbFolioFiscal.Visible = Bandera
@@ -428,9 +439,20 @@
                     CkDoctoRel.Checked = True
                 ElseIf CmbSerie.Text = "SA" Then
                     LbFolio.Text = Folios.SerieSA
+                ElseIf CmbSerie.Text = "F" Then
+                    Dim folioF As String
+                    folioF = InputBox("Ingrese folio consecutivo: ", "Control del folios", " ")
+                    If IsNumeric(folioF) Then
+                        LbFolio.Text = folioF
+                        Exit Sub
+                    ElseIf folioF = "" Or Not IsNumeric(folioF) Then
+                        MessageBox.Show("El valor debe de ser numerico...")
+                        CmbSerie.Enabled = True
+                        Exit Sub
+                    End If
                 End If
 
-                txbFolioFiscal.Visible = Bandera
+                    txbFolioFiscal.Visible = Bandera
                 TxtSerieCFDI.Visible = Bandera
                 TxtFolioCFDI.Visible = Bandera
                 lblFolioFiscal.Visible = Bandera
@@ -533,6 +555,8 @@
         ElseIf CmbSerie.Text = "SA" Then
             Folio = Folios.SerieSA
             Folios.UpdateSA(Folio)
+        ElseIf CmbSerie.Text = "F" Then
+            Folio = CDbl(LbFolio.Text)
         End If
         If CkDoctoRel.Checked = True Then
             Dim ROWcomplemento As ProductionDS.CFDI_ComplementoPagoRow
@@ -574,7 +598,11 @@
             End If
         Next
         Me.FinagilDS1.FacturasExternas.GetChanges()
-        Me.FacturasExternasTableAdapter.Update(Me.FinagilDS1.FacturasExternas)
+        Try
+            Me.FacturasExternasTableAdapter.Update(Me.FinagilDS1.FacturasExternas)
+        Catch
+            MessageBox.Show("La serie y folio ya se encuentrán registrados...")
+        End Try
         Me.FinagilDS1.FacturasExternas.Clear()
         Btcancelar_Click(Nothing, Nothing)
     End Sub
@@ -1001,6 +1029,9 @@
         End If
     End Sub
 
+    Private Sub LbFolio_Click(sender As Object, e As EventArgs) Handles LbFolio.Click
+
+    End Sub
 End Class
 
 
