@@ -187,6 +187,10 @@
         r.Importe = Math.Round((r.Cantidad * r.Unitario), 2)
         r.fecha = FECHA_APLICACION
         r.Moneda = cmbMoneda.Text
+        If cmbMoneda.Text = "" And CmbSerie.Text = "SA" Then
+            MessageBox.Show("Falta seleccionar una moneda", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            cmbMoneda.Focus()
+        End If
         r.TasaIva = cmbIva.Text
         r.Facturado = False
         If RBFinagil.Checked = False Then
@@ -322,6 +326,8 @@
                     LbFolio.Text = Folios.SerieC
                     Bandera = True
                     CkDoctoRel.Checked = True
+                    cmbUsoCfdi.Enabled = True
+                    cmbUsoCfdi.Text = "Devoluciones, descuentos o bonificaciones"
                 ElseIf CmbSerie.Text = "SA" Then
                     LbFolio.Text = Folios.SerieSA
                 ElseIf CmbSerie.Text = "F" Then
@@ -345,6 +351,7 @@
                 LbFolioCFDI.Visible = Bandera
                 LbCli.Visible = Bandera
                 TxtImporteFact.Visible = Bandera
+                _29_FormaPagoTextBox.Visible = Bandera
             Else
                 If TxtRSocial.Text = "" And RBFinagil.Checked = True Then
                     MessageBox.Show("Falta seleccionar un Cliente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -437,6 +444,8 @@
                     LbFolio.Text = Folios.SerieC
                     Bandera = True
                     CkDoctoRel.Checked = True
+                    cmbUsoCfdi.Enabled = True
+                    cmbUsoCfdi.Text = "Devoluciones, descuentos o bonificaciones"
                 ElseIf CmbSerie.Text = "SA" Then
                     LbFolio.Text = Folios.SerieSA
                 ElseIf CmbSerie.Text = "F" Then
@@ -460,7 +469,7 @@
                 LbFolioCFDI.Visible = Bandera
                 LbCli.Visible = Bandera
                 TxtImporteFact.Visible = Bandera
-
+                _29_FormaPagoTextBox.Visible = Bandera
             End If
 
         End If
@@ -595,6 +604,10 @@
                 r.MetodoPago = "99"
             Else
                 r.MetodoPago = UCase(CmbMetodo.SelectedValue)
+                If CmbSerie.Text = "C" Then
+                    r.MetodoPago = _29_FormaPagoTextBox.Text.Trim
+                    CmbMetodo.Enabled = False
+                End If
             End If
         Next
         Me.FinagilDS1.FacturasExternas.GetChanges()
@@ -1029,9 +1042,6 @@
         End If
     End Sub
 
-    Private Sub LbFolio_Click(sender As Object, e As EventArgs) Handles LbFolio.Click
-
-    End Sub
 End Class
 
 
