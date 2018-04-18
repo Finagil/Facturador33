@@ -587,6 +587,8 @@ Partial Public Class FinagilDS1
         
         Private columnUnidadInterna As Global.System.Data.DataColumn
         
+        Private columnFormatoImp As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -855,6 +857,14 @@ Partial Public Class FinagilDS1
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FormatoImpColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFormatoImp
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -920,9 +930,10 @@ Partial Public Class FinagilDS1
                     ByVal CodigoART As String,  _
                     ByVal UsoCFDI As String,  _
                     ByVal Finagil As Boolean,  _
-                    ByVal UnidadInterna As String) As FacturasExternasRow
+                    ByVal UnidadInterna As String,  _
+                    ByVal FormatoImp As String) As FacturasExternasRow
             Dim rowFacturasExternasRow As FacturasExternasRow = CType(Me.NewRow,FacturasExternasRow)
-            Dim columnValuesArray() As Object = New Object() {Serie, Factura, Consec, Detalle, Cantidad, Unitario, Iva, Importe, fecha, Moneda, TasaIva, Facturado, Nombre, Calle, Colonia, Municipio, Estado, CP, RFC, Mail1, Mail2, MetodoPago, Cuenta, Unidad, MetodoPagoSAT, CodigoART, UsoCFDI, Finagil, UnidadInterna}
+            Dim columnValuesArray() As Object = New Object() {Serie, Factura, Consec, Detalle, Cantidad, Unitario, Iva, Importe, fecha, Moneda, TasaIva, Facturado, Nombre, Calle, Colonia, Municipio, Estado, CP, RFC, Mail1, Mail2, MetodoPago, Cuenta, Unidad, MetodoPagoSAT, CodigoART, UsoCFDI, Finagil, UnidadInterna, FormatoImp}
             rowFacturasExternasRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowFacturasExternasRow)
             Return rowFacturasExternasRow
@@ -986,6 +997,7 @@ Partial Public Class FinagilDS1
             Me.columnUsoCFDI = MyBase.Columns("UsoCFDI")
             Me.columnFinagil = MyBase.Columns("Finagil")
             Me.columnUnidadInterna = MyBase.Columns("UnidadInterna")
+            Me.columnFormatoImp = MyBase.Columns("FormatoImp")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1049,6 +1061,8 @@ Partial Public Class FinagilDS1
             MyBase.Columns.Add(Me.columnFinagil)
             Me.columnUnidadInterna = New Global.System.Data.DataColumn("UnidadInterna", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnUnidadInterna)
+            Me.columnFormatoImp = New Global.System.Data.DataColumn("FormatoImp", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFormatoImp)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnSerie, Me.columnFactura, Me.columnConsec}, true))
             Me.columnSerie.AllowDBNull = false
             Me.columnSerie.MaxLength = 3
@@ -1073,6 +1087,7 @@ Partial Public Class FinagilDS1
             Me.columnCodigoART.MaxLength = 50
             Me.columnUsoCFDI.MaxLength = 3
             Me.columnUnidadInterna.MaxLength = 10
+            Me.columnFormatoImp.MaxLength = 10
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5108,6 +5123,21 @@ Partial Public Class FinagilDS1
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property FormatoImp() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableFacturasExternas.FormatoImpColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'FormatoImp' de la tabla 'FacturasExternas' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableFacturasExternas.FormatoImpColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsDetalleNull() As Boolean
             Return Me.IsNull(Me.tableFacturasExternas.DetalleColumn)
         End Function
@@ -5416,6 +5446,18 @@ Partial Public Class FinagilDS1
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetUnidadInternaNull()
             Me(Me.tableFacturasExternas.UnidadInternaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsFormatoImpNull() As Boolean
+            Return Me.IsNull(Me.tableFacturasExternas.FormatoImpColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetFormatoImpNull()
+            Me(Me.tableFacturasExternas.FormatoImpColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -7656,6 +7698,7 @@ Namespace FinagilDS1TableAdapters
             tableMapping.ColumnMappings.Add("UsoCFDI", "UsoCFDI")
             tableMapping.ColumnMappings.Add("Finagil", "Finagil")
             tableMapping.ColumnMappings.Add("UnidadInterna", "UnidadInterna")
+            tableMapping.ColumnMappings.Add("FormatoImp", "FormatoImp")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -7688,7 +7731,8 @@ Namespace FinagilDS1TableAdapters
                 "a = 1 AND [UnidadInterna] IS NULL) OR ([UnidadInterna] = @Original_UnidadInterna"& _ 
                 ")) AND ((@IsNull_UsoCFDI = 1 AND [UsoCFDI] IS NULL) OR ([UsoCFDI] = @Original_Us"& _ 
                 "oCFDI)) AND ((@IsNull_Finagil = 1 AND [Finagil] IS NULL) OR ([Finagil] = @Origin"& _ 
-                "al_Finagil)))"
+                "al_Finagil)) AND ((@IsNull_FormatoImp = 1 AND [FormatoImp] IS NULL) OR ([Formato"& _ 
+                "Imp] = @Original_FormatoImp)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Serie", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Serie", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Factura", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "Factura", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -7745,21 +7789,23 @@ Namespace FinagilDS1TableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_UsoCFDI", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UsoCFDI", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Finagil", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Finagil", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Finagil", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Finagil", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_FormatoImp", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FormatoImp", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FormatoImp", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FormatoImp", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [FacturasExternas] ([Serie], [Factura], [Consec], [Detalle], [Cantida"& _ 
                 "d], [Unitario], [Iva], [Importe], [fecha], [Moneda], [TasaIva], [Facturado], [No"& _ 
                 "mbre], [Calle], [Colonia], [Municipio], [Estado], [CP], [RFC], [Mail1], [Mail2],"& _ 
                 " [MetodoPago], [Cuenta], [Unidad], [MetodoPagoSAT], [CodigoART], [UnidadInterna]"& _ 
-                ", [UsoCFDI], [Finagil]) VALUES (@Serie, @Factura, @Consec, @Detalle, @Cantidad, "& _ 
-                "@Unitario, @Iva, @Importe, @fecha, @Moneda, @TasaIva, @Facturado, @Nombre, @Call"& _ 
-                "e, @Colonia, @Municipio, @Estado, @CP, @RFC, @Mail1, @Mail2, @MetodoPago, @Cuent"& _ 
-                "a, @Unidad, @MetodoPagoSAT, @CodigoART, @UnidadInterna, @UsoCFDI, @Finagil);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SE"& _ 
-                "LECT Serie, Factura, Consec, Detalle, Cantidad, Unitario, Iva, Importe, fecha, M"& _ 
-                "oneda, TasaIva, Facturado, Nombre, Calle, Colonia, Municipio, Estado, CP, RFC, M"& _ 
-                "ail1, Mail2, MetodoPago, Cuenta, Unidad, MetodoPagoSAT, CodigoART, UnidadInterna"& _ 
-                ", UsoCFDI, Finagil FROM FacturasExternas WHERE (Consec = @Consec) AND (Factura ="& _ 
-                " @Factura) AND (Serie = @Serie)"
+                ", [UsoCFDI], [Finagil], [FormatoImp]) VALUES (@Serie, @Factura, @Consec, @Detall"& _ 
+                "e, @Cantidad, @Unitario, @Iva, @Importe, @fecha, @Moneda, @TasaIva, @Facturado, "& _ 
+                "@Nombre, @Calle, @Colonia, @Municipio, @Estado, @CP, @RFC, @Mail1, @Mail2, @Meto"& _ 
+                "doPago, @Cuenta, @Unidad, @MetodoPagoSAT, @CodigoART, @UnidadInterna, @UsoCFDI, "& _ 
+                "@Finagil, @FormatoImp);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Serie, Factura, Consec, Detalle, Cantidad, Unita"& _ 
+                "rio, Iva, Importe, fecha, Moneda, TasaIva, Facturado, Nombre, Calle, Colonia, Mu"& _ 
+                "nicipio, Estado, CP, RFC, Mail1, Mail2, MetodoPago, Cuenta, Unidad, MetodoPagoSA"& _ 
+                "T, CodigoART, UnidadInterna, UsoCFDI, Finagil, FormatoImp FROM FacturasExternas "& _ 
+                "WHERE (Consec = @Consec) AND (Factura = @Factura) AND (Serie = @Serie)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Serie", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Serie", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Factura", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "Factura", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -7790,6 +7836,7 @@ Namespace FinagilDS1TableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UnidadInterna", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UnidadInterna", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UsoCFDI", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UsoCFDI", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Finagil", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Finagil", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FormatoImp", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FormatoImp", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [FacturasExternas] SET [Serie] = @Serie, [Factura] = @Factura, [Consec] = "& _ 
@@ -7800,40 +7847,42 @@ Namespace FinagilDS1TableAdapters
                 "RFC] = @RFC, [Mail1] = @Mail1, [Mail2] = @Mail2, [MetodoPago] = @MetodoPago, [Cu"& _ 
                 "enta] = @Cuenta, [Unidad] = @Unidad, [MetodoPagoSAT] = @MetodoPagoSAT, [CodigoAR"& _ 
                 "T] = @CodigoART, [UnidadInterna] = @UnidadInterna, [UsoCFDI] = @UsoCFDI, [Finagi"& _ 
-                "l] = @Finagil WHERE (([Serie] = @Original_Serie) AND ([Factura] = @Original_Fact"& _ 
-                "ura) AND ([Consec] = @Original_Consec) AND ((@IsNull_Detalle = 1 AND [Detalle] I"& _ 
-                "S NULL) OR ([Detalle] = @Original_Detalle)) AND ((@IsNull_Cantidad = 1 AND [Cant"& _ 
-                "idad] IS NULL) OR ([Cantidad] = @Original_Cantidad)) AND ((@IsNull_Unitario = 1 "& _ 
-                "AND [Unitario] IS NULL) OR ([Unitario] = @Original_Unitario)) AND ((@IsNull_Iva "& _ 
-                "= 1 AND [Iva] IS NULL) OR ([Iva] = @Original_Iva)) AND ((@IsNull_Importe = 1 AND"& _ 
-                " [Importe] IS NULL) OR ([Importe] = @Original_Importe)) AND ((@IsNull_fecha = 1 "& _ 
-                "AND [fecha] IS NULL) OR ([fecha] = @Original_fecha)) AND ((@IsNull_Moneda = 1 AN"& _ 
-                "D [Moneda] IS NULL) OR ([Moneda] = @Original_Moneda)) AND ((@IsNull_TasaIva = 1 "& _ 
-                "AND [TasaIva] IS NULL) OR ([TasaIva] = @Original_TasaIva)) AND ((@IsNull_Factura"& _ 
-                "do = 1 AND [Facturado] IS NULL) OR ([Facturado] = @Original_Facturado)) AND ((@I"& _ 
-                "sNull_Nombre = 1 AND [Nombre] IS NULL) OR ([Nombre] = @Original_Nombre)) AND ((@"& _ 
-                "IsNull_Calle = 1 AND [Calle] IS NULL) OR ([Calle] = @Original_Calle)) AND ((@IsN"& _ 
-                "ull_Colonia = 1 AND [Colonia] IS NULL) OR ([Colonia] = @Original_Colonia)) AND ("& _ 
-                "(@IsNull_Municipio = 1 AND [Municipio] IS NULL) OR ([Municipio] = @Original_Muni"& _ 
-                "cipio)) AND ((@IsNull_Estado = 1 AND [Estado] IS NULL) OR ([Estado] = @Original_"& _ 
-                "Estado)) AND ((@IsNull_CP = 1 AND [CP] IS NULL) OR ([CP] = @Original_CP)) AND (("& _ 
-                "@IsNull_RFC = 1 AND [RFC] IS NULL) OR ([RFC] = @Original_RFC)) AND ((@IsNull_Mai"& _ 
-                "l1 = 1 AND [Mail1] IS NULL) OR ([Mail1] = @Original_Mail1)) AND ((@IsNull_Mail2 "& _ 
-                "= 1 AND [Mail2] IS NULL) OR ([Mail2] = @Original_Mail2)) AND ((@IsNull_MetodoPag"& _ 
-                "o = 1 AND [MetodoPago] IS NULL) OR ([MetodoPago] = @Original_MetodoPago)) AND (("& _ 
-                "@IsNull_Cuenta = 1 AND [Cuenta] IS NULL) OR ([Cuenta] = @Original_Cuenta)) AND ("& _ 
-                "(@IsNull_Unidad = 1 AND [Unidad] IS NULL) OR ([Unidad] = @Original_Unidad)) AND "& _ 
-                "((@IsNull_MetodoPagoSAT = 1 AND [MetodoPagoSAT] IS NULL) OR ([MetodoPagoSAT] = @"& _ 
-                "Original_MetodoPagoSAT)) AND ((@IsNull_CodigoART = 1 AND [CodigoART] IS NULL) OR"& _ 
-                " ([CodigoART] = @Original_CodigoART)) AND ((@IsNull_UnidadInterna = 1 AND [Unida"& _ 
-                "dInterna] IS NULL) OR ([UnidadInterna] = @Original_UnidadInterna)) AND ((@IsNull"& _ 
-                "_UsoCFDI = 1 AND [UsoCFDI] IS NULL) OR ([UsoCFDI] = @Original_UsoCFDI)) AND ((@I"& _ 
-                "sNull_Finagil = 1 AND [Finagil] IS NULL) OR ([Finagil] = @Original_Finagil)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
-                "SELECT Serie, Factura, Consec, Detalle, Cantidad, Unitario, Iva, Importe, fecha,"& _ 
-                " Moneda, TasaIva, Facturado, Nombre, Calle, Colonia, Municipio, Estado, CP, RFC,"& _ 
-                " Mail1, Mail2, MetodoPago, Cuenta, Unidad, MetodoPagoSAT, CodigoART, UnidadInter"& _ 
-                "na, UsoCFDI, Finagil FROM FacturasExternas WHERE (Consec = @Consec) AND (Factura"& _ 
-                " = @Factura) AND (Serie = @Serie)"
+                "l] = @Finagil, [FormatoImp] = @FormatoImp WHERE (([Serie] = @Original_Serie) AND"& _ 
+                " ([Factura] = @Original_Factura) AND ([Consec] = @Original_Consec) AND ((@IsNull"& _ 
+                "_Detalle = 1 AND [Detalle] IS NULL) OR ([Detalle] = @Original_Detalle)) AND ((@I"& _ 
+                "sNull_Cantidad = 1 AND [Cantidad] IS NULL) OR ([Cantidad] = @Original_Cantidad))"& _ 
+                " AND ((@IsNull_Unitario = 1 AND [Unitario] IS NULL) OR ([Unitario] = @Original_U"& _ 
+                "nitario)) AND ((@IsNull_Iva = 1 AND [Iva] IS NULL) OR ([Iva] = @Original_Iva)) A"& _ 
+                "ND ((@IsNull_Importe = 1 AND [Importe] IS NULL) OR ([Importe] = @Original_Import"& _ 
+                "e)) AND ((@IsNull_fecha = 1 AND [fecha] IS NULL) OR ([fecha] = @Original_fecha))"& _ 
+                " AND ((@IsNull_Moneda = 1 AND [Moneda] IS NULL) OR ([Moneda] = @Original_Moneda)"& _ 
+                ") AND ((@IsNull_TasaIva = 1 AND [TasaIva] IS NULL) OR ([TasaIva] = @Original_Tas"& _ 
+                "aIva)) AND ((@IsNull_Facturado = 1 AND [Facturado] IS NULL) OR ([Facturado] = @O"& _ 
+                "riginal_Facturado)) AND ((@IsNull_Nombre = 1 AND [Nombre] IS NULL) OR ([Nombre] "& _ 
+                "= @Original_Nombre)) AND ((@IsNull_Calle = 1 AND [Calle] IS NULL) OR ([Calle] = "& _ 
+                "@Original_Calle)) AND ((@IsNull_Colonia = 1 AND [Colonia] IS NULL) OR ([Colonia]"& _ 
+                " = @Original_Colonia)) AND ((@IsNull_Municipio = 1 AND [Municipio] IS NULL) OR ("& _ 
+                "[Municipio] = @Original_Municipio)) AND ((@IsNull_Estado = 1 AND [Estado] IS NUL"& _ 
+                "L) OR ([Estado] = @Original_Estado)) AND ((@IsNull_CP = 1 AND [CP] IS NULL) OR ("& _ 
+                "[CP] = @Original_CP)) AND ((@IsNull_RFC = 1 AND [RFC] IS NULL) OR ([RFC] = @Orig"& _ 
+                "inal_RFC)) AND ((@IsNull_Mail1 = 1 AND [Mail1] IS NULL) OR ([Mail1] = @Original_"& _ 
+                "Mail1)) AND ((@IsNull_Mail2 = 1 AND [Mail2] IS NULL) OR ([Mail2] = @Original_Mai"& _ 
+                "l2)) AND ((@IsNull_MetodoPago = 1 AND [MetodoPago] IS NULL) OR ([MetodoPago] = @"& _ 
+                "Original_MetodoPago)) AND ((@IsNull_Cuenta = 1 AND [Cuenta] IS NULL) OR ([Cuenta"& _ 
+                "] = @Original_Cuenta)) AND ((@IsNull_Unidad = 1 AND [Unidad] IS NULL) OR ([Unida"& _ 
+                "d] = @Original_Unidad)) AND ((@IsNull_MetodoPagoSAT = 1 AND [MetodoPagoSAT] IS N"& _ 
+                "ULL) OR ([MetodoPagoSAT] = @Original_MetodoPagoSAT)) AND ((@IsNull_CodigoART = 1"& _ 
+                " AND [CodigoART] IS NULL) OR ([CodigoART] = @Original_CodigoART)) AND ((@IsNull_"& _ 
+                "UnidadInterna = 1 AND [UnidadInterna] IS NULL) OR ([UnidadInterna] = @Original_U"& _ 
+                "nidadInterna)) AND ((@IsNull_UsoCFDI = 1 AND [UsoCFDI] IS NULL) OR ([UsoCFDI] = "& _ 
+                "@Original_UsoCFDI)) AND ((@IsNull_Finagil = 1 AND [Finagil] IS NULL) OR ([Finagi"& _ 
+                "l] = @Original_Finagil)) AND ((@IsNull_FormatoImp = 1 AND [FormatoImp] IS NULL) "& _ 
+                "OR ([FormatoImp] = @Original_FormatoImp)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Serie, Factura, Consec, Deta"& _ 
+                "lle, Cantidad, Unitario, Iva, Importe, fecha, Moneda, TasaIva, Facturado, Nombre"& _ 
+                ", Calle, Colonia, Municipio, Estado, CP, RFC, Mail1, Mail2, MetodoPago, Cuenta, "& _ 
+                "Unidad, MetodoPagoSAT, CodigoART, UnidadInterna, UsoCFDI, Finagil, FormatoImp FR"& _ 
+                "OM FacturasExternas WHERE (Consec = @Consec) AND (Factura = @Factura) AND (Serie"& _ 
+                " = @Serie)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Serie", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Serie", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Factura", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "Factura", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -7864,6 +7913,7 @@ Namespace FinagilDS1TableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UnidadInterna", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UnidadInterna", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UsoCFDI", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UsoCFDI", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Finagil", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Finagil", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FormatoImp", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FormatoImp", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Serie", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Serie", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Factura", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "Factura", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Consec", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "Consec", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -7919,6 +7969,8 @@ Namespace FinagilDS1TableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_UsoCFDI", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UsoCFDI", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Finagil", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Finagil", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Finagil", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Finagil", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_FormatoImp", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FormatoImp", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FormatoImp", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FormatoImp", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -7936,9 +7988,9 @@ Namespace FinagilDS1TableAdapters
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        Serie, Factura, Consec, Detalle, Cantidad, Unitario, Iva, Importe, "& _ 
                 "fecha, Moneda, TasaIva, Facturado, Nombre, Calle, Colonia, Municipio, Estado, CP"& _ 
-                ", RFC, Mail1, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Mail2, MetodoPago, Cuenta, Unidad, Meto"& _ 
-                "doPagoSAT, CodigoART, UnidadInterna, UsoCFDI, Finagil"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            FacturasE"& _ 
-                "xternas"
+                ", RFC, Mail1, Mail2, MetodoPago, Cuenta, Unidad, MetodoPagoSAT, CodigoART, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"   "& _ 
+                "                      UnidadInterna, UsoCFDI, Finagil, FormatoImp"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         "& _ 
+                "   FacturasExternas"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -8027,7 +8079,8 @@ Namespace FinagilDS1TableAdapters
                     ByVal Original_CodigoART As String,  _
                     ByVal Original_UnidadInterna As String,  _
                     ByVal Original_UsoCFDI As String,  _
-                    ByVal Original_Finagil As Global.System.Nullable(Of Boolean)) As Integer
+                    ByVal Original_Finagil As Global.System.Nullable(Of Boolean),  _
+                    ByVal Original_FormatoImp As String) As Integer
             If (Original_Serie Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Serie")
             Else
@@ -8217,6 +8270,13 @@ Namespace FinagilDS1TableAdapters
                 Me.Adapter.DeleteCommand.Parameters(53).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(54).Value = Global.System.DBNull.Value
             End If
+            If (Original_FormatoImp Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(55).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(56).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(55).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(56).Value = CType(Original_FormatoImp,String)
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -8265,7 +8325,8 @@ Namespace FinagilDS1TableAdapters
                     ByVal CodigoART As String,  _
                     ByVal UnidadInterna As String,  _
                     ByVal UsoCFDI As String,  _
-                    ByVal Finagil As Global.System.Nullable(Of Boolean)) As Integer
+                    ByVal Finagil As Global.System.Nullable(Of Boolean),  _
+                    ByVal FormatoImp As String) As Integer
             If (Serie Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Serie")
             Else
@@ -8403,6 +8464,11 @@ Namespace FinagilDS1TableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(28).Value = Global.System.DBNull.Value
             End If
+            If (FormatoImp Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(29).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(29).Value = CType(FormatoImp,String)
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -8452,6 +8518,7 @@ Namespace FinagilDS1TableAdapters
                     ByVal UnidadInterna As String,  _
                     ByVal UsoCFDI As String,  _
                     ByVal Finagil As Global.System.Nullable(Of Boolean),  _
+                    ByVal FormatoImp As String,  _
                     ByVal Original_Serie As String,  _
                     ByVal Original_Factura As Decimal,  _
                     ByVal Original_Consec As Decimal,  _
@@ -8480,7 +8547,8 @@ Namespace FinagilDS1TableAdapters
                     ByVal Original_CodigoART As String,  _
                     ByVal Original_UnidadInterna As String,  _
                     ByVal Original_UsoCFDI As String,  _
-                    ByVal Original_Finagil As Global.System.Nullable(Of Boolean)) As Integer
+                    ByVal Original_Finagil As Global.System.Nullable(Of Boolean),  _
+                    ByVal Original_FormatoImp As String) As Integer
             If (Serie Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Serie")
             Else
@@ -8618,194 +8686,206 @@ Namespace FinagilDS1TableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(28).Value = Global.System.DBNull.Value
             End If
+            If (FormatoImp Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(29).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(FormatoImp,String)
+            End If
             If (Original_Serie Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Serie")
             Else
-                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(Original_Serie,String)
+                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(Original_Serie,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(30).Value = CType(Original_Factura,Decimal)
-            Me.Adapter.UpdateCommand.Parameters(31).Value = CType(Original_Consec,Decimal)
+            Me.Adapter.UpdateCommand.Parameters(31).Value = CType(Original_Factura,Decimal)
+            Me.Adapter.UpdateCommand.Parameters(32).Value = CType(Original_Consec,Decimal)
             If (Original_Detalle Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(33).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(34).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(Original_Detalle,String)
+                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(Original_Detalle,String)
             End If
             If (Original_Cantidad.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(Original_Cantidad.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(Original_Cantidad.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(35).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(36).Value = Global.System.DBNull.Value
             End If
             If (Original_Unitario.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(Original_Unitario.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(Original_Unitario.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(37).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(38).Value = Global.System.DBNull.Value
             End If
             If (Original_Iva.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(Original_Iva.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(Original_Iva.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(39).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(40).Value = Global.System.DBNull.Value
             End If
             If (Original_Importe.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(Original_Importe.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(Original_Importe.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(41).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(42).Value = Global.System.DBNull.Value
             End If
             If (Original_fecha.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(Original_fecha.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(Original_fecha.Value,Date)
             Else
-                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(43).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(44).Value = Global.System.DBNull.Value
             End If
             If (Original_Moneda Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(45).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(46).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(Original_Moneda,String)
+                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(Original_Moneda,String)
             End If
             If (Original_TasaIva Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(47).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(48).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(Original_TasaIva,String)
+                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(Original_TasaIva,String)
             End If
             If (Original_Facturado.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(Original_Facturado.Value,Boolean)
+                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(Original_Facturado.Value,Boolean)
             Else
-                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(49).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(50).Value = Global.System.DBNull.Value
             End If
             If (Original_Nombre Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(51).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(51).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(52).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(51).Value = CType(Original_Nombre,String)
+                Me.Adapter.UpdateCommand.Parameters(51).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(Original_Nombre,String)
             End If
             If (Original_Calle Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(53).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(54).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(Original_Calle,String)
+                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(Original_Calle,String)
             End If
             If (Original_Colonia Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(55).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(55).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(56).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(55).Value = CType(Original_Colonia,String)
+                Me.Adapter.UpdateCommand.Parameters(55).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(Original_Colonia,String)
             End If
             If (Original_Municipio Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(57).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(57).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(58).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(57).Value = CType(Original_Municipio,String)
+                Me.Adapter.UpdateCommand.Parameters(57).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(58).Value = CType(Original_Municipio,String)
             End If
             If (Original_Estado Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(58).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(59).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(59).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(60).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(58).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(59).Value = CType(Original_Estado,String)
+                Me.Adapter.UpdateCommand.Parameters(59).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(60).Value = CType(Original_Estado,String)
             End If
             If (Original_CP Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(60).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(61).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(61).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(62).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(60).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(61).Value = CType(Original_CP,String)
+                Me.Adapter.UpdateCommand.Parameters(61).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(62).Value = CType(Original_CP,String)
             End If
             If (Original_RFC Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(62).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(63).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(63).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(64).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(62).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(63).Value = CType(Original_RFC,String)
+                Me.Adapter.UpdateCommand.Parameters(63).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(64).Value = CType(Original_RFC,String)
             End If
             If (Original_Mail1 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(64).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(65).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(65).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(66).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(64).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(65).Value = CType(Original_Mail1,String)
+                Me.Adapter.UpdateCommand.Parameters(65).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(66).Value = CType(Original_Mail1,String)
             End If
             If (Original_Mail2 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(66).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(67).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(67).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(68).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(66).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(67).Value = CType(Original_Mail2,String)
+                Me.Adapter.UpdateCommand.Parameters(67).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(68).Value = CType(Original_Mail2,String)
             End If
             If (Original_MetodoPago Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(68).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(69).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(69).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(70).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(68).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(69).Value = CType(Original_MetodoPago,String)
+                Me.Adapter.UpdateCommand.Parameters(69).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(70).Value = CType(Original_MetodoPago,String)
             End If
             If (Original_Cuenta Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(70).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(71).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(71).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(72).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(70).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(71).Value = CType(Original_Cuenta,String)
+                Me.Adapter.UpdateCommand.Parameters(71).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(72).Value = CType(Original_Cuenta,String)
             End If
             If (Original_Unidad Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(72).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(73).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(73).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(74).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(72).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(73).Value = CType(Original_Unidad,String)
+                Me.Adapter.UpdateCommand.Parameters(73).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(74).Value = CType(Original_Unidad,String)
             End If
             If (Original_MetodoPagoSAT Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(74).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(75).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(75).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(76).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(74).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(75).Value = CType(Original_MetodoPagoSAT,String)
+                Me.Adapter.UpdateCommand.Parameters(75).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(76).Value = CType(Original_MetodoPagoSAT,String)
             End If
             If (Original_CodigoART Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(76).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(77).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(77).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(78).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(76).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(77).Value = CType(Original_CodigoART,String)
+                Me.Adapter.UpdateCommand.Parameters(77).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(78).Value = CType(Original_CodigoART,String)
             End If
             If (Original_UnidadInterna Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(78).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(79).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(79).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(80).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(78).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(79).Value = CType(Original_UnidadInterna,String)
+                Me.Adapter.UpdateCommand.Parameters(79).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(80).Value = CType(Original_UnidadInterna,String)
             End If
             If (Original_UsoCFDI Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(80).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(81).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(81).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(82).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(80).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(81).Value = CType(Original_UsoCFDI,String)
+                Me.Adapter.UpdateCommand.Parameters(81).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(82).Value = CType(Original_UsoCFDI,String)
             End If
             If (Original_Finagil.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(82).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(83).Value = CType(Original_Finagil.Value,Boolean)
+                Me.Adapter.UpdateCommand.Parameters(83).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(84).Value = CType(Original_Finagil.Value,Boolean)
             Else
-                Me.Adapter.UpdateCommand.Parameters(82).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(83).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(83).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(84).Value = Global.System.DBNull.Value
+            End If
+            If (Original_FormatoImp Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(85).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(86).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(85).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(86).Value = CType(Original_FormatoImp,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -8853,6 +8933,7 @@ Namespace FinagilDS1TableAdapters
                     ByVal UnidadInterna As String,  _
                     ByVal UsoCFDI As String,  _
                     ByVal Finagil As Global.System.Nullable(Of Boolean),  _
+                    ByVal FormatoImp As String,  _
                     ByVal Original_Serie As String,  _
                     ByVal Original_Factura As Decimal,  _
                     ByVal Original_Consec As Decimal,  _
@@ -8881,8 +8962,9 @@ Namespace FinagilDS1TableAdapters
                     ByVal Original_CodigoART As String,  _
                     ByVal Original_UnidadInterna As String,  _
                     ByVal Original_UsoCFDI As String,  _
-                    ByVal Original_Finagil As Global.System.Nullable(Of Boolean)) As Integer
-            Return Me.Update(Original_Serie, Original_Factura, Original_Consec, Detalle, Cantidad, Unitario, Iva, Importe, fecha, Moneda, TasaIva, Facturado, Nombre, Calle, Colonia, Municipio, Estado, CP, RFC, Mail1, Mail2, MetodoPago, Cuenta, Unidad, MetodoPagoSAT, CodigoART, UnidadInterna, UsoCFDI, Finagil, Original_Serie, Original_Factura, Original_Consec, Original_Detalle, Original_Cantidad, Original_Unitario, Original_Iva, Original_Importe, Original_fecha, Original_Moneda, Original_TasaIva, Original_Facturado, Original_Nombre, Original_Calle, Original_Colonia, Original_Municipio, Original_Estado, Original_CP, Original_RFC, Original_Mail1, Original_Mail2, Original_MetodoPago, Original_Cuenta, Original_Unidad, Original_MetodoPagoSAT, Original_CodigoART, Original_UnidadInterna, Original_UsoCFDI, Original_Finagil)
+                    ByVal Original_Finagil As Global.System.Nullable(Of Boolean),  _
+                    ByVal Original_FormatoImp As String) As Integer
+            Return Me.Update(Original_Serie, Original_Factura, Original_Consec, Detalle, Cantidad, Unitario, Iva, Importe, fecha, Moneda, TasaIva, Facturado, Nombre, Calle, Colonia, Municipio, Estado, CP, RFC, Mail1, Mail2, MetodoPago, Cuenta, Unidad, MetodoPagoSAT, CodigoART, UnidadInterna, UsoCFDI, Finagil, FormatoImp, Original_Serie, Original_Factura, Original_Consec, Original_Detalle, Original_Cantidad, Original_Unitario, Original_Iva, Original_Importe, Original_fecha, Original_Moneda, Original_TasaIva, Original_Facturado, Original_Nombre, Original_Calle, Original_Colonia, Original_Municipio, Original_Estado, Original_CP, Original_RFC, Original_Mail1, Original_Mail2, Original_MetodoPago, Original_Cuenta, Original_Unidad, Original_MetodoPagoSAT, Original_CodigoART, Original_UnidadInterna, Original_UsoCFDI, Original_Finagil, Original_FormatoImp)
         End Function
     End Class
     

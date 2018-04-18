@@ -110,6 +110,7 @@
         TxtImporteFact.Visible = False
         lblFolioFiscal.Visible = False
         CkDoctoRel.Checked = False
+        chkFormato.Checked = False
         Me.FinagilDS1.FacturasExternas.Clear()
     End Sub
 
@@ -470,6 +471,7 @@
                 LbCli.Visible = Bandera
                 TxtImporteFact.Visible = Bandera
                 _29_FormaPagoTextBox.Visible = Bandera
+                chkFormato.Visible = Bandera
             End If
 
         End If
@@ -607,6 +609,16 @@
                 If CmbSerie.Text = "C" Then
                     r.MetodoPago = _29_FormaPagoTextBox.Text.Trim
                     CmbMetodo.Enabled = False
+                End If
+            End If
+            If RDArfin.Checked = True Then
+                If chkFormato.Checked = True Then
+                    r.FormatoImp = "[AFARF]"
+                End If
+            End If
+            If RDFinagil.Checked = True Then
+                If chkFormato.Checked Then
+                    r.FormatoImp = "[AFIN]"
                 End If
             End If
         Next
