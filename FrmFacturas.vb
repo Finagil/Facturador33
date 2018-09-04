@@ -115,7 +115,7 @@
     End Sub
 
     Private Sub BTAgregar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTAgregar.Click
-        If Trim(txbFolioFiscal.Text).Length <> 36 And (CmbSerie.Text = "C" Or CkDoctoRel.Checked = True) Then
+        If Trim(txbFolioFiscal.Text).Length <> 36 And (CmbSerie.Text = "CA" Or CmbSerie.Text = "C" Or CkDoctoRel.Checked = True) Then
             MessageBox.Show("Error en Folio Fiscal", "Error Logitud NO Valida", MessageBoxButtons.OK, MessageBoxIcon.Error)
             TxtSerieCFDI.Select()
             Exit Sub
@@ -137,13 +137,13 @@
             TxtPrecio.Select()
             Exit Sub
         End If
-        If RDFinagil.Checked = True And CmbSerie.Text = "SA" Then
+        If RDFinagil.Checked = True And (CmbSerie.Text = "SA" Or CmbSerie.Text = "CA") Then
             MessageBox.Show("Error de Serie, solo para Arfin", "Errorde Serie", MessageBoxButtons.OK, MessageBoxIcon.Error)
             CmbSerie.Select()
             CmbSerie.SelectedIndex = -1
             Exit Sub
         End If
-        If RDFinagil.Checked = False And CmbSerie.Text <> "SA" Then
+        If RDFinagil.Checked = False And (CmbSerie.Text <> "SA" And CmbSerie.Text <> "CA") Then
             MessageBox.Show("Error de Serie, Arfin solo puede usar serie SA", "Errorde Serie", MessageBoxButtons.OK, MessageBoxIcon.Error)
             CmbSerie.Select()
             CmbSerie.SelectedIndex = -1
@@ -156,7 +156,7 @@
         Select Case UCase(cmbIva.Text)
             Case "16 %"
                 TasaIva = 0.16
-                If CmbSerie.Text = "C" Then
+                If CmbSerie.Text = "C" Or CmbSerie.Text = "CA" Then
                     If MessageBox.Show("Desea cambiar el importe de IVA", "IVA", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
                         IVAaux = InputBox("Nuevo importe IVA", "IVA", Math.Round((TxtCantidad.Text * TxtPrecio.Text) * TasaIva, 2))
                     End If
@@ -188,7 +188,7 @@
         r.Importe = Math.Round((r.Cantidad * r.Unitario), 2)
         r.fecha = FECHA_APLICACION
         r.Moneda = cmbMoneda.Text
-        If cmbMoneda.Text = "" And CmbSerie.Text = "SA" Then
+        If cmbMoneda.Text = "" And (CmbSerie.Text = "SA") Then
             MessageBox.Show("Falta seleccionar una moneda", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             cmbMoneda.Focus()
         End If
@@ -296,18 +296,20 @@
                     CmbSerie.SelectedIndex = -1
                     Exit Sub
                 End If
-                If RDFinagil.Checked = True And CmbSerie.Text = "SA" Then
+                If RDFinagil.Checked = True And (CmbSerie.Text = "SA" Or CmbSerie.Text = "CA") Then
                     MessageBox.Show("Error de Serie, solo para Arfin", "Errorde Serie", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     CmbSerie.Select()
                     CmbSerie.SelectedIndex = -1
                     Exit Sub
                 End If
-                If RDFinagil.Checked = False And CmbSerie.Text <> "SA" Then
+                If RDFinagil.Checked = False And (CmbSerie.Text <> "SA" And CmbSerie.Text <> "CA") Then
                     MessageBox.Show("Error de Serie, Arfin solo puede usar serie SA", "Errorde Serie", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     CmbSerie.Select()
                     CmbSerie.SelectedIndex = -1
                     Exit Sub
                 End If
+
+                GroupFactura.Enabled = True
                 GroupClientes.Enabled = False
                 GroupFinagil.Enabled = False
                 GroupTerceros.Enabled = False
@@ -324,6 +326,12 @@
                 ElseIf CmbSerie.Text = "DV" Then
                     LbFolio.Text = Folios.SerieDV
                 ElseIf CmbSerie.Text = "C" Then
+                    LbFolio.Text = Folios.SerieC
+                    Bandera = True
+                    CkDoctoRel.Checked = True
+                    cmbUsoCfdi.Enabled = True
+                    cmbUsoCfdi.Text = "Devoluciones, descuentos o bonificaciones"
+                ElseIf CmbSerie.Text = "CA" Then
                     LbFolio.Text = Folios.SerieC
                     Bandera = True
                     CkDoctoRel.Checked = True
@@ -414,18 +422,20 @@
                     CmbSerie.SelectedIndex = -1
                     Exit Sub
                 End If
-                If RDFinagil.Checked = True And CmbSerie.Text = "SA" Then
+                If RDFinagil.Checked = True And (CmbSerie.Text = "SA" Or CmbSerie.Text = "CA") Then
                     MessageBox.Show("Error de Serie, solo para Arfin", "Errorde Serie", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     CmbSerie.Select()
                     CmbSerie.SelectedIndex = -1
                     Exit Sub
                 End If
-                If RDFinagil.Checked = False And CmbSerie.Text <> "SA" Then
+                If RDFinagil.Checked = False And (CmbSerie.Text <> "SA" And CmbSerie.Text <> "CA") Then
                     MessageBox.Show("Error de Serie, Arfin solo puede usar serie SA", "Errorde Serie", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     CmbSerie.Select()
                     CmbSerie.SelectedIndex = -1
                     Exit Sub
                 End If
+
+                GroupFactura.Enabled = True
                 GroupClientes.Enabled = False
                 GroupFinagil.Enabled = False
                 GroupTerceros.Enabled = False
@@ -447,6 +457,13 @@
                     CkDoctoRel.Checked = True
                     cmbUsoCfdi.Enabled = True
                     cmbUsoCfdi.Text = "Devoluciones, descuentos o bonificaciones"
+                ElseIf CmbSerie.Text = "CA" Then
+                    LbFolio.Text = Folios.SerieC
+                    Bandera = True
+                    CkDoctoRel.Checked = True
+                    cmbUsoCfdi.Enabled = True
+                    cmbUsoCfdi.Text = "Devoluciones, descuentos o bonificaciones"
+                    cmbUsoCfdi.Enabled = False
                 ElseIf CmbSerie.Text = "SA" Then
                     LbFolio.Text = Folios.SerieSA
                 ElseIf CmbSerie.Text = "F" Then
@@ -563,6 +580,9 @@
         ElseIf CmbSerie.Text = "C" Then
             Folio = Folios.SerieC
             Folios.UpdateC(Folio)
+        ElseIf CmbSerie.Text = "CA" Then
+            Folio = Folios.SerieCA
+            Folios.UpdateCA(Folio)
         ElseIf CmbSerie.Text = "SA" Then
             Folio = Folios.SerieSA
             Folios.UpdateSA(Folio)
@@ -574,7 +594,7 @@
             ROWcomplemento = ProductionDS.CFDI_ComplementoPago.NewCFDI_ComplementoPagoRow()
             ROWcomplemento._1_DetalleAux_Tipo = "DR"
             ROWcomplemento._2_DetalleAux_DescTipo = "TipoRelacion"
-            If CmbSerie.Text = "C" Then
+            If CmbSerie.Text = "C" Or CmbSerie.Text = "CA" Then
                 ROWcomplemento._3_DetalleAux_Misc01 = "01"
             Else
                 ROWcomplemento._3_DetalleAux_Misc01 = "04"
@@ -606,7 +626,7 @@
                 r.MetodoPago = "99"
             Else
                 r.MetodoPago = UCase(CmbMetodo.SelectedValue)
-                If CmbSerie.Text = "C" Then
+                If CmbSerie.Text = "C" Or CmbSerie.Text = "CA" Then
                     r.MetodoPago = _29_FormaPagoTextBox.Text.Trim
                     CmbMetodo.Enabled = False
                 End If
@@ -957,7 +977,11 @@
     End Sub
 
     Private Sub cmbPago_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbPago.SelectedIndexChanged
-
+        If CmbSerie.Text = "CA" Or CmbSerie.Text = "C" Then
+            cmbUsoCfdi.Enabled = False
+        Else
+            cmbUsoCfdi.Enabled = True
+        End If
         If cmbPago.Text = "PPD" Then
             lblFormapago.Text = "99, Por Definir"
             lblFormapago.Visible = True
@@ -966,7 +990,7 @@
         Else
             CmbMetodo.Visible = True
         End If
-        cmbUsoCfdi.Enabled = True
+
     End Sub
 
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
@@ -985,6 +1009,9 @@
         ElseIf CmbSerie.Text = "C" Then
             Folio = Folios.SerieC
             Folios.UpdateC(Folio)
+        ElseIf CmbSerie.Text = "CA" Then
+            Folio = Folios.SerieCA
+            Folios.UpdateCA(Folio)
         End If
         For Each r As FinagilDS1.FacturasExternasRow In Me.FinagilDS1.FacturasExternas.Rows
             r.Factura = Folio
@@ -1005,7 +1032,7 @@
 
     Private Sub cmbUsoCfdi_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbUsoCfdi.SelectedIndexChanged
         GroupDET.Enabled = True
-        GroupFactura.Enabled = False
+        'GroupFactura.Enabled = False
 
     End Sub
 
