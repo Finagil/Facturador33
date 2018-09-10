@@ -62,6 +62,8 @@
     End Sub
 
     Private Sub FrmFacturas_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        'TODO: esta línea de código carga datos en la tabla 'ProductionDS.CFDI_Impuestos_Adicionales' Puede moverla o quitarla según sea necesario.
+        Me.CFDI_Impuestos_AdicionalesTableAdapter.Fill(Me.ProductionDS.CFDI_Impuestos_Adicionales)
         'TODO: esta línea de código carga datos en la tabla 'FinagilDS1.Clientes_ARFIN' Puede moverla o quitarla según sea necesario.
         'Me.Clientes_ARFINTableAdapter.Fill(Me.FinagilDS1.Clientes_ARFIN)
         'TODO: This line of code loads data into the 'ProductionDS.CFDI_UsosCFDI' table. You can move, or remove it, as needed.
@@ -222,12 +224,42 @@
         r.UsoCFDI = txtUsoClave.Text 'cmbUsoCfdi.SelectedValue
         r.Finagil = RDFinagil.Checked
 
+        If chkRetenciones.Checked = True Then
+            'Dim taRet As New ProductionDSTableAdapters.CFDI_Impuestos_AdicionalesTableAdapter
+            'taRet.InsertQuery(CmbSerie.Text, CInt(LbFolio.Text), "Impuesto", "RE", txtBase.Text, CDec(txtMonto.Text), cmbImpuesto_Ret.Text.Replace("ISR", "001").Replace("IVA", "002").Replace("IEPS", "003"), cmbTFactor.Text, cmbTOC.Text, "", "", "")
+            'Dim ret As FinagilDS1.FacturasExternasRow
+            Dim ret As ProductionDS.CFDI_Impuestos_AdicionalesRow
+            ret = Me.ProductionDS.CFDI_Impuestos_Adicionales.NewRow
+
+            ret._27_Serie_Comprobante = CmbSerie.Text
+            ret._1_Folio = CInt(LbFolio.Text)
+            ret._1_Impuesto_TipoImpuesto = "Impuesto"
+            ret._2_Impuesto_Descripcion = "RE"
+            ret._3_Impuesto_Monto_base = txtBase.Text
+            ret._4_Impuesto_Monto_Impuesto = CDec(txtMonto.Text)
+            ret._5_Impuesto_Clave = cmbImpuesto_Ret.Text.Replace("ISR", "001").Replace("IVA", "002").Replace("IEPS", "003")
+            ret._6_Impuesto_Tasa = cmbTFactor.Text
+            ret._7_Impuesto_Porcentaje = cmbTOC.Text
+            ret.Spei_Certificado = ""
+            ret.Spei_Cadena = ""
+            ret.Spei_Sello = ""
+            ret.linea = Consec
+
+            Me.ProductionDS.CFDI_Impuestos_Adicionales.AddCFDI_Impuestos_AdicionalesRow(ret)
+        End If
+
         Me.FinagilDS1.FacturasExternas.AddFacturasExternasRow(r)
         cmbIva.SelectedIndex = 1
         TxtCantidad.Clear()
         TxtPrecio.Clear()
         TotalGrid()
         TxtDesc.Text = ""
+
+        txtBase.Text = ""
+        cmbImpuesto_Ret.Text = "IVA"
+        cmbTOC.Text = "0.160000"
+        cmbTFactor.Text = "Tasa"
+        txtMonto.Text = ""
 
     End Sub
 
@@ -530,7 +562,7 @@
         Next
         txtSubtotal.Text = ST.ToString("N2")
         TxtIva.Text = IVA.ToString("N2")
-        TxtTotal.Text = TT.ToString("N2")
+        TxtTotal.Text = (Val(TT) - Val(txtMonto.Text)).ToString("N2")
     End Sub
 
     Private Sub GridFactura_RowsRemoved(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewRowsRemovedEventArgs) Handles GridFactura.RowsRemoved
@@ -642,9 +674,12 @@
                 End If
             End If
         Next
+
         Me.FinagilDS1.FacturasExternas.GetChanges()
+
         Try
             Me.FacturasExternasTableAdapter.Update(Me.FinagilDS1.FacturasExternas)
+            Me.CFDI_Impuestos_AdicionalesTableAdapter.Update(Me.ProductionDS.CFDI_Impuestos_Adicionales)
         Catch
             MessageBox.Show("La serie y folio ya se encuentrán registrados...")
         End Try
@@ -1033,7 +1068,12 @@
     Private Sub cmbUsoCfdi_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbUsoCfdi.SelectedIndexChanged
         GroupDET.Enabled = True
         'GroupFactura.Enabled = False
-
+        If RDArfin.Checked = True Then
+            chkRetenciones.Enabled = True
+        Else
+            chkRetenciones.Checked = False
+            chkRetenciones.Enabled = False
+        End If
     End Sub
 
     Private Sub TxtFolioCFDI_LostFocus(sender As Object, e As EventArgs) Handles TxtFolioCFDI.LostFocus
@@ -1081,6 +1121,53 @@
         End If
     End Sub
 
+    Private Sub chkRetenciones_CheckedChanged(sender As Object, e As EventArgs) Handles chkRetenciones.CheckedChanged
+        If chkRetenciones.Checked = True Then
+            gpRetenciones.Enabled = True
+            txtBase.Text = Math.Round((Val(TxtCantidad.Text) * Val(TxtPrecio.Text)), 2)
+        Else
+            gpRetenciones.Enabled = False
+            txtBase.Text = ""
+            cmbImpuesto_Ret.Text = "IVA"
+            cmbTOC.Text = "0.160000"
+            cmbTFactor.Text = "Tasa"
+            txtMonto.Text = ""
+        End If
+    End Sub
+
+    Private Sub GridFactura_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles GridFactura.CellContentClick
+
+    End Sub
+
+    Private Sub txtBase_TextChanged(sender As Object, e As EventArgs) Handles txtBase.TextChanged
+        txtMonto.Text = Math.Round((Val(txtBase.Text) * Val(cmbTOC.Text)), 2)
+    End Sub
+
+    Private Sub TxtFolioCFDI_TextChanged(sender As Object, e As EventArgs) Handles TxtFolioCFDI.TextChanged
+
+    End Sub
+
+    Private Sub RDArfin_CheckedChanged(sender As Object, e As EventArgs) Handles RDArfin.CheckedChanged
+        If RDArfin.Checked = True Then
+            chkRetenciones.Enabled = True
+        Else
+            chkRetenciones.Checked = False
+            chkRetenciones.Enabled = False
+        End If
+
+    End Sub
+
+    Private Sub cmbTOC_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbTOC.SelectedIndexChanged
+        txtMonto.Text = Math.Round((Val(txtBase.Text) * Val(cmbTOC.Text)), 2)
+    End Sub
+
+    Private Sub cmbTFactor_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbTFactor.SelectedIndexChanged
+        txtMonto.Text = Math.Round((Val(txtBase.Text) * Val(cmbTOC.Text)), 2)
+    End Sub
+
+    Private Sub cmbTOC_TextChanged(sender As Object, e As EventArgs) Handles cmbTOC.TextChanged
+        txtMonto.Text = Math.Round((Val(txtBase.Text) * Val(cmbTOC.Text)), 2)
+    End Sub
 End Class
 
 

@@ -57,7 +57,7 @@ Namespace My
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=SERVER-RAID\;Initial Catalog=Production;User ID=finagil;Password=fina"& _ 
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=server-raid\;Initial Catalog=Production;User ID=finagil;Password=fina"& _ 
             "gil")>  _
         Public ReadOnly Property ProdConnectionString() As String
             Get

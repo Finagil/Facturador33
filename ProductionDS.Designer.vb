@@ -39,6 +39,8 @@ Partial Public Class ProductionDS
     
     Private tableClientes As ClientesDataTable
     
+    Private tableCFDI_Impuestos_Adicionales As CFDI_Impuestos_AdicionalesDataTable
+    
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -88,6 +90,9 @@ Partial Public Class ProductionDS
             End If
             If (Not (ds.Tables("Clientes")) Is Nothing) Then
                 MyBase.Tables.Add(New ClientesDataTable(ds.Tables("Clientes")))
+            End If
+            If (Not (ds.Tables("CFDI_Impuestos_Adicionales")) Is Nothing) Then
+                MyBase.Tables.Add(New CFDI_Impuestos_AdicionalesDataTable(ds.Tables("CFDI_Impuestos_Adicionales")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -173,6 +178,16 @@ Partial Public Class ProductionDS
     Public ReadOnly Property Clientes() As ClientesDataTable
         Get
             Return Me.tableClientes
+        End Get
+    End Property
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+     Global.System.ComponentModel.Browsable(false),  _
+     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
+    Public ReadOnly Property CFDI_Impuestos_Adicionales() As CFDI_Impuestos_AdicionalesDataTable
+        Get
+            Return Me.tableCFDI_Impuestos_Adicionales
         End Get
     End Property
     
@@ -264,6 +279,9 @@ Partial Public Class ProductionDS
             If (Not (ds.Tables("Clientes")) Is Nothing) Then
                 MyBase.Tables.Add(New ClientesDataTable(ds.Tables("Clientes")))
             End If
+            If (Not (ds.Tables("CFDI_Impuestos_Adicionales")) Is Nothing) Then
+                MyBase.Tables.Add(New CFDI_Impuestos_AdicionalesDataTable(ds.Tables("CFDI_Impuestos_Adicionales")))
+            End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
             Me.Namespace = ds.Namespace
@@ -338,6 +356,12 @@ Partial Public Class ProductionDS
                 Me.tableClientes.InitVars
             End If
         End If
+        Me.tableCFDI_Impuestos_Adicionales = CType(MyBase.Tables("CFDI_Impuestos_Adicionales"),CFDI_Impuestos_AdicionalesDataTable)
+        If (initTable = true) Then
+            If (Not (Me.tableCFDI_Impuestos_Adicionales) Is Nothing) Then
+                Me.tableCFDI_Impuestos_Adicionales.InitVars
+            End If
+        End If
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -362,6 +386,8 @@ Partial Public Class ProductionDS
         MyBase.Tables.Add(Me.tableCFDI_UsosCFDI)
         Me.tableClientes = New ClientesDataTable()
         MyBase.Tables.Add(Me.tableClientes)
+        Me.tableCFDI_Impuestos_Adicionales = New CFDI_Impuestos_AdicionalesDataTable()
+        MyBase.Tables.Add(Me.tableCFDI_Impuestos_Adicionales)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -403,6 +429,12 @@ Partial Public Class ProductionDS
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
     Private Function ShouldSerializeClientes() As Boolean
+        Return false
+    End Function
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+    Private Function ShouldSerializeCFDI_Impuestos_Adicionales() As Boolean
         Return false
     End Function
     
@@ -484,6 +516,9 @@ Partial Public Class ProductionDS
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
     Public Delegate Sub ClientesRowChangeEventHandler(ByVal sender As Object, ByVal e As ClientesRowChangeEvent)
+    
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+    Public Delegate Sub CFDI_Impuestos_AdicionalesRowChangeEventHandler(ByVal sender As Object, ByVal e As CFDI_Impuestos_AdicionalesRowChangeEvent)
     
     '''<summary>
     '''Represents the strongly named DataTable class.
@@ -9651,6 +9686,458 @@ Partial Public Class ProductionDS
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
             attribute2.FixedValue = "ClientesDataTable"
+            type.Attributes.Add(attribute2)
+            type.Particle = sequence
+            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
+            If xs.Contains(dsSchema.TargetNamespace) Then
+                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Try 
+                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
+                    dsSchema.Write(s1)
+                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
+                    Do While schemas.MoveNext
+                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
+                        s2.SetLength(0)
+                        schema.Write(s2)
+                        If (s1.Length = s2.Length) Then
+                            s1.Position = 0
+                            s2.Position = 0
+                            
+                            Do While ((s1.Position <> s1.Length)  _
+                                        AndAlso (s1.ReadByte = s2.ReadByte))
+                                
+                                
+                            Loop
+                            If (s1.Position = s1.Length) Then
+                                Return type
+                            End If
+                        End If
+                        
+                    Loop
+                Finally
+                    If (Not (s1) Is Nothing) Then
+                        s1.Close
+                    End If
+                    If (Not (s2) Is Nothing) Then
+                        s2.Close
+                    End If
+                End Try
+            End If
+            xs.Add(dsSchema)
+            Return type
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the strongly named DataTable class.
+    '''</summary>
+    <Global.System.Serializable(),  _
+     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
+    Partial Public Class CFDI_Impuestos_AdicionalesDataTable
+        Inherits Global.System.Data.DataTable
+        Implements Global.System.Collections.IEnumerable
+        
+        Private column27_Serie_Comprobante As Global.System.Data.DataColumn
+        
+        Private column1_Folio As Global.System.Data.DataColumn
+        
+        Private column1_Impuesto_TipoImpuesto As Global.System.Data.DataColumn
+        
+        Private column2_Impuesto_Descripcion As Global.System.Data.DataColumn
+        
+        Private column3_Impuesto_Monto_base As Global.System.Data.DataColumn
+        
+        Private column4_Impuesto_Monto_Impuesto As Global.System.Data.DataColumn
+        
+        Private column5_Impuesto_Clave As Global.System.Data.DataColumn
+        
+        Private column6_Impuesto_Tasa As Global.System.Data.DataColumn
+        
+        Private column7_Impuesto_Porcentaje As Global.System.Data.DataColumn
+        
+        Private columnSpei_Certificado As Global.System.Data.DataColumn
+        
+        Private columnSpei_Cadena As Global.System.Data.DataColumn
+        
+        Private columnSpei_Sello As Global.System.Data.DataColumn
+        
+        Private columnlinea As Global.System.Data.DataColumn
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.TableName = "CFDI_Impuestos_Adicionales"
+            Me.BeginInit
+            Me.InitClass
+            Me.EndInit
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Friend Sub New(ByVal table As Global.System.Data.DataTable)
+            MyBase.New
+            Me.TableName = table.TableName
+            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
+                Me.CaseSensitive = table.CaseSensitive
+            End If
+            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
+                Me.Locale = table.Locale
+            End If
+            If (table.Namespace <> table.DataSet.Namespace) Then
+                Me.Namespace = table.Namespace
+            End If
+            Me.Prefix = table.Prefix
+            Me.MinimumCapacity = table.MinimumCapacity
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
+            MyBase.New(info, context)
+            Me.InitVars
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property _27_Serie_ComprobanteColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column27_Serie_Comprobante
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property _1_FolioColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column1_Folio
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property _1_Impuesto_TipoImpuestoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column1_Impuesto_TipoImpuesto
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property _2_Impuesto_DescripcionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column2_Impuesto_Descripcion
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property _3_Impuesto_Monto_baseColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column3_Impuesto_Monto_base
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property _4_Impuesto_Monto_ImpuestoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column4_Impuesto_Monto_Impuesto
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property _5_Impuesto_ClaveColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column5_Impuesto_Clave
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property _6_Impuesto_TasaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column6_Impuesto_Tasa
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property _7_Impuesto_PorcentajeColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column7_Impuesto_Porcentaje
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Spei_CertificadoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSpei_Certificado
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Spei_CadenaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSpei_Cadena
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Spei_SelloColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSpei_Sello
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property lineaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnlinea
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Browsable(false)>  _
+        Public ReadOnly Property Count() As Integer
+            Get
+                Return Me.Rows.Count
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Default ReadOnly Property Item(ByVal index As Integer) As CFDI_Impuestos_AdicionalesRow
+            Get
+                Return CType(Me.Rows(index),CFDI_Impuestos_AdicionalesRow)
+            End Get
+        End Property
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Event CFDI_Impuestos_AdicionalesRowChanging As CFDI_Impuestos_AdicionalesRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Event CFDI_Impuestos_AdicionalesRowChanged As CFDI_Impuestos_AdicionalesRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Event CFDI_Impuestos_AdicionalesRowDeleting As CFDI_Impuestos_AdicionalesRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Event CFDI_Impuestos_AdicionalesRowDeleted As CFDI_Impuestos_AdicionalesRowChangeEventHandler
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Overloads Sub AddCFDI_Impuestos_AdicionalesRow(ByVal row As CFDI_Impuestos_AdicionalesRow)
+            Me.Rows.Add(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Overloads Function AddCFDI_Impuestos_AdicionalesRow(ByVal _27_Serie_Comprobante As String, ByVal _1_Folio As Integer, ByVal _1_Impuesto_TipoImpuesto As String, ByVal _2_Impuesto_Descripcion As String, ByVal _3_Impuesto_Monto_base As Decimal, ByVal _4_Impuesto_Monto_Impuesto As String, ByVal _5_Impuesto_Clave As String, ByVal _6_Impuesto_Tasa As String, ByVal _7_Impuesto_Porcentaje As String, ByVal Spei_Certificado As String, ByVal Spei_Cadena As String, ByVal Spei_Sello As String, ByVal linea As Integer) As CFDI_Impuestos_AdicionalesRow
+            Dim rowCFDI_Impuestos_AdicionalesRow As CFDI_Impuestos_AdicionalesRow = CType(Me.NewRow,CFDI_Impuestos_AdicionalesRow)
+            Dim columnValuesArray() As Object = New Object() {_27_Serie_Comprobante, _1_Folio, _1_Impuesto_TipoImpuesto, _2_Impuesto_Descripcion, _3_Impuesto_Monto_base, _4_Impuesto_Monto_Impuesto, _5_Impuesto_Clave, _6_Impuesto_Tasa, _7_Impuesto_Porcentaje, Spei_Certificado, Spei_Cadena, Spei_Sello, linea}
+            rowCFDI_Impuestos_AdicionalesRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowCFDI_Impuestos_AdicionalesRow)
+            Return rowCFDI_Impuestos_AdicionalesRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function FindBy_27_Serie_Comprobante_1_Folio(ByVal _27_Serie_Comprobante As String, ByVal _1_Folio As Integer) As CFDI_Impuestos_AdicionalesRow
+            Return CType(Me.Rows.Find(New Object() {_27_Serie_Comprobante, _1_Folio}),CFDI_Impuestos_AdicionalesRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Overridable Function GetEnumerator() As Global.System.Collections.IEnumerator Implements Global.System.Collections.IEnumerable.GetEnumerator
+            Return Me.Rows.GetEnumerator
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Overrides Function Clone() As Global.System.Data.DataTable
+            Dim cln As CFDI_Impuestos_AdicionalesDataTable = CType(MyBase.Clone,CFDI_Impuestos_AdicionalesDataTable)
+            cln.InitVars
+            Return cln
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
+            Return New CFDI_Impuestos_AdicionalesDataTable()
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Friend Sub InitVars()
+            Me.column27_Serie_Comprobante = MyBase.Columns("27_Serie_Comprobante")
+            Me.column1_Folio = MyBase.Columns("1_Folio")
+            Me.column1_Impuesto_TipoImpuesto = MyBase.Columns("1_Impuesto_TipoImpuesto")
+            Me.column2_Impuesto_Descripcion = MyBase.Columns("2_Impuesto_Descripcion")
+            Me.column3_Impuesto_Monto_base = MyBase.Columns("3_Impuesto_Monto_base")
+            Me.column4_Impuesto_Monto_Impuesto = MyBase.Columns("4_Impuesto_Monto_Impuesto")
+            Me.column5_Impuesto_Clave = MyBase.Columns("5_Impuesto_Clave")
+            Me.column6_Impuesto_Tasa = MyBase.Columns("6_Impuesto_Tasa")
+            Me.column7_Impuesto_Porcentaje = MyBase.Columns("7_Impuesto_Porcentaje")
+            Me.columnSpei_Certificado = MyBase.Columns("Spei_Certificado")
+            Me.columnSpei_Cadena = MyBase.Columns("Spei_Cadena")
+            Me.columnSpei_Sello = MyBase.Columns("Spei_Sello")
+            Me.columnlinea = MyBase.Columns("linea")
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Private Sub InitClass()
+            Me.column27_Serie_Comprobante = New Global.System.Data.DataColumn("27_Serie_Comprobante", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            Me.column27_Serie_Comprobante.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column27_Serie_Comprobante")
+            Me.column27_Serie_Comprobante.ExtendedProperties.Add("Generator_UserColumnName", "27_Serie_Comprobante")
+            MyBase.Columns.Add(Me.column27_Serie_Comprobante)
+            Me.column1_Folio = New Global.System.Data.DataColumn("1_Folio", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            Me.column1_Folio.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column1_Folio")
+            Me.column1_Folio.ExtendedProperties.Add("Generator_UserColumnName", "1_Folio")
+            MyBase.Columns.Add(Me.column1_Folio)
+            Me.column1_Impuesto_TipoImpuesto = New Global.System.Data.DataColumn("1_Impuesto_TipoImpuesto", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            Me.column1_Impuesto_TipoImpuesto.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column1_Impuesto_TipoImpuesto")
+            Me.column1_Impuesto_TipoImpuesto.ExtendedProperties.Add("Generator_UserColumnName", "1_Impuesto_TipoImpuesto")
+            MyBase.Columns.Add(Me.column1_Impuesto_TipoImpuesto)
+            Me.column2_Impuesto_Descripcion = New Global.System.Data.DataColumn("2_Impuesto_Descripcion", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            Me.column2_Impuesto_Descripcion.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column2_Impuesto_Descripcion")
+            Me.column2_Impuesto_Descripcion.ExtendedProperties.Add("Generator_UserColumnName", "2_Impuesto_Descripcion")
+            MyBase.Columns.Add(Me.column2_Impuesto_Descripcion)
+            Me.column3_Impuesto_Monto_base = New Global.System.Data.DataColumn("3_Impuesto_Monto_base", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            Me.column3_Impuesto_Monto_base.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column3_Impuesto_Monto_base")
+            Me.column3_Impuesto_Monto_base.ExtendedProperties.Add("Generator_UserColumnName", "3_Impuesto_Monto_base")
+            MyBase.Columns.Add(Me.column3_Impuesto_Monto_base)
+            Me.column4_Impuesto_Monto_Impuesto = New Global.System.Data.DataColumn("4_Impuesto_Monto_Impuesto", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            Me.column4_Impuesto_Monto_Impuesto.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column4_Impuesto_Monto_Impuesto")
+            Me.column4_Impuesto_Monto_Impuesto.ExtendedProperties.Add("Generator_UserColumnName", "4_Impuesto_Monto_Impuesto")
+            MyBase.Columns.Add(Me.column4_Impuesto_Monto_Impuesto)
+            Me.column5_Impuesto_Clave = New Global.System.Data.DataColumn("5_Impuesto_Clave", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            Me.column5_Impuesto_Clave.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column5_Impuesto_Clave")
+            Me.column5_Impuesto_Clave.ExtendedProperties.Add("Generator_UserColumnName", "5_Impuesto_Clave")
+            MyBase.Columns.Add(Me.column5_Impuesto_Clave)
+            Me.column6_Impuesto_Tasa = New Global.System.Data.DataColumn("6_Impuesto_Tasa", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            Me.column6_Impuesto_Tasa.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column6_Impuesto_Tasa")
+            Me.column6_Impuesto_Tasa.ExtendedProperties.Add("Generator_UserColumnName", "6_Impuesto_Tasa")
+            MyBase.Columns.Add(Me.column6_Impuesto_Tasa)
+            Me.column7_Impuesto_Porcentaje = New Global.System.Data.DataColumn("7_Impuesto_Porcentaje", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            Me.column7_Impuesto_Porcentaje.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column7_Impuesto_Porcentaje")
+            Me.column7_Impuesto_Porcentaje.ExtendedProperties.Add("Generator_UserColumnName", "7_Impuesto_Porcentaje")
+            MyBase.Columns.Add(Me.column7_Impuesto_Porcentaje)
+            Me.columnSpei_Certificado = New Global.System.Data.DataColumn("Spei_Certificado", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSpei_Certificado)
+            Me.columnSpei_Cadena = New Global.System.Data.DataColumn("Spei_Cadena", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSpei_Cadena)
+            Me.columnSpei_Sello = New Global.System.Data.DataColumn("Spei_Sello", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSpei_Sello)
+            Me.columnlinea = New Global.System.Data.DataColumn("linea", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnlinea)
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.column27_Serie_Comprobante, Me.column1_Folio}, true))
+            Me.column27_Serie_Comprobante.AllowDBNull = false
+            Me.column27_Serie_Comprobante.MaxLength = 55
+            Me.column1_Folio.AllowDBNull = false
+            Me.column1_Impuesto_TipoImpuesto.MaxLength = 50
+            Me.column2_Impuesto_Descripcion.MaxLength = 50
+            Me.column4_Impuesto_Monto_Impuesto.MaxLength = 50
+            Me.column5_Impuesto_Clave.MaxLength = 50
+            Me.column6_Impuesto_Tasa.MaxLength = 50
+            Me.column7_Impuesto_Porcentaje.MaxLength = 50
+            Me.columnSpei_Certificado.MaxLength = 50
+            Me.columnSpei_Cadena.MaxLength = 2147483647
+            Me.columnSpei_Sello.MaxLength = 2147483647
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function NewCFDI_Impuestos_AdicionalesRow() As CFDI_Impuestos_AdicionalesRow
+            Return CType(Me.NewRow,CFDI_Impuestos_AdicionalesRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
+            Return New CFDI_Impuestos_AdicionalesRow(builder)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Function GetRowType() As Global.System.Type
+            Return GetType(CFDI_Impuestos_AdicionalesRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanged(e)
+            If (Not (Me.CFDI_Impuestos_AdicionalesRowChangedEvent) Is Nothing) Then
+                RaiseEvent CFDI_Impuestos_AdicionalesRowChanged(Me, New CFDI_Impuestos_AdicionalesRowChangeEvent(CType(e.Row,CFDI_Impuestos_AdicionalesRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanging(e)
+            If (Not (Me.CFDI_Impuestos_AdicionalesRowChangingEvent) Is Nothing) Then
+                RaiseEvent CFDI_Impuestos_AdicionalesRowChanging(Me, New CFDI_Impuestos_AdicionalesRowChangeEvent(CType(e.Row,CFDI_Impuestos_AdicionalesRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleted(e)
+            If (Not (Me.CFDI_Impuestos_AdicionalesRowDeletedEvent) Is Nothing) Then
+                RaiseEvent CFDI_Impuestos_AdicionalesRowDeleted(Me, New CFDI_Impuestos_AdicionalesRowChangeEvent(CType(e.Row,CFDI_Impuestos_AdicionalesRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleting(e)
+            If (Not (Me.CFDI_Impuestos_AdicionalesRowDeletingEvent) Is Nothing) Then
+                RaiseEvent CFDI_Impuestos_AdicionalesRowDeleting(Me, New CFDI_Impuestos_AdicionalesRowChangeEvent(CType(e.Row,CFDI_Impuestos_AdicionalesRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub RemoveCFDI_Impuestos_AdicionalesRow(ByVal row As CFDI_Impuestos_AdicionalesRow)
+            Me.Rows.Remove(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
+            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
+            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
+            Dim ds As ProductionDS = New ProductionDS()
+            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
+            any1.MinOccurs = New Decimal(0)
+            any1.MaxOccurs = Decimal.MaxValue
+            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any1)
+            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
+            any2.MinOccurs = New Decimal(1)
+            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any2)
+            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute1.Name = "namespace"
+            attribute1.FixedValue = ds.Namespace
+            type.Attributes.Add(attribute1)
+            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute2.Name = "tableTypeName"
+            attribute2.FixedValue = "CFDI_Impuestos_AdicionalesDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -20829,6 +21316,352 @@ Partial Public Class ProductionDS
     End Class
     
     '''<summary>
+    '''Represents strongly named DataRow class.
+    '''</summary>
+    Partial Public Class CFDI_Impuestos_AdicionalesRow
+        Inherits Global.System.Data.DataRow
+        
+        Private tableCFDI_Impuestos_Adicionales As CFDI_Impuestos_AdicionalesDataTable
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
+            MyBase.New(rb)
+            Me.tableCFDI_Impuestos_Adicionales = CType(Me.Table,CFDI_Impuestos_AdicionalesDataTable)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property _27_Serie_Comprobante() As String
+            Get
+                Return CType(Me(Me.tableCFDI_Impuestos_Adicionales._27_Serie_ComprobanteColumn),String)
+            End Get
+            Set
+                Me(Me.tableCFDI_Impuestos_Adicionales._27_Serie_ComprobanteColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property _1_Folio() As Integer
+            Get
+                Return CType(Me(Me.tableCFDI_Impuestos_Adicionales._1_FolioColumn),Integer)
+            End Get
+            Set
+                Me(Me.tableCFDI_Impuestos_Adicionales._1_FolioColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property _1_Impuesto_TipoImpuesto() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableCFDI_Impuestos_Adicionales._1_Impuesto_TipoImpuestoColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna '1_Impuesto_TipoImpuesto' de la tabla 'CFDI_Impuestos_Adic"& _ 
+                            "ionales' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCFDI_Impuestos_Adicionales._1_Impuesto_TipoImpuestoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property _2_Impuesto_Descripcion() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableCFDI_Impuestos_Adicionales._2_Impuesto_DescripcionColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna '2_Impuesto_Descripcion' de la tabla 'CFDI_Impuestos_Adici"& _ 
+                            "onales' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCFDI_Impuestos_Adicionales._2_Impuesto_DescripcionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property _3_Impuesto_Monto_base() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableCFDI_Impuestos_Adicionales._3_Impuesto_Monto_baseColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna '3_Impuesto_Monto_base' de la tabla 'CFDI_Impuestos_Adicio"& _ 
+                            "nales' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCFDI_Impuestos_Adicionales._3_Impuesto_Monto_baseColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property _4_Impuesto_Monto_Impuesto() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableCFDI_Impuestos_Adicionales._4_Impuesto_Monto_ImpuestoColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna '4_Impuesto_Monto_Impuesto' de la tabla 'CFDI_Impuestos_Ad"& _ 
+                            "icionales' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCFDI_Impuestos_Adicionales._4_Impuesto_Monto_ImpuestoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property _5_Impuesto_Clave() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableCFDI_Impuestos_Adicionales._5_Impuesto_ClaveColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna '5_Impuesto_Clave' de la tabla 'CFDI_Impuestos_Adicionales"& _ 
+                            "' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCFDI_Impuestos_Adicionales._5_Impuesto_ClaveColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property _6_Impuesto_Tasa() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableCFDI_Impuestos_Adicionales._6_Impuesto_TasaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna '6_Impuesto_Tasa' de la tabla 'CFDI_Impuestos_Adicionales'"& _ 
+                            " es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCFDI_Impuestos_Adicionales._6_Impuesto_TasaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property _7_Impuesto_Porcentaje() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableCFDI_Impuestos_Adicionales._7_Impuesto_PorcentajeColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna '7_Impuesto_Porcentaje' de la tabla 'CFDI_Impuestos_Adicio"& _ 
+                            "nales' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCFDI_Impuestos_Adicionales._7_Impuesto_PorcentajeColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Spei_Certificado() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableCFDI_Impuestos_Adicionales.Spei_CertificadoColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Spei_Certificado' de la tabla 'CFDI_Impuestos_Adicionales"& _ 
+                            "' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCFDI_Impuestos_Adicionales.Spei_CertificadoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Spei_Cadena() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableCFDI_Impuestos_Adicionales.Spei_CadenaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Spei_Cadena' de la tabla 'CFDI_Impuestos_Adicionales' es "& _ 
+                            "DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCFDI_Impuestos_Adicionales.Spei_CadenaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Spei_Sello() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableCFDI_Impuestos_Adicionales.Spei_SelloColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Spei_Sello' de la tabla 'CFDI_Impuestos_Adicionales' es D"& _ 
+                            "BNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCFDI_Impuestos_Adicionales.Spei_SelloColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property linea() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableCFDI_Impuestos_Adicionales.lineaColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'linea' de la tabla 'CFDI_Impuestos_Adicionales' es DBNull"& _ 
+                            ".", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCFDI_Impuestos_Adicionales.lineaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Is_1_Impuesto_TipoImpuestoNull() As Boolean
+            Return Me.IsNull(Me.tableCFDI_Impuestos_Adicionales._1_Impuesto_TipoImpuestoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Set_1_Impuesto_TipoImpuestoNull()
+            Me(Me.tableCFDI_Impuestos_Adicionales._1_Impuesto_TipoImpuestoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Is_2_Impuesto_DescripcionNull() As Boolean
+            Return Me.IsNull(Me.tableCFDI_Impuestos_Adicionales._2_Impuesto_DescripcionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Set_2_Impuesto_DescripcionNull()
+            Me(Me.tableCFDI_Impuestos_Adicionales._2_Impuesto_DescripcionColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Is_3_Impuesto_Monto_baseNull() As Boolean
+            Return Me.IsNull(Me.tableCFDI_Impuestos_Adicionales._3_Impuesto_Monto_baseColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Set_3_Impuesto_Monto_baseNull()
+            Me(Me.tableCFDI_Impuestos_Adicionales._3_Impuesto_Monto_baseColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Is_4_Impuesto_Monto_ImpuestoNull() As Boolean
+            Return Me.IsNull(Me.tableCFDI_Impuestos_Adicionales._4_Impuesto_Monto_ImpuestoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Set_4_Impuesto_Monto_ImpuestoNull()
+            Me(Me.tableCFDI_Impuestos_Adicionales._4_Impuesto_Monto_ImpuestoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Is_5_Impuesto_ClaveNull() As Boolean
+            Return Me.IsNull(Me.tableCFDI_Impuestos_Adicionales._5_Impuesto_ClaveColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Set_5_Impuesto_ClaveNull()
+            Me(Me.tableCFDI_Impuestos_Adicionales._5_Impuesto_ClaveColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Is_6_Impuesto_TasaNull() As Boolean
+            Return Me.IsNull(Me.tableCFDI_Impuestos_Adicionales._6_Impuesto_TasaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Set_6_Impuesto_TasaNull()
+            Me(Me.tableCFDI_Impuestos_Adicionales._6_Impuesto_TasaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Is_7_Impuesto_PorcentajeNull() As Boolean
+            Return Me.IsNull(Me.tableCFDI_Impuestos_Adicionales._7_Impuesto_PorcentajeColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Set_7_Impuesto_PorcentajeNull()
+            Me(Me.tableCFDI_Impuestos_Adicionales._7_Impuesto_PorcentajeColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsSpei_CertificadoNull() As Boolean
+            Return Me.IsNull(Me.tableCFDI_Impuestos_Adicionales.Spei_CertificadoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetSpei_CertificadoNull()
+            Me(Me.tableCFDI_Impuestos_Adicionales.Spei_CertificadoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsSpei_CadenaNull() As Boolean
+            Return Me.IsNull(Me.tableCFDI_Impuestos_Adicionales.Spei_CadenaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetSpei_CadenaNull()
+            Me(Me.tableCFDI_Impuestos_Adicionales.Spei_CadenaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsSpei_SelloNull() As Boolean
+            Return Me.IsNull(Me.tableCFDI_Impuestos_Adicionales.Spei_SelloColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetSpei_SelloNull()
+            Me(Me.tableCFDI_Impuestos_Adicionales.Spei_SelloColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IslineaNull() As Boolean
+            Return Me.IsNull(Me.tableCFDI_Impuestos_Adicionales.lineaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetlineaNull()
+            Me(Me.tableCFDI_Impuestos_Adicionales.lineaColumn) = Global.System.Convert.DBNull
+        End Sub
+    End Class
+    
+    '''<summary>
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
@@ -21066,6 +21899,42 @@ Partial Public Class ProductionDS
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public ReadOnly Property Row() As ClientesRow
+            Get
+                Return Me.eventRow
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
+            Get
+                Return Me.eventAction
+            End Get
+        End Property
+    End Class
+    
+    '''<summary>
+    '''Row event argument class
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+    Public Class CFDI_Impuestos_AdicionalesRowChangeEvent
+        Inherits Global.System.EventArgs
+        
+        Private eventRow As CFDI_Impuestos_AdicionalesRow
+        
+        Private eventAction As Global.System.Data.DataRowAction
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub New(ByVal row As CFDI_Impuestos_AdicionalesRow, ByVal action As Global.System.Data.DataRowAction)
+            MyBase.New
+            Me.eventRow = row
+            Me.eventAction = action
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Row() As CFDI_Impuestos_AdicionalesRow
             Get
                 Return Me.eventRow
             End Get
@@ -41133,6 +42002,392 @@ Namespace ProductionDSTableAdapters
                     ByVal Original_ID_acreditado As String,  _
                     ByVal Original_CVE_LOC As Global.System.Nullable(Of Integer)) As Integer
             Return Me.Update(Original_Cliente, Descr, Tipo, Sucursal, Promo, Gestor, Calle, Colonia, TipoAsent, Delegacion, Ciudad, Estado, Copos, Telef1, Telef2, Telef3, Fax, Fecha1, Giro, ClaveAE, Plaza, RFC, CURP, EMail1, EMail2, Banco, CuentaBancomer, CuentaCLABE, GeneClie, Nomrepr, Generepr, Poderepr, Nomrepr2, Generep2, Poderep2, Coac, Tipcoac, Nomcoac, Genecoac, Nomrcoac, Genercoa, Podercoa, Obli, TipoObli, NomObli, GeneObli, NomrObl, GenerObl, PoderObl, Aval1, Tipaval1, Nomaval1, Geneava1, Nomrava1, Generav1, Poderav1, Aval2, Tipaval2, Nomaval2, GeneAva2, Nomrava2, Generav2, Poderav2, Agrupa, SegVida, TasaIVACliente, CuentadePago1, FormadePago1, CuentadePago2, FormadePago2, CuentadePago3, FormadePago3, CuentadePago4, FormadePago4, NombreCliente, ApellidoPaterno, ApellidoMaterno, Genero, Autoriza, siebel, PaisNacimiento, Nacionalidad, SerieFiel, VentasAnuales, id_GrupoRiesgo, id_RiesgoComun, PPE, GradoRiesgo, ID_acreditado, CVE_LOC, Original_Cliente, Original_Descr, Original_Tipo, Original_Sucursal, Original_Promo, Original_Gestor, Original_Calle, Original_Colonia, Original_TipoAsent, Original_Delegacion, Original_Ciudad, Original_Estado, Original_Copos, Original_Telef1, Original_Telef2, Original_Telef3, Original_Fax, Original_Fecha1, Original_Giro, Original_ClaveAE, Original_Plaza, Original_RFC, Original_CURP, Original_EMail1, Original_EMail2, Original_Banco, Original_CuentaBancomer, Original_CuentaCLABE, Original_Nomrepr, Original_Nomrepr2, Original_Coac, Original_Tipcoac, Original_Nomcoac, Original_Nomrcoac, Original_Obli, Original_TipoObli, Original_NomObli, Original_NomrObl, Original_Aval1, Original_Tipaval1, Original_Nomaval1, Original_Nomrava1, Original_Aval2, Original_Tipaval2, Original_Nomaval2, Original_Nomrava2, Original_Agrupa, Original_SegVida, Original_TasaIVACliente, Original_CuentadePago1, Original_FormadePago1, Original_CuentadePago2, Original_FormadePago2, Original_CuentadePago3, Original_FormadePago3, Original_CuentadePago4, Original_FormadePago4, Original_NombreCliente, Original_ApellidoPaterno, Original_ApellidoMaterno, Original_Genero, Original_Autoriza, Original_siebel, Original_PaisNacimiento, Original_Nacionalidad, Original_SerieFiel, Original_VentasAnuales, Original_id_GrupoRiesgo, Original_id_RiesgoComun, Original_PPE, Original_GradoRiesgo, Original_ID_acreditado, Original_CVE_LOC)
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the connection and commands used to retrieve and save data.
+    '''</summary>
+    <Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     Global.System.ComponentModel.ToolboxItem(true),  _
+     Global.System.ComponentModel.DataObjectAttribute(true),  _
+     Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
+     Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+    Partial Public Class CFDI_Impuestos_AdicionalesTableAdapter
+        Inherits Global.System.ComponentModel.Component
+        
+        Private WithEvents _adapter As Global.System.Data.SqlClient.SqlDataAdapter
+        
+        Private _connection As Global.System.Data.SqlClient.SqlConnection
+        
+        Private _commandCollection() As Global.System.Data.SqlClient.SqlCommand
+        
+        Private _clearBeforeFill As Boolean
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.ClearBeforeFill = true
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Private ReadOnly Property Adapter() As Global.System.Data.SqlClient.SqlDataAdapter
+            Get
+                If (Me._adapter Is Nothing) Then
+                    Me.InitAdapter
+                End If
+                Return Me._adapter
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Friend Property Connection() As Global.System.Data.SqlClient.SqlConnection
+            Get
+                If (Me._connection Is Nothing) Then
+                    Me.InitConnection
+                End If
+                Return Me._connection
+            End Get
+            Set
+                Me._connection = value
+                If (Not (Me.Adapter.InsertCommand) Is Nothing) Then
+                    Me.Adapter.InsertCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.DeleteCommand) Is Nothing) Then
+                    Me.Adapter.DeleteCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.UpdateCommand) Is Nothing) Then
+                    Me.Adapter.UpdateCommand.Connection = value
+                End If
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    If (Not (Me.CommandCollection(i)) Is Nothing) Then
+                        CType(Me.CommandCollection(i),Global.System.Data.SqlClient.SqlCommand).Connection = value
+                    End If
+                    i = (i + 1)
+                Loop
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected ReadOnly Property CommandCollection() As Global.System.Data.SqlClient.SqlCommand()
+            Get
+                If (Me._commandCollection Is Nothing) Then
+                    Me.InitCommandCollection
+                End If
+                Return Me._commandCollection
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property ClearBeforeFill() As Boolean
+            Get
+                Return Me._clearBeforeFill
+            End Get
+            Set
+                Me._clearBeforeFill = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Private Sub InitAdapter()
+            Me._adapter = New Global.System.Data.SqlClient.SqlDataAdapter()
+            Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
+            tableMapping.SourceTable = "Table"
+            tableMapping.DataSetTable = "CFDI_Impuestos_Adicionales"
+            tableMapping.ColumnMappings.Add("27_Serie_Comprobante", "27_Serie_Comprobante")
+            tableMapping.ColumnMappings.Add("1_Folio", "1_Folio")
+            tableMapping.ColumnMappings.Add("1_Impuesto_TipoImpuesto", "1_Impuesto_TipoImpuesto")
+            tableMapping.ColumnMappings.Add("2_Impuesto_Descripcion", "2_Impuesto_Descripcion")
+            tableMapping.ColumnMappings.Add("3_Impuesto_Monto_base", "3_Impuesto_Monto_base")
+            tableMapping.ColumnMappings.Add("4_Impuesto_Monto_Impuesto", "4_Impuesto_Monto_Impuesto")
+            tableMapping.ColumnMappings.Add("5_Impuesto_Clave", "5_Impuesto_Clave")
+            tableMapping.ColumnMappings.Add("6_Impuesto_Tasa", "6_Impuesto_Tasa")
+            tableMapping.ColumnMappings.Add("7_Impuesto_Porcentaje", "7_Impuesto_Porcentaje")
+            tableMapping.ColumnMappings.Add("Spei_Certificado", "Spei_Certificado")
+            tableMapping.ColumnMappings.Add("Spei_Cadena", "Spei_Cadena")
+            tableMapping.ColumnMappings.Add("Spei_Sello", "Spei_Sello")
+            tableMapping.ColumnMappings.Add("linea", "linea")
+            Me._adapter.TableMappings.Add(tableMapping)
+            Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
+            Me._adapter.DeleteCommand.Connection = Me.Connection
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [CFDI_Impuestos_Adicionales] WHERE (([27_Serie_Comprobante] = @p2) AN"& _ 
+                "D ([1_Folio] = @p4))"
+            Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p2", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "27_Serie_Comprobante", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p4", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "1_Folio", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
+            Me._adapter.InsertCommand.Connection = Me.Connection
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [CFDI_Impuestos_Adicionales] ([27_Serie_Comprobante], [1_Folio], [1_I"& _ 
+                "mpuesto_TipoImpuesto], [2_Impuesto_Descripcion], [3_Impuesto_Monto_base], [4_Imp"& _ 
+                "uesto_Monto_Impuesto], [5_Impuesto_Clave], [6_Impuesto_Tasa], [7_Impuesto_Porcen"& _ 
+                "taje], [Spei_Certificado], [Spei_Cadena], [Spei_Sello], [linea]) VALUES (@p1, @p"& _ 
+                "3, @p5, @p8, @p11, @p14, @p17, @p20, @p23, @Spei_Certificado, @Spei_Cadena, @Spe"& _ 
+                "i_Sello, @linea)"
+            Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p1", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "27_Serie_Comprobante", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p3", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "1_Folio", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p5", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "1_Impuesto_TipoImpuesto", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p8", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "2_Impuesto_Descripcion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p11", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 4, "3_Impuesto_Monto_base", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p14", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "4_Impuesto_Monto_Impuesto", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p17", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "5_Impuesto_Clave", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p20", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "6_Impuesto_Tasa", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p23", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "7_Impuesto_Porcentaje", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Spei_Certificado", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Spei_Certificado", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Spei_Cadena", Global.System.Data.SqlDbType.Text, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Spei_Cadena", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Spei_Sello", Global.System.Data.SqlDbType.Text, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Spei_Sello", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@linea", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "linea", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
+            Me._adapter.UpdateCommand.Connection = Me.Connection
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [CFDI_Impuestos_Adicionales] SET [27_Serie_Comprobante] = @p1, [1_Folio] ="& _ 
+                " @p3, [1_Impuesto_TipoImpuesto] = @p5, [2_Impuesto_Descripcion] = @p8, [3_Impues"& _ 
+                "to_Monto_base] = @p11, [4_Impuesto_Monto_Impuesto] = @p14, [5_Impuesto_Clave] = "& _ 
+                "@p17, [6_Impuesto_Tasa] = @p20, [7_Impuesto_Porcentaje] = @p23, [Spei_Certificad"& _ 
+                "o] = @Spei_Certificado, [Spei_Cadena] = @Spei_Cadena, [Spei_Sello] = @Spei_Sello"& _ 
+                ", [linea] = @linea WHERE (([27_Serie_Comprobante] = @p2) AND ([1_Folio] = @p4))"
+            Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p1", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "27_Serie_Comprobante", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p3", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "1_Folio", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p5", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "1_Impuesto_TipoImpuesto", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p8", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "2_Impuesto_Descripcion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p11", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 4, "3_Impuesto_Monto_base", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p14", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "4_Impuesto_Monto_Impuesto", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p17", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "5_Impuesto_Clave", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p20", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "6_Impuesto_Tasa", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p23", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "7_Impuesto_Porcentaje", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Spei_Certificado", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Spei_Certificado", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Spei_Cadena", Global.System.Data.SqlDbType.Text, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Spei_Cadena", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Spei_Sello", Global.System.Data.SqlDbType.Text, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Spei_Sello", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@linea", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "linea", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p2", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "27_Serie_Comprobante", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p4", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "1_Folio", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Private Sub InitConnection()
+            Me._connection = New Global.System.Data.SqlClient.SqlConnection()
+            Me._connection.ConnectionString = Global.Facturador33.My.MySettings.Default.ProdConnectionString
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Private Sub InitCommandCollection()
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(2) {}
+            Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(0).Connection = Me.Connection
+            Me._commandCollection(0).CommandText = "SELECT        [27_Serie_Comprobante], [1_Folio], [1_Impuesto_TipoImpuesto], [2_Im"& _ 
+                "puesto_Descripcion], [3_Impuesto_Monto_base], [4_Impuesto_Monto_Impuesto], [5_Im"& _ 
+                "puesto_Clave], [6_Impuesto_Tasa], [7_Impuesto_Porcentaje], "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                   "& _ 
+                "      Spei_Certificado, Spei_Cadena, Spei_Sello, linea"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            CFDI_Imp"& _ 
+                "uestos_Adicionales"
+            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "INSERT INTO [CFDI_Impuestos_Adicionales] ([27_Serie_Comprobante], [1_Folio], [1_I"& _ 
+                "mpuesto_TipoImpuesto], [2_Impuesto_Descripcion], [3_Impuesto_Monto_base], [4_Imp"& _ 
+                "uesto_Monto_Impuesto], [5_Impuesto_Clave], [6_Impuesto_Tasa], [7_Impuesto_Porcen"& _ 
+                "taje], [Spei_Certificado], [Spei_Cadena], [Spei_Sello]) VALUES (@p1, @p3, @p5, @"& _ 
+                "p8, @p11, @p14, @p17, @p20, @p23, @Spei_Certificado, @Spei_Cadena, @Spei_Sello);"& _ 
+                ""
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p1", Global.System.Data.SqlDbType.VarChar, 55, Global.System.Data.ParameterDirection.Input, 0, 0, "27_Serie_Comprobante", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p3", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "1_Folio", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p5", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "1_Impuesto_TipoImpuesto", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p8", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "2_Impuesto_Descripcion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p11", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 4, "3_Impuesto_Monto_base", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p14", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "4_Impuesto_Monto_Impuesto", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p17", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "5_Impuesto_Clave", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p20", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "6_Impuesto_Tasa", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p23", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "7_Impuesto_Porcentaje", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Spei_Certificado", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "Spei_Certificado", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Spei_Cadena", Global.System.Data.SqlDbType.Text, 2147483647, Global.System.Data.ParameterDirection.Input, 0, 0, "Spei_Cadena", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Spei_Sello", Global.System.Data.SqlDbType.Text, 2147483647, Global.System.Data.ParameterDirection.Input, 0, 0, "Spei_Sello", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(2).Connection = Me.Connection
+            Me._commandCollection(2).CommandText = "SELECT        [27_Serie_Comprobante], [1_Folio], [1_Impuesto_TipoImpuesto], [2_Im"& _ 
+                "puesto_Descripcion], [3_Impuesto_Monto_base], [4_Impuesto_Monto_Impuesto], [5_Im"& _ 
+                "puesto_Clave], [6_Impuesto_Tasa], [7_Impuesto_Porcentaje], "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                   "& _ 
+                "      Spei_Certificado, Spei_Cadena, Spei_Sello"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            CFDI_Impuestos_"& _ 
+                "Adicionales"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        ([27_Serie_Comprobante] = @Serie) AND ([1_Folio] = @Fo"& _ 
+                "lio)"
+            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Serie", Global.System.Data.SqlDbType.VarChar, 55, Global.System.Data.ParameterDirection.Input, 0, 0, "27_Serie_Comprobante", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Folio", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "1_Folio", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
+        Public Overloads Overridable Function Fill(ByVal dataTable As ProductionDS.CFDI_Impuestos_AdicionalesDataTable) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
+        Public Overloads Overridable Function GetData() As ProductionDS.CFDI_Impuestos_AdicionalesDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            Dim dataTable As ProductionDS.CFDI_Impuestos_AdicionalesDataTable = New ProductionDS.CFDI_Impuestos_AdicionalesDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function Obt_Impuesto_FillBy(ByVal dataTable As ProductionDS.CFDI_Impuestos_AdicionalesDataTable, ByVal Serie As String, ByVal Folio As Integer) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
+            If (Serie Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Serie")
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Serie,String)
+            End If
+            Me.Adapter.SelectCommand.Parameters(1).Value = CType(Folio,Integer)
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function Obt_Impuesto_GetDataBy1(ByVal Serie As String, ByVal Folio As Integer) As ProductionDS.CFDI_Impuestos_AdicionalesDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
+            If (Serie Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Serie")
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Serie,String)
+            End If
+            Me.Adapter.SelectCommand.Parameters(1).Value = CType(Folio,Integer)
+            Dim dataTable As ProductionDS.CFDI_Impuestos_AdicionalesDataTable = New ProductionDS.CFDI_Impuestos_AdicionalesDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataTable As ProductionDS.CFDI_Impuestos_AdicionalesDataTable) As Integer
+            Return Me.Adapter.Update(dataTable)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataSet As ProductionDS) As Integer
+            Return Me.Adapter.Update(dataSet, "CFDI_Impuestos_Adicionales")
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataRow As Global.System.Data.DataRow) As Integer
+            Return Me.Adapter.Update(New Global.System.Data.DataRow() {dataRow})
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataRows() As Global.System.Data.DataRow) As Integer
+            Return Me.Adapter.Update(dataRows)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, false)>  _
+        Public Overloads Overridable Function InsertQuery(ByVal p1 As String, ByVal p3 As Integer, ByVal p5 As String, ByVal p8 As String, ByVal p11 As Global.System.Nullable(Of Decimal), ByVal p14 As String, ByVal p17 As String, ByVal p20 As String, ByVal p23 As String, ByVal Spei_Certificado As String, ByVal Spei_Cadena As String, ByVal Spei_Sello As String) As Integer
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(1)
+            If (p1 Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("p1")
+            Else
+                command.Parameters(0).Value = CType(p1,String)
+            End If
+            command.Parameters(1).Value = CType(p3,Integer)
+            If (p5 Is Nothing) Then
+                command.Parameters(2).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(2).Value = CType(p5,String)
+            End If
+            If (p8 Is Nothing) Then
+                command.Parameters(3).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(3).Value = CType(p8,String)
+            End If
+            If (p11.HasValue = true) Then
+                command.Parameters(4).Value = CType(p11.Value,Decimal)
+            Else
+                command.Parameters(4).Value = Global.System.DBNull.Value
+            End If
+            If (p14 Is Nothing) Then
+                command.Parameters(5).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(5).Value = CType(p14,String)
+            End If
+            If (p17 Is Nothing) Then
+                command.Parameters(6).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(6).Value = CType(p17,String)
+            End If
+            If (p20 Is Nothing) Then
+                command.Parameters(7).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(7).Value = CType(p20,String)
+            End If
+            If (p23 Is Nothing) Then
+                command.Parameters(8).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(8).Value = CType(p23,String)
+            End If
+            If (Spei_Certificado Is Nothing) Then
+                command.Parameters(9).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(9).Value = CType(Spei_Certificado,String)
+            End If
+            If (Spei_Cadena Is Nothing) Then
+                command.Parameters(10).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(10).Value = CType(Spei_Cadena,String)
+            End If
+            If (Spei_Sello Is Nothing) Then
+                command.Parameters(11).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(11).Value = CType(Spei_Sello,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
         End Function
     End Class
 End Namespace
