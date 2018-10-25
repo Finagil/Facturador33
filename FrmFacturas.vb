@@ -62,6 +62,8 @@
     End Sub
 
     Private Sub FrmFacturas_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        dtpFechaArfin.MinDate = Date.Now.AddDays(-3)
+        dtpFechaArfin.MaxDate = Date.Now
         'TODO: esta línea de código carga datos en la tabla 'ProductionDS.CFDI_Impuestos_Adicionales' Puede moverla o quitarla según sea necesario.
         Me.CFDI_Impuestos_AdicionalesTableAdapter.Fill(Me.ProductionDS.CFDI_Impuestos_Adicionales)
         'TODO: esta línea de código carga datos en la tabla 'FinagilDS1.Clientes_ARFIN' Puede moverla o quitarla según sea necesario.
@@ -188,7 +190,7 @@
         End If
 
         r.Importe = Math.Round((r.Cantidad * r.Unitario), 2)
-        r.fecha = FECHA_APLICACION
+
         r.Moneda = cmbMoneda.Text
         If cmbMoneda.Text = "" And (CmbSerie.Text = "SA") Then
             MessageBox.Show("Falta seleccionar una moneda", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -206,7 +208,9 @@
             r.RFC = UCase(TxtRFC.Text)
             r.Mail1 = TxtMail1.Text
             r.Mail2 = TxtMail2.Text
+            r.fecha = dtpFechaArfin.Value.ToShortDateString
         Else
+            r.fecha = FECHA_APLICACION
             r.Nombre = UCase(DescrTextBox.Text)
             r.Calle = UCase(CalleTextBox.Text)
             r.Colonia = UCase(ColoniaTextBox.Text)
@@ -216,6 +220,7 @@
             r.RFC = UCase(RFCTextBox.Text)
             r.Mail1 = EMail1TextBox.Text
             r.Mail2 = EMail2TextBox.Text
+            FECHA_APLICACION = Me.FinagilDS1.FechasAplicacion.Rows(0).ItemArray(0)
         End If
         r.Unidad = TxtUnidad.Text
         r.UnidadInterna = txtUnidadInterna.Text
@@ -1150,9 +1155,15 @@
     Private Sub RDArfin_CheckedChanged(sender As Object, e As EventArgs) Handles RDArfin.CheckedChanged
         If RDArfin.Checked = True Then
             chkRetenciones.Enabled = True
+            dtpFechaArfin.Enabled = True
+            Me.Text = "Facturas Serie ""B"", ""DV"" y NC   Fecha de Aplicacion: " & dtpFechaArfin.Value.ToShortDateString & ""
+            lblFechaAplica.Text = dtpFechaArfin.Value.ToShortDateString
         Else
             chkRetenciones.Checked = False
             chkRetenciones.Enabled = False
+            dtpFechaArfin.Enabled = False
+            Me.Text = "Facturas Serie ""B"", ""DV"" y NC   Fecha de Aplicacion: " & FECHA_APLICACION.ToShortDateString & ""
+            lblFechaAplica.Text = FECHA_APLICACION.ToShortDateString
         End If
 
     End Sub
