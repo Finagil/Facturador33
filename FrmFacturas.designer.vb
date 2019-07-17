@@ -23,6 +23,7 @@ Partial Class FrmFacturas
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim CodigoLabel As System.Windows.Forms.Label
         Dim DataGridViewCellStyle25 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle31 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle32 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -31,7 +32,6 @@ Partial Class FrmFacturas
         Dim DataGridViewCellStyle28 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle29 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle30 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim CodigoLabel As System.Windows.Forms.Label
         Me.GroupClientes = New System.Windows.Forms.GroupBox()
         Me.RBTerceros = New System.Windows.Forms.RadioButton()
         Me.RBFinagil = New System.Windows.Forms.RadioButton()
@@ -73,10 +73,11 @@ Partial Class FrmFacturas
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.GroupDET = New System.Windows.Forms.GroupBox()
+        Me.CodigoTextBox = New System.Windows.Forms.TextBox()
+        Me.CodigosSATConceptoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.chkRetenciones = New System.Windows.Forms.CheckBox()
         Me.Label27 = New System.Windows.Forms.Label()
         Me.txtUnidadInterna = New System.Windows.Forms.TextBox()
-        Me.CodigosSATConceptoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.lblTipoCambio = New System.Windows.Forms.Label()
         Me.CmbConcepto = New System.Windows.Forms.ComboBox()
         Me.TxtUnidad = New System.Windows.Forms.TextBox()
@@ -190,7 +191,13 @@ Partial Class FrmFacturas
         Me.CFDI_Impuestos_AdicionalesTableAdapter = New Facturador33.ProductionDSTableAdapters.CFDI_Impuestos_AdicionalesTableAdapter()
         Me.dtpFechaArfin = New System.Windows.Forms.DateTimePicker()
         Me.Label32 = New System.Windows.Forms.Label()
-        Me.CodigoTextBox = New System.Windows.Forms.TextBox()
+        Me.dgvUuidRelacionado = New System.Windows.Forms.DataGridView()
+        Me.Serie = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Folio = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.UUID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Eliminar = New System.Windows.Forms.DataGridViewLinkColumn()
+        Me.lklVerUuid = New System.Windows.Forms.LinkLabel()
+        Me.lklAgregarUuid = New System.Windows.Forms.LinkLabel()
         CodigoLabel = New System.Windows.Forms.Label()
         Me.GroupClientes.SuspendLayout()
         Me.GroupFinagil.SuspendLayout()
@@ -212,7 +219,17 @@ Partial Class FrmFacturas
         CType(Me.ClientesARFINBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gpRetenciones.SuspendLayout()
         CType(Me.CFDI_Impuestos_AdicionalesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvUuidRelacionado, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
+        '
+        'CodigoLabel
+        '
+        CodigoLabel.AutoSize = True
+        CodigoLabel.Location = New System.Drawing.Point(419, 26)
+        CodigoLabel.Name = "CodigoLabel"
+        CodigoLabel.Size = New System.Drawing.Size(61, 13)
+        CodigoLabel.TabIndex = 24
+        CodigoLabel.Text = "Cod SAT:"
         '
         'GroupClientes
         '
@@ -641,6 +658,20 @@ Partial Class FrmFacturas
         Me.GroupDET.TabStop = False
         Me.GroupDET.Text = "Detalles"
         '
+        'CodigoTextBox
+        '
+        Me.CodigoTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CodigosSATConceptoBindingSource, "Codigo", True))
+        Me.CodigoTextBox.Location = New System.Drawing.Point(420, 43)
+        Me.CodigoTextBox.Name = "CodigoTextBox"
+        Me.CodigoTextBox.ReadOnly = True
+        Me.CodigoTextBox.Size = New System.Drawing.Size(66, 20)
+        Me.CodigoTextBox.TabIndex = 25
+        '
+        'CodigosSATConceptoBindingSource
+        '
+        Me.CodigosSATConceptoBindingSource.DataMember = "CodigosSAT_Concepto"
+        Me.CodigosSATConceptoBindingSource.DataSource = Me.FinagilDS1
+        '
         'chkRetenciones
         '
         Me.chkRetenciones.AutoSize = True
@@ -668,11 +699,6 @@ Partial Class FrmFacturas
         Me.txtUnidadInterna.ReadOnly = True
         Me.txtUnidadInterna.Size = New System.Drawing.Size(40, 20)
         Me.txtUnidadInterna.TabIndex = 18
-        '
-        'CodigosSATConceptoBindingSource
-        '
-        Me.CodigosSATConceptoBindingSource.DataMember = "CodigosSAT_Concepto"
-        Me.CodigosSATConceptoBindingSource.DataSource = Me.FinagilDS1
         '
         'lblTipoCambio
         '
@@ -1402,7 +1428,7 @@ Partial Class FrmFacturas
         'txbFolioFiscal
         '
         Me.txbFolioFiscal.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CFDIEncabezadoBindingSource, "Guid", True))
-        Me.txbFolioFiscal.Location = New System.Drawing.Point(14, 680)
+        Me.txbFolioFiscal.Location = New System.Drawing.Point(14, 672)
         Me.txbFolioFiscal.Name = "txbFolioFiscal"
         Me.txbFolioFiscal.ReadOnly = True
         Me.txbFolioFiscal.Size = New System.Drawing.Size(243, 20)
@@ -1418,7 +1444,7 @@ Partial Class FrmFacturas
         '
         Me.lblFolioFiscal.AutoSize = True
         Me.lblFolioFiscal.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblFolioFiscal.Location = New System.Drawing.Point(11, 664)
+        Me.lblFolioFiscal.Location = New System.Drawing.Point(11, 656)
         Me.lblFolioFiscal.Name = "lblFolioFiscal"
         Me.lblFolioFiscal.Size = New System.Drawing.Size(71, 13)
         Me.lblFolioFiscal.TabIndex = 40
@@ -1442,7 +1468,7 @@ Partial Class FrmFacturas
         '
         Me.LbSerie.AutoSize = True
         Me.LbSerie.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LbSerie.Location = New System.Drawing.Point(17, 625)
+        Me.LbSerie.Location = New System.Drawing.Point(17, 617)
         Me.LbSerie.Name = "LbSerie"
         Me.LbSerie.Size = New System.Drawing.Size(36, 13)
         Me.LbSerie.TabIndex = 42
@@ -1451,7 +1477,7 @@ Partial Class FrmFacturas
         '
         'TxtSerieCFDI
         '
-        Me.TxtSerieCFDI.Location = New System.Drawing.Point(14, 641)
+        Me.TxtSerieCFDI.Location = New System.Drawing.Point(14, 633)
         Me.TxtSerieCFDI.MaxLength = 10
         Me.TxtSerieCFDI.Name = "TxtSerieCFDI"
         Me.TxtSerieCFDI.Size = New System.Drawing.Size(47, 20)
@@ -1462,7 +1488,7 @@ Partial Class FrmFacturas
         '
         Me.LbFolioCFDI.AutoSize = True
         Me.LbFolioCFDI.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LbFolioCFDI.Location = New System.Drawing.Point(70, 625)
+        Me.LbFolioCFDI.Location = New System.Drawing.Point(70, 617)
         Me.LbFolioCFDI.Name = "LbFolioCFDI"
         Me.LbFolioCFDI.Size = New System.Drawing.Size(34, 13)
         Me.LbFolioCFDI.TabIndex = 44
@@ -1471,7 +1497,7 @@ Partial Class FrmFacturas
         '
         'TxtFolioCFDI
         '
-        Me.TxtFolioCFDI.Location = New System.Drawing.Point(67, 641)
+        Me.TxtFolioCFDI.Location = New System.Drawing.Point(67, 633)
         Me.TxtFolioCFDI.MaxLength = 10
         Me.TxtFolioCFDI.Name = "TxtFolioCFDI"
         Me.TxtFolioCFDI.Size = New System.Drawing.Size(74, 20)
@@ -1487,7 +1513,7 @@ Partial Class FrmFacturas
         Me.LbCli.AutoSize = True
         Me.LbCli.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CFDIEncabezadoBindingSource, "42_Nombre_Receptor", True))
         Me.LbCli.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LbCli.Location = New System.Drawing.Point(147, 643)
+        Me.LbCli.Location = New System.Drawing.Point(147, 635)
         Me.LbCli.Name = "LbCli"
         Me.LbCli.Size = New System.Drawing.Size(46, 13)
         Me.LbCli.TabIndex = 45
@@ -1497,7 +1523,7 @@ Partial Class FrmFacturas
         'TxtImporteFact
         '
         Me.TxtImporteFact.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CFDIEncabezadoBindingSource, "56_Monto_Total", True, System.Windows.Forms.DataSourceUpdateMode.OnValidation, Nothing, "N2"))
-        Me.TxtImporteFact.Location = New System.Drawing.Point(261, 680)
+        Me.TxtImporteFact.Location = New System.Drawing.Point(261, 672)
         Me.TxtImporteFact.Name = "TxtImporteFact"
         Me.TxtImporteFact.ReadOnly = True
         Me.TxtImporteFact.Size = New System.Drawing.Size(95, 20)
@@ -1537,7 +1563,7 @@ Partial Class FrmFacturas
         '
         Me._29_FormaPagoTextBox.BackColor = System.Drawing.SystemColors.Control
         Me._29_FormaPagoTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CFDIEncabezadoBindingSource, "29_FormaPago", True))
-        Me._29_FormaPagoTextBox.Location = New System.Drawing.Point(361, 680)
+        Me._29_FormaPagoTextBox.Location = New System.Drawing.Point(358, 672)
         Me._29_FormaPagoTextBox.Name = "_29_FormaPagoTextBox"
         Me._29_FormaPagoTextBox.Size = New System.Drawing.Size(52, 20)
         Me._29_FormaPagoTextBox.TabIndex = 49
@@ -1691,23 +1717,69 @@ Partial Class FrmFacturas
         Me.Label32.TabIndex = 202
         Me.Label32.Text = "Fecha Arfin:"
         '
-        'CodigoLabel
+        'dgvUuidRelacionado
         '
-        CodigoLabel.AutoSize = True
-        CodigoLabel.Location = New System.Drawing.Point(419, 26)
-        CodigoLabel.Name = "CodigoLabel"
-        CodigoLabel.Size = New System.Drawing.Size(61, 13)
-        CodigoLabel.TabIndex = 24
-        CodigoLabel.Text = "Cod SAT:"
+        Me.dgvUuidRelacionado.AllowUserToAddRows = False
+        Me.dgvUuidRelacionado.AllowUserToDeleteRows = False
+        Me.dgvUuidRelacionado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvUuidRelacionado.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Serie, Me.Folio, Me.UUID, Me.Eliminar})
+        Me.dgvUuidRelacionado.Location = New System.Drawing.Point(244, 475)
+        Me.dgvUuidRelacionado.Name = "dgvUuidRelacionado"
+        Me.dgvUuidRelacionado.ReadOnly = True
+        Me.dgvUuidRelacionado.Size = New System.Drawing.Size(465, 147)
+        Me.dgvUuidRelacionado.TabIndex = 203
+        Me.dgvUuidRelacionado.Visible = False
         '
-        'CodigoTextBox
+        'Serie
         '
-        Me.CodigoTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CodigosSATConceptoBindingSource, "Codigo", True))
-        Me.CodigoTextBox.Location = New System.Drawing.Point(420, 43)
-        Me.CodigoTextBox.Name = "CodigoTextBox"
-        Me.CodigoTextBox.ReadOnly = True
-        Me.CodigoTextBox.Size = New System.Drawing.Size(66, 20)
-        Me.CodigoTextBox.TabIndex = 25
+        Me.Serie.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
+        Me.Serie.HeaderText = "Serie"
+        Me.Serie.Name = "Serie"
+        Me.Serie.ReadOnly = True
+        Me.Serie.Width = 5
+        '
+        'Folio
+        '
+        Me.Folio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
+        Me.Folio.HeaderText = "Folio"
+        Me.Folio.Name = "Folio"
+        Me.Folio.ReadOnly = True
+        Me.Folio.Width = 5
+        '
+        'UUID
+        '
+        Me.UUID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
+        Me.UUID.HeaderText = "UUID"
+        Me.UUID.Name = "UUID"
+        Me.UUID.ReadOnly = True
+        Me.UUID.Width = 5
+        '
+        'Eliminar
+        '
+        Me.Eliminar.HeaderText = "Eliminar"
+        Me.Eliminar.Name = "Eliminar"
+        Me.Eliminar.ReadOnly = True
+        Me.Eliminar.Text = "Eliminar"
+        '
+        'lklVerUuid
+        '
+        Me.lklVerUuid.AutoSize = True
+        Me.lklVerUuid.Location = New System.Drawing.Point(17, 695)
+        Me.lklVerUuid.Name = "lklVerUuid"
+        Me.lklVerUuid.Size = New System.Drawing.Size(72, 13)
+        Me.lklVerUuid.TabIndex = 204
+        Me.lklVerUuid.TabStop = True
+        Me.lklVerUuid.Text = "Ver UUID Rel"
+        '
+        'lklAgregarUuid
+        '
+        Me.lklAgregarUuid.AutoSize = True
+        Me.lklAgregarUuid.Location = New System.Drawing.Point(113, 695)
+        Me.lklAgregarUuid.Name = "lklAgregarUuid"
+        Me.lklAgregarUuid.Size = New System.Drawing.Size(68, 13)
+        Me.lklAgregarUuid.TabIndex = 205
+        Me.lklAgregarUuid.TabStop = True
+        Me.lklAgregarUuid.Text = "Agregar Fact"
         '
         'FrmFacturas
         '
@@ -1715,6 +1787,9 @@ Partial Class FrmFacturas
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
         Me.ClientSize = New System.Drawing.Size(1011, 715)
+        Me.Controls.Add(Me.lklAgregarUuid)
+        Me.Controls.Add(Me.lklVerUuid)
+        Me.Controls.Add(Me.dgvUuidRelacionado)
         Me.Controls.Add(Me.Label32)
         Me.Controls.Add(Me.dtpFechaArfin)
         Me.Controls.Add(Me.gpRetenciones)
@@ -1783,6 +1858,7 @@ Partial Class FrmFacturas
         Me.gpRetenciones.ResumeLayout(False)
         Me.gpRetenciones.PerformLayout()
         CType(Me.CFDI_Impuestos_AdicionalesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvUuidRelacionado, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1947,4 +2023,11 @@ Partial Class FrmFacturas
     Friend WithEvents dtpFechaArfin As DateTimePicker
     Friend WithEvents Label32 As Label
     Friend WithEvents CodigoTextBox As TextBox
+    Friend WithEvents dgvUuidRelacionado As DataGridView
+    Friend WithEvents lklVerUuid As LinkLabel
+    Friend WithEvents lklAgregarUuid As LinkLabel
+    Friend WithEvents Serie As DataGridViewTextBoxColumn
+    Friend WithEvents Folio As DataGridViewTextBoxColumn
+    Friend WithEvents UUID As DataGridViewTextBoxColumn
+    Friend WithEvents Eliminar As DataGridViewLinkColumn
 End Class
