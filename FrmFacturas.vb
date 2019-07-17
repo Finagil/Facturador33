@@ -523,7 +523,7 @@
                     End If
                 End If
 
-                    txbFolioFiscal.Visible = Bandera
+                txbFolioFiscal.Visible = Bandera
                 TxtSerieCFDI.Visible = Bandera
                 TxtFolioCFDI.Visible = Bandera
                 lblFolioFiscal.Visible = Bandera
