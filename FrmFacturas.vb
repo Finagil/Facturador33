@@ -158,8 +158,8 @@
         Dim TasaIva As Decimal = 0
         Dim IVAaux As Decimal = 0
         Select Case UCase(cmbIva.Text)
-            Case "16 %"
-                TasaIva = 0.16
+            Case "16 %", "8 %"
+                TasaIva = CDec(Mid(cmbIva.Text, 1, 2)) / 100
                 If CmbSerie.Text = "C" Or CmbSerie.Text = "CA" Then
                     If MessageBox.Show("Desea cambiar el importe de IVA", "IVA", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
                         IVAaux = InputBox("Nuevo importe IVA", "IVA", Math.Round((TxtCantidad.Text * TxtPrecio.Text) * TasaIva, 2))
@@ -262,7 +262,12 @@
 
         txtBase.Text = ""
         cmbImpuesto_Ret.Text = "IVA"
-        cmbTOC.Text = "0.160000"
+        Select Case UCase(cmbIva.Text)
+            Case "16 %"
+                cmbTOC.Text = "0.160000"
+            Case "8 %"
+                cmbTOC.Text = "0.080000"
+        End Select
         cmbTFactor.Text = "Tasa"
         txtMonto.Text = ""
 
@@ -1168,7 +1173,12 @@
             gpRetenciones.Enabled = False
             txtBase.Text = ""
             cmbImpuesto_Ret.Text = "IVA"
-            cmbTOC.Text = "0.160000"
+            Select Case UCase(cmbIva.Text)
+                Case "16 %"
+                    cmbTOC.Text = "0.160000"
+                Case "8 %"
+                    cmbTOC.Text = "0.080000"
+            End Select
             cmbTFactor.Text = "Tasa"
             txtMonto.Text = ""
         End If
