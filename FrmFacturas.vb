@@ -405,6 +405,8 @@
                 LbCli.Visible = Bandera
                 TxtImporteFact.Visible = Bandera
                 _29_FormaPagoTextBox.Visible = Bandera
+                lklAgregarUuid.Visible = Bandera
+                lklVerUuid.Visible = Bandera
             Else
                 If TxtRSocial.Text = "" And RBFinagil.Checked = True Then
                     MessageBox.Show("Falta seleccionar un Cliente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -533,6 +535,8 @@
                 TxtImporteFact.Visible = Bandera
                 _29_FormaPagoTextBox.Visible = Bandera
                 chkFormato.Visible = Bandera
+                lklAgregarUuid.Visible = Bandera
+                lklVerUuid.Visible = Bandera
             End If
 
         End If
@@ -634,7 +638,7 @@
             Folio = CDbl(LbFolio.Text)
         End If
         If CkDoctoRel.Checked = True Then
-            If dgvUuidRelacionado.Rows.Count > 0 Then
+            If dgvUuidRelacionado.Rows.Count > 1 Then
                 For Each rows As DataGridViewRow In dgvUuidRelacionado.Rows
                     Dim ROWcomplemento As ProductionDS.CFDI_ComplementoPagoRow
                     ROWcomplemento = ProductionDS.CFDI_ComplementoPago.NewCFDI_ComplementoPagoRow()
@@ -659,41 +663,69 @@
                     ROWcomplemento._16_DetalleAux_Misc14 = ""
                     ROWcomplemento._17_DetalleAux_Misc15 = ""
                     ROWcomplemento._18_DetalleAux_Misc16 = ""   ' la tabla NO Acepta Capo Null
-                    ROWcomplemento._19_DetalleAux_Folio = rows.Cells.Item(0).Value 'LbFolio.Text
-                    ROWcomplemento._20_DetalleAux_Serie = rows.Cells.Item(1).Value 'CmbSerie.Text
+                    ROWcomplemento._19_DetalleAux_Folio = LbFolio.Text
+                    ROWcomplemento._20_DetalleAux_Serie = CmbSerie.Text
                     Me.ProductionDS.CFDI_ComplementoPago.Rows.Add(ROWcomplemento)
                     Me.CfdI_ComplementoPagoTableAdapter.Update(Me.ProductionDS.CFDI_ComplementoPago)
                 Next
+            Else
+                Dim ROWcomplemento As ProductionDS.CFDI_ComplementoPagoRow
+                ROWcomplemento = ProductionDS.CFDI_ComplementoPago.NewCFDI_ComplementoPagoRow()
+                ROWcomplemento._1_DetalleAux_Tipo = "DR"
+                ROWcomplemento._2_DetalleAux_DescTipo = "TipoRelacion"
+                If CmbSerie.Text = "C" Or CmbSerie.Text = "CA" Then
+                    ROWcomplemento._3_DetalleAux_Misc01 = "01"
+                Else
+                    ROWcomplemento._3_DetalleAux_Misc01 = "04"
+                End If
+                ROWcomplemento._4_DetalleAux_Misc02 = txbFolioFiscal.Text
+                ROWcomplemento._5_DetalleAux_Misc03 = ""
+                ROWcomplemento._6_DetalleAux_Misc04 = ""
+                ROWcomplemento._7_DetalleAux_Misc05 = ""
+                ROWcomplemento._8_DetalleAux_Misc06 = " "
+                ROWcomplemento._9_DetalleAux_Misc07 = ""
+                ROWcomplemento._10_DetalleAux_Misc08 = ""
+                ROWcomplemento._11_DetalleAux_Misc09 = ""
+                ROWcomplemento._12_DetalleAux_Misc10 = ""
+                ROWcomplemento._13_DetalleAux_Misc11 = ""
+                ROWcomplemento._15_DetalleAux_Misc13 = ""
+                ROWcomplemento._16_DetalleAux_Misc14 = ""
+                ROWcomplemento._17_DetalleAux_Misc15 = ""
+                ROWcomplemento._18_DetalleAux_Misc16 = ""   ' la tabla NO Acepta Capo Null
+                ROWcomplemento._19_DetalleAux_Folio = LbFolio.Text
+                ROWcomplemento._20_DetalleAux_Serie = CmbSerie.Text
+                Me.ProductionDS.CFDI_ComplementoPago.Rows.Add(ROWcomplemento)
+                Me.CfdI_ComplementoPagoTableAdapter.Update(Me.ProductionDS.CFDI_ComplementoPago)
             End If
 
-            'Dim ROWcomplemento As ProductionDS.CFDI_ComplementoPagoRow
-            'ROWcomplemento = ProductionDS.CFDI_ComplementoPago.NewCFDI_ComplementoPagoRow()
-            'ROWcomplemento._1_DetalleAux_Tipo = "DR"
-            'ROWcomplemento._2_DetalleAux_DescTipo = "TipoRelacion"
-            'If CmbSerie.Text = "C" Or CmbSerie.Text = "CA" Then
-            '    ROWcomplemento._3_DetalleAux_Misc01 = "01"
-            'Else
-            '    ROWcomplemento._3_DetalleAux_Misc01 = "04"
-            'End If
-            'ROWcomplemento._4_DetalleAux_Misc02 = txbFolioFiscal.Text
-            'ROWcomplemento._5_DetalleAux_Misc03 = ""
-            'ROWcomplemento._6_DetalleAux_Misc04 = ""
-            'ROWcomplemento._7_DetalleAux_Misc05 = ""
-            'ROWcomplemento._8_DetalleAux_Misc06 = " "
-            'ROWcomplemento._9_DetalleAux_Misc07 = ""
-            'ROWcomplemento._10_DetalleAux_Misc08 = ""
-            'ROWcomplemento._11_DetalleAux_Misc09 = ""
-            'ROWcomplemento._12_DetalleAux_Misc10 = ""
-            'ROWcomplemento._13_DetalleAux_Misc11 = ""
-            'ROWcomplemento._15_DetalleAux_Misc13 = ""
-            'ROWcomplemento._16_DetalleAux_Misc14 = ""
-            'ROWcomplemento._17_DetalleAux_Misc15 = ""
-            'ROWcomplemento._18_DetalleAux_Misc16 = ""   ' la tabla NO Acepta Capo Null
-            'ROWcomplemento._19_DetalleAux_Folio = LbFolio.Text
-            'ROWcomplemento._20_DetalleAux_Serie = CmbSerie.Text
-            'Me.ProductionDS.CFDI_ComplementoPago.Rows.Add(ROWcomplemento)
-            'Me.CfdI_ComplementoPagoTableAdapter.Update(Me.ProductionDS.CFDI_ComplementoPago)
-        End If
+                'Dim ROWcomplemento As ProductionDS.CFDI_ComplementoPagoRow
+                'ROWcomplemento = ProductionDS.CFDI_ComplementoPago.NewCFDI_ComplementoPagoRow()
+                'ROWcomplemento._1_DetalleAux_Tipo = "DR"
+                'ROWcomplemento._2_DetalleAux_DescTipo = "TipoRelacion"
+                'If CmbSerie.Text = "C" Or CmbSerie.Text = "CA" Then
+                '    ROWcomplemento._3_DetalleAux_Misc01 = "01"
+                'Else
+                '    ROWcomplemento._3_DetalleAux_Misc01 = "04"
+                'End If
+                'ROWcomplemento._4_DetalleAux_Misc02 = txbFolioFiscal.Text
+                'ROWcomplemento._5_DetalleAux_Misc03 = ""
+                'ROWcomplemento._6_DetalleAux_Misc04 = ""
+                'ROWcomplemento._7_DetalleAux_Misc05 = ""
+                'ROWcomplemento._8_DetalleAux_Misc06 = " "
+                'ROWcomplemento._9_DetalleAux_Misc07 = ""
+                'ROWcomplemento._10_DetalleAux_Misc08 = ""
+                'ROWcomplemento._11_DetalleAux_Misc09 = ""
+                'ROWcomplemento._12_DetalleAux_Misc10 = ""
+                'ROWcomplemento._13_DetalleAux_Misc11 = ""
+                'ROWcomplemento._15_DetalleAux_Misc13 = ""
+                'ROWcomplemento._16_DetalleAux_Misc14 = ""
+                'ROWcomplemento._17_DetalleAux_Misc15 = ""
+                'ROWcomplemento._18_DetalleAux_Misc16 = ""   ' la tabla NO Acepta Capo Null
+                'ROWcomplemento._19_DetalleAux_Folio = LbFolio.Text
+                'ROWcomplemento._20_DetalleAux_Serie = CmbSerie.Text
+                'Me.ProductionDS.CFDI_ComplementoPago.Rows.Add(ROWcomplemento)
+                'Me.CfdI_ComplementoPagoTableAdapter.Update(Me.ProductionDS.CFDI_ComplementoPago)
+            End If
 
         For Each r As FinagilDS1.FacturasExternasRow In Me.FinagilDS1.FacturasExternas.Rows
             r.Factura = Folio
@@ -1241,6 +1273,10 @@
         If e.ColumnIndex = 3 And dgvUuidRelacionado.Item("Eliminar", e.RowIndex).Value = "Eliminar" Then
             dgvUuidRelacionado.Rows.Remove(dgvUuidRelacionado.CurrentRow)
         End If
+    End Sub
+
+    Private Sub CkDoctoRel_CheckedChanged(sender As Object, e As EventArgs) Handles CkDoctoRel.CheckedChanged
+
     End Sub
 End Class
 

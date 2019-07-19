@@ -24,14 +24,14 @@ Partial Class FrmFacturas
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim CodigoLabel As System.Windows.Forms.Label
-        Dim DataGridViewCellStyle25 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle31 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle32 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle26 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle27 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle28 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle29 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle30 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupClientes = New System.Windows.Forms.GroupBox()
         Me.RBTerceros = New System.Windows.Forms.RadioButton()
         Me.RBFinagil = New System.Windows.Forms.RadioButton()
@@ -973,36 +973,36 @@ Partial Class FrmFacturas
         '
         Me.GridFactura.AllowUserToAddRows = False
         Me.GridFactura.AutoGenerateColumns = False
-        DataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle25.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.GridFactura.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle25
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.GridFactura.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle9
         Me.GridFactura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.GridFactura.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.SerieDataGridViewTextBoxColumn, Me.FacturaDataGridViewTextBoxColumn, Me.ConsecDataGridViewTextBoxColumn, Me.DetalleDataGridViewTextBoxColumn, Me.Unidad, Me.UnidadInterna, Me.CantidadDataGridViewTextBoxColumn, Me.UnitarioDataGridViewTextBoxColumn, Me.IvaDataGridViewTextBoxColumn, Me.ImporteDataGridViewTextBoxColumn, Me.FechaDataGridViewTextBoxColumn, Me.MonedaDataGridViewTextBoxColumn, Me.TasaIvaDataGridViewTextBoxColumn, Me.FacturadoDataGridViewCheckBoxColumn, Me.NombreDataGridViewTextBoxColumn, Me.CalleDataGridViewTextBoxColumn, Me.ColoniaDataGridViewTextBoxColumn, Me.MunicipioDataGridViewTextBoxColumn, Me.EstadoDataGridViewTextBoxColumn, Me.CPDataGridViewTextBoxColumn, Me.RFCDataGridViewTextBoxColumn, Me.Mail1DataGridViewTextBoxColumn, Me.Mail2DataGridViewTextBoxColumn, Me.ColumnTotalX, Me.MetodoPago, Me.Cuenta})
         Me.GridFactura.DataSource = Me.FacturasExternasBindingSource
-        DataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle31.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle31.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle31.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle31.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle31.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.GridFactura.DefaultCellStyle = DataGridViewCellStyle31
+        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle15.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.GridFactura.DefaultCellStyle = DataGridViewCellStyle15
         Me.GridFactura.Location = New System.Drawing.Point(15, 490)
         Me.GridFactura.Name = "GridFactura"
         Me.GridFactura.ReadOnly = True
-        DataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle32.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle32.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle32.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle32.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.GridFactura.RowHeadersDefaultCellStyle = DataGridViewCellStyle32
+        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle16.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.GridFactura.RowHeadersDefaultCellStyle = DataGridViewCellStyle16
         Me.GridFactura.Size = New System.Drawing.Size(975, 123)
         Me.GridFactura.TabIndex = 6
         '
@@ -1057,8 +1057,8 @@ Partial Class FrmFacturas
         'CantidadDataGridViewTextBoxColumn
         '
         Me.CantidadDataGridViewTextBoxColumn.DataPropertyName = "Cantidad"
-        DataGridViewCellStyle26.Format = "N1"
-        Me.CantidadDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle26
+        DataGridViewCellStyle10.Format = "N1"
+        Me.CantidadDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle10
         Me.CantidadDataGridViewTextBoxColumn.HeaderText = "Cantidad"
         Me.CantidadDataGridViewTextBoxColumn.Name = "CantidadDataGridViewTextBoxColumn"
         Me.CantidadDataGridViewTextBoxColumn.ReadOnly = True
@@ -1066,8 +1066,8 @@ Partial Class FrmFacturas
         'UnitarioDataGridViewTextBoxColumn
         '
         Me.UnitarioDataGridViewTextBoxColumn.DataPropertyName = "Unitario"
-        DataGridViewCellStyle27.Format = "n2"
-        Me.UnitarioDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle27
+        DataGridViewCellStyle11.Format = "n2"
+        Me.UnitarioDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle11
         Me.UnitarioDataGridViewTextBoxColumn.HeaderText = "Precio"
         Me.UnitarioDataGridViewTextBoxColumn.Name = "UnitarioDataGridViewTextBoxColumn"
         Me.UnitarioDataGridViewTextBoxColumn.ReadOnly = True
@@ -1075,8 +1075,8 @@ Partial Class FrmFacturas
         'IvaDataGridViewTextBoxColumn
         '
         Me.IvaDataGridViewTextBoxColumn.DataPropertyName = "Iva"
-        DataGridViewCellStyle28.Format = "n2"
-        Me.IvaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle28
+        DataGridViewCellStyle12.Format = "n2"
+        Me.IvaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle12
         Me.IvaDataGridViewTextBoxColumn.HeaderText = "Iva"
         Me.IvaDataGridViewTextBoxColumn.Name = "IvaDataGridViewTextBoxColumn"
         Me.IvaDataGridViewTextBoxColumn.ReadOnly = True
@@ -1084,8 +1084,8 @@ Partial Class FrmFacturas
         'ImporteDataGridViewTextBoxColumn
         '
         Me.ImporteDataGridViewTextBoxColumn.DataPropertyName = "Importe"
-        DataGridViewCellStyle29.Format = "n2"
-        Me.ImporteDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle29
+        DataGridViewCellStyle13.Format = "n2"
+        Me.ImporteDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle13
         Me.ImporteDataGridViewTextBoxColumn.HeaderText = "SubTotal"
         Me.ImporteDataGridViewTextBoxColumn.Name = "ImporteDataGridViewTextBoxColumn"
         Me.ImporteDataGridViewTextBoxColumn.ReadOnly = True
@@ -1196,8 +1196,8 @@ Partial Class FrmFacturas
         '
         'ColumnTotalX
         '
-        DataGridViewCellStyle30.Format = "n2"
-        Me.ColumnTotalX.DefaultCellStyle = DataGridViewCellStyle30
+        DataGridViewCellStyle14.Format = "n2"
+        Me.ColumnTotalX.DefaultCellStyle = DataGridViewCellStyle14
         Me.ColumnTotalX.HeaderText = "Total"
         Me.ColumnTotalX.Name = "ColumnTotalX"
         Me.ColumnTotalX.ReadOnly = True
@@ -1770,6 +1770,7 @@ Partial Class FrmFacturas
         Me.lklVerUuid.TabIndex = 204
         Me.lklVerUuid.TabStop = True
         Me.lklVerUuid.Text = "Ver UUID Rel"
+        Me.lklVerUuid.Visible = False
         '
         'lklAgregarUuid
         '
@@ -1780,6 +1781,7 @@ Partial Class FrmFacturas
         Me.lklAgregarUuid.TabIndex = 205
         Me.lklAgregarUuid.TabStop = True
         Me.lklAgregarUuid.Text = "Agregar Fact"
+        Me.lklAgregarUuid.Visible = False
         '
         'FrmFacturas
         '
