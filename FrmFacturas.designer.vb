@@ -25,13 +25,14 @@ Partial Class FrmFacturas
         Me.components = New System.ComponentModel.Container()
         Dim CodigoLabel As System.Windows.Forms.Label
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupClientes = New System.Windows.Forms.GroupBox()
         Me.RBTerceros = New System.Windows.Forms.RadioButton()
         Me.RBFinagil = New System.Windows.Forms.RadioButton()
@@ -106,32 +107,6 @@ Partial Class FrmFacturas
         Me.txtMoral = New System.Windows.Forms.TextBox()
         Me.Btcancelar = New System.Windows.Forms.Button()
         Me.GridFactura = New System.Windows.Forms.DataGridView()
-        Me.SerieDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FacturaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ConsecDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DetalleDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Unidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.UnidadInterna = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CantidadDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.UnitarioDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.IvaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ImporteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FechaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.MonedaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TasaIvaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FacturadoDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.NombreDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CalleDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColoniaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.MunicipioDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EstadoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CPDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.RFCDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Mail1DataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Mail2DataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColumnTotalX = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.MetodoPago = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Cuenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.FacturasExternasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.txtSubtotal = New System.Windows.Forms.TextBox()
         Me.TxtIva = New System.Windows.Forms.TextBox()
@@ -191,6 +166,35 @@ Partial Class FrmFacturas
         Me.CFDI_Impuestos_AdicionalesTableAdapter = New Facturador33.ProductionDSTableAdapters.CFDI_Impuestos_AdicionalesTableAdapter()
         Me.dtpFechaArfin = New System.Windows.Forms.DateTimePicker()
         Me.Label32 = New System.Windows.Forms.Label()
+        Me.Label33 = New System.Windows.Forms.Label()
+        Me.TextRetencion = New System.Windows.Forms.TextBox()
+        Me.SerieDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FacturaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ConsecDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DetalleDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Unidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.UnidadInterna = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CantidadDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.UnitarioDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IvaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ImporteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FechaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MonedaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TasaIvaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FacturadoDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.NombreDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CalleDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColoniaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MunicipioDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EstadoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CPDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.RFCDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Mail1DataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Mail2DataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.RetencionMonto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColumnTotalX = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MetodoPago = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Cuenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CodigoLabel = New System.Windows.Forms.Label()
         Me.GroupClientes.SuspendLayout()
         Me.GroupFinagil.SuspendLayout()
@@ -974,241 +978,29 @@ Partial Class FrmFacturas
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.GridFactura.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.GridFactura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.GridFactura.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.SerieDataGridViewTextBoxColumn, Me.FacturaDataGridViewTextBoxColumn, Me.ConsecDataGridViewTextBoxColumn, Me.DetalleDataGridViewTextBoxColumn, Me.Unidad, Me.UnidadInterna, Me.CantidadDataGridViewTextBoxColumn, Me.UnitarioDataGridViewTextBoxColumn, Me.IvaDataGridViewTextBoxColumn, Me.ImporteDataGridViewTextBoxColumn, Me.FechaDataGridViewTextBoxColumn, Me.MonedaDataGridViewTextBoxColumn, Me.TasaIvaDataGridViewTextBoxColumn, Me.FacturadoDataGridViewCheckBoxColumn, Me.NombreDataGridViewTextBoxColumn, Me.CalleDataGridViewTextBoxColumn, Me.ColoniaDataGridViewTextBoxColumn, Me.MunicipioDataGridViewTextBoxColumn, Me.EstadoDataGridViewTextBoxColumn, Me.CPDataGridViewTextBoxColumn, Me.RFCDataGridViewTextBoxColumn, Me.Mail1DataGridViewTextBoxColumn, Me.Mail2DataGridViewTextBoxColumn, Me.ColumnTotalX, Me.MetodoPago, Me.Cuenta})
+        Me.GridFactura.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.SerieDataGridViewTextBoxColumn, Me.FacturaDataGridViewTextBoxColumn, Me.ConsecDataGridViewTextBoxColumn, Me.DetalleDataGridViewTextBoxColumn, Me.Unidad, Me.UnidadInterna, Me.CantidadDataGridViewTextBoxColumn, Me.UnitarioDataGridViewTextBoxColumn, Me.IvaDataGridViewTextBoxColumn, Me.ImporteDataGridViewTextBoxColumn, Me.FechaDataGridViewTextBoxColumn, Me.MonedaDataGridViewTextBoxColumn, Me.TasaIvaDataGridViewTextBoxColumn, Me.FacturadoDataGridViewCheckBoxColumn, Me.NombreDataGridViewTextBoxColumn, Me.CalleDataGridViewTextBoxColumn, Me.ColoniaDataGridViewTextBoxColumn, Me.MunicipioDataGridViewTextBoxColumn, Me.EstadoDataGridViewTextBoxColumn, Me.CPDataGridViewTextBoxColumn, Me.RFCDataGridViewTextBoxColumn, Me.Mail1DataGridViewTextBoxColumn, Me.Mail2DataGridViewTextBoxColumn, Me.RetencionMonto, Me.ColumnTotalX, Me.MetodoPago, Me.Cuenta})
         Me.GridFactura.DataSource = Me.FacturasExternasBindingSource
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.GridFactura.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.GridFactura.DefaultCellStyle = DataGridViewCellStyle8
         Me.GridFactura.Location = New System.Drawing.Point(15, 490)
         Me.GridFactura.Name = "GridFactura"
         Me.GridFactura.ReadOnly = True
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.GridFactura.RowHeadersDefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.GridFactura.RowHeadersDefaultCellStyle = DataGridViewCellStyle9
         Me.GridFactura.Size = New System.Drawing.Size(975, 123)
         Me.GridFactura.TabIndex = 6
-        '
-        'SerieDataGridViewTextBoxColumn
-        '
-        Me.SerieDataGridViewTextBoxColumn.DataPropertyName = "Serie"
-        Me.SerieDataGridViewTextBoxColumn.HeaderText = "Serie"
-        Me.SerieDataGridViewTextBoxColumn.Name = "SerieDataGridViewTextBoxColumn"
-        Me.SerieDataGridViewTextBoxColumn.ReadOnly = True
-        Me.SerieDataGridViewTextBoxColumn.Visible = False
-        '
-        'FacturaDataGridViewTextBoxColumn
-        '
-        Me.FacturaDataGridViewTextBoxColumn.DataPropertyName = "Factura"
-        Me.FacturaDataGridViewTextBoxColumn.HeaderText = "Factura"
-        Me.FacturaDataGridViewTextBoxColumn.Name = "FacturaDataGridViewTextBoxColumn"
-        Me.FacturaDataGridViewTextBoxColumn.ReadOnly = True
-        Me.FacturaDataGridViewTextBoxColumn.Visible = False
-        '
-        'ConsecDataGridViewTextBoxColumn
-        '
-        Me.ConsecDataGridViewTextBoxColumn.DataPropertyName = "Consec"
-        Me.ConsecDataGridViewTextBoxColumn.HeaderText = "Consec"
-        Me.ConsecDataGridViewTextBoxColumn.Name = "ConsecDataGridViewTextBoxColumn"
-        Me.ConsecDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ConsecDataGridViewTextBoxColumn.Visible = False
-        '
-        'DetalleDataGridViewTextBoxColumn
-        '
-        Me.DetalleDataGridViewTextBoxColumn.DataPropertyName = "Detalle"
-        Me.DetalleDataGridViewTextBoxColumn.HeaderText = "Concepto"
-        Me.DetalleDataGridViewTextBoxColumn.Name = "DetalleDataGridViewTextBoxColumn"
-        Me.DetalleDataGridViewTextBoxColumn.ReadOnly = True
-        Me.DetalleDataGridViewTextBoxColumn.Width = 270
-        '
-        'Unidad
-        '
-        Me.Unidad.DataPropertyName = "Unidad"
-        Me.Unidad.HeaderText = "Unid SAT"
-        Me.Unidad.Name = "Unidad"
-        Me.Unidad.ReadOnly = True
-        Me.Unidad.Width = 80
-        '
-        'UnidadInterna
-        '
-        Me.UnidadInterna.DataPropertyName = "UnidadInterna"
-        Me.UnidadInterna.HeaderText = "Unid Int"
-        Me.UnidadInterna.Name = "UnidadInterna"
-        Me.UnidadInterna.ReadOnly = True
-        Me.UnidadInterna.Width = 80
-        '
-        'CantidadDataGridViewTextBoxColumn
-        '
-        Me.CantidadDataGridViewTextBoxColumn.DataPropertyName = "Cantidad"
-        DataGridViewCellStyle2.Format = "N1"
-        Me.CantidadDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
-        Me.CantidadDataGridViewTextBoxColumn.HeaderText = "Cantidad"
-        Me.CantidadDataGridViewTextBoxColumn.Name = "CantidadDataGridViewTextBoxColumn"
-        Me.CantidadDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'UnitarioDataGridViewTextBoxColumn
-        '
-        Me.UnitarioDataGridViewTextBoxColumn.DataPropertyName = "Unitario"
-        DataGridViewCellStyle3.Format = "n2"
-        Me.UnitarioDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle3
-        Me.UnitarioDataGridViewTextBoxColumn.HeaderText = "Precio"
-        Me.UnitarioDataGridViewTextBoxColumn.Name = "UnitarioDataGridViewTextBoxColumn"
-        Me.UnitarioDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'IvaDataGridViewTextBoxColumn
-        '
-        Me.IvaDataGridViewTextBoxColumn.DataPropertyName = "Iva"
-        DataGridViewCellStyle4.Format = "n2"
-        Me.IvaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle4
-        Me.IvaDataGridViewTextBoxColumn.HeaderText = "Iva"
-        Me.IvaDataGridViewTextBoxColumn.Name = "IvaDataGridViewTextBoxColumn"
-        Me.IvaDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'ImporteDataGridViewTextBoxColumn
-        '
-        Me.ImporteDataGridViewTextBoxColumn.DataPropertyName = "Importe"
-        DataGridViewCellStyle5.Format = "n2"
-        Me.ImporteDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle5
-        Me.ImporteDataGridViewTextBoxColumn.HeaderText = "SubTotal"
-        Me.ImporteDataGridViewTextBoxColumn.Name = "ImporteDataGridViewTextBoxColumn"
-        Me.ImporteDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'FechaDataGridViewTextBoxColumn
-        '
-        Me.FechaDataGridViewTextBoxColumn.DataPropertyName = "fecha"
-        Me.FechaDataGridViewTextBoxColumn.HeaderText = "fecha"
-        Me.FechaDataGridViewTextBoxColumn.Name = "FechaDataGridViewTextBoxColumn"
-        Me.FechaDataGridViewTextBoxColumn.ReadOnly = True
-        Me.FechaDataGridViewTextBoxColumn.Visible = False
-        '
-        'MonedaDataGridViewTextBoxColumn
-        '
-        Me.MonedaDataGridViewTextBoxColumn.DataPropertyName = "Moneda"
-        Me.MonedaDataGridViewTextBoxColumn.HeaderText = "Moneda"
-        Me.MonedaDataGridViewTextBoxColumn.Name = "MonedaDataGridViewTextBoxColumn"
-        Me.MonedaDataGridViewTextBoxColumn.ReadOnly = True
-        Me.MonedaDataGridViewTextBoxColumn.Visible = False
-        '
-        'TasaIvaDataGridViewTextBoxColumn
-        '
-        Me.TasaIvaDataGridViewTextBoxColumn.DataPropertyName = "TasaIva"
-        Me.TasaIvaDataGridViewTextBoxColumn.HeaderText = "TasaIva"
-        Me.TasaIvaDataGridViewTextBoxColumn.Name = "TasaIvaDataGridViewTextBoxColumn"
-        Me.TasaIvaDataGridViewTextBoxColumn.ReadOnly = True
-        Me.TasaIvaDataGridViewTextBoxColumn.Width = 60
-        '
-        'FacturadoDataGridViewCheckBoxColumn
-        '
-        Me.FacturadoDataGridViewCheckBoxColumn.DataPropertyName = "Facturado"
-        Me.FacturadoDataGridViewCheckBoxColumn.HeaderText = "Facturado"
-        Me.FacturadoDataGridViewCheckBoxColumn.Name = "FacturadoDataGridViewCheckBoxColumn"
-        Me.FacturadoDataGridViewCheckBoxColumn.ReadOnly = True
-        Me.FacturadoDataGridViewCheckBoxColumn.Visible = False
-        '
-        'NombreDataGridViewTextBoxColumn
-        '
-        Me.NombreDataGridViewTextBoxColumn.DataPropertyName = "Nombre"
-        Me.NombreDataGridViewTextBoxColumn.HeaderText = "Nombre"
-        Me.NombreDataGridViewTextBoxColumn.Name = "NombreDataGridViewTextBoxColumn"
-        Me.NombreDataGridViewTextBoxColumn.ReadOnly = True
-        Me.NombreDataGridViewTextBoxColumn.Visible = False
-        '
-        'CalleDataGridViewTextBoxColumn
-        '
-        Me.CalleDataGridViewTextBoxColumn.DataPropertyName = "Calle"
-        Me.CalleDataGridViewTextBoxColumn.HeaderText = "Calle"
-        Me.CalleDataGridViewTextBoxColumn.Name = "CalleDataGridViewTextBoxColumn"
-        Me.CalleDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CalleDataGridViewTextBoxColumn.Visible = False
-        '
-        'ColoniaDataGridViewTextBoxColumn
-        '
-        Me.ColoniaDataGridViewTextBoxColumn.DataPropertyName = "Colonia"
-        Me.ColoniaDataGridViewTextBoxColumn.HeaderText = "Colonia"
-        Me.ColoniaDataGridViewTextBoxColumn.Name = "ColoniaDataGridViewTextBoxColumn"
-        Me.ColoniaDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ColoniaDataGridViewTextBoxColumn.Visible = False
-        '
-        'MunicipioDataGridViewTextBoxColumn
-        '
-        Me.MunicipioDataGridViewTextBoxColumn.DataPropertyName = "Municipio"
-        Me.MunicipioDataGridViewTextBoxColumn.HeaderText = "Municipio"
-        Me.MunicipioDataGridViewTextBoxColumn.Name = "MunicipioDataGridViewTextBoxColumn"
-        Me.MunicipioDataGridViewTextBoxColumn.ReadOnly = True
-        Me.MunicipioDataGridViewTextBoxColumn.Visible = False
-        '
-        'EstadoDataGridViewTextBoxColumn
-        '
-        Me.EstadoDataGridViewTextBoxColumn.DataPropertyName = "Estado"
-        Me.EstadoDataGridViewTextBoxColumn.HeaderText = "Estado"
-        Me.EstadoDataGridViewTextBoxColumn.Name = "EstadoDataGridViewTextBoxColumn"
-        Me.EstadoDataGridViewTextBoxColumn.ReadOnly = True
-        Me.EstadoDataGridViewTextBoxColumn.Visible = False
-        '
-        'CPDataGridViewTextBoxColumn
-        '
-        Me.CPDataGridViewTextBoxColumn.DataPropertyName = "CP"
-        Me.CPDataGridViewTextBoxColumn.HeaderText = "CP"
-        Me.CPDataGridViewTextBoxColumn.Name = "CPDataGridViewTextBoxColumn"
-        Me.CPDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CPDataGridViewTextBoxColumn.Visible = False
-        '
-        'RFCDataGridViewTextBoxColumn
-        '
-        Me.RFCDataGridViewTextBoxColumn.DataPropertyName = "RFC"
-        Me.RFCDataGridViewTextBoxColumn.HeaderText = "RFC"
-        Me.RFCDataGridViewTextBoxColumn.Name = "RFCDataGridViewTextBoxColumn"
-        Me.RFCDataGridViewTextBoxColumn.ReadOnly = True
-        Me.RFCDataGridViewTextBoxColumn.Visible = False
-        '
-        'Mail1DataGridViewTextBoxColumn
-        '
-        Me.Mail1DataGridViewTextBoxColumn.DataPropertyName = "Mail1"
-        Me.Mail1DataGridViewTextBoxColumn.HeaderText = "Mail1"
-        Me.Mail1DataGridViewTextBoxColumn.Name = "Mail1DataGridViewTextBoxColumn"
-        Me.Mail1DataGridViewTextBoxColumn.ReadOnly = True
-        Me.Mail1DataGridViewTextBoxColumn.Visible = False
-        '
-        'Mail2DataGridViewTextBoxColumn
-        '
-        Me.Mail2DataGridViewTextBoxColumn.DataPropertyName = "Mail2"
-        Me.Mail2DataGridViewTextBoxColumn.HeaderText = "Mail2"
-        Me.Mail2DataGridViewTextBoxColumn.Name = "Mail2DataGridViewTextBoxColumn"
-        Me.Mail2DataGridViewTextBoxColumn.ReadOnly = True
-        Me.Mail2DataGridViewTextBoxColumn.Visible = False
-        '
-        'ColumnTotalX
-        '
-        DataGridViewCellStyle6.Format = "n2"
-        Me.ColumnTotalX.DefaultCellStyle = DataGridViewCellStyle6
-        Me.ColumnTotalX.HeaderText = "Total"
-        Me.ColumnTotalX.Name = "ColumnTotalX"
-        Me.ColumnTotalX.ReadOnly = True
-        '
-        'MetodoPago
-        '
-        Me.MetodoPago.DataPropertyName = "MetodoPago"
-        Me.MetodoPago.HeaderText = "MetodoPago"
-        Me.MetodoPago.Name = "MetodoPago"
-        Me.MetodoPago.ReadOnly = True
-        Me.MetodoPago.Visible = False
-        '
-        'Cuenta
-        '
-        Me.Cuenta.DataPropertyName = "Cuenta"
-        Me.Cuenta.HeaderText = "Cuenta"
-        Me.Cuenta.Name = "Cuenta"
-        Me.Cuenta.ReadOnly = True
-        Me.Cuenta.Visible = False
         '
         'FacturasExternasBindingSource
         '
@@ -1236,7 +1028,7 @@ Partial Class FrmFacturas
         'TxtTotal
         '
         Me.TxtTotal.Enabled = False
-        Me.TxtTotal.Location = New System.Drawing.Point(891, 680)
+        Me.TxtTotal.Location = New System.Drawing.Point(891, 704)
         Me.TxtTotal.Name = "TxtTotal"
         Me.TxtTotal.Size = New System.Drawing.Size(100, 20)
         Me.TxtTotal.TabIndex = 9
@@ -1266,7 +1058,7 @@ Partial Class FrmFacturas
         '
         Me.Label20.AutoSize = True
         Me.Label20.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label20.Location = New System.Drawing.Point(848, 683)
+        Me.Label20.Location = New System.Drawing.Point(848, 707)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(36, 13)
         Me.Label20.TabIndex = 25
@@ -1598,7 +1390,6 @@ Partial Class FrmFacturas
         Me.txtMonto.Name = "txtMonto"
         Me.txtMonto.Size = New System.Drawing.Size(100, 20)
         Me.txtMonto.TabIndex = 24
-        Me.txtMonto.Text = "23"
         '
         'Label31
         '
@@ -1709,12 +1500,254 @@ Partial Class FrmFacturas
         Me.Label32.TabIndex = 202
         Me.Label32.Text = "Fecha Arfin:"
         '
+        'Label33
+        '
+        Me.Label33.AutoSize = True
+        Me.Label33.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label33.Location = New System.Drawing.Point(819, 683)
+        Me.Label33.Name = "Label33"
+        Me.Label33.Size = New System.Drawing.Size(65, 13)
+        Me.Label33.TabIndex = 204
+        Me.Label33.Text = "Retención"
+        '
+        'TextRetencion
+        '
+        Me.TextRetencion.Enabled = False
+        Me.TextRetencion.Location = New System.Drawing.Point(890, 679)
+        Me.TextRetencion.Name = "TextRetencion"
+        Me.TextRetencion.Size = New System.Drawing.Size(100, 20)
+        Me.TextRetencion.TabIndex = 203
+        Me.TextRetencion.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'SerieDataGridViewTextBoxColumn
+        '
+        Me.SerieDataGridViewTextBoxColumn.DataPropertyName = "Serie"
+        Me.SerieDataGridViewTextBoxColumn.HeaderText = "Serie"
+        Me.SerieDataGridViewTextBoxColumn.Name = "SerieDataGridViewTextBoxColumn"
+        Me.SerieDataGridViewTextBoxColumn.ReadOnly = True
+        Me.SerieDataGridViewTextBoxColumn.Visible = False
+        '
+        'FacturaDataGridViewTextBoxColumn
+        '
+        Me.FacturaDataGridViewTextBoxColumn.DataPropertyName = "Factura"
+        Me.FacturaDataGridViewTextBoxColumn.HeaderText = "Factura"
+        Me.FacturaDataGridViewTextBoxColumn.Name = "FacturaDataGridViewTextBoxColumn"
+        Me.FacturaDataGridViewTextBoxColumn.ReadOnly = True
+        Me.FacturaDataGridViewTextBoxColumn.Visible = False
+        '
+        'ConsecDataGridViewTextBoxColumn
+        '
+        Me.ConsecDataGridViewTextBoxColumn.DataPropertyName = "Consec"
+        Me.ConsecDataGridViewTextBoxColumn.HeaderText = "Consec"
+        Me.ConsecDataGridViewTextBoxColumn.Name = "ConsecDataGridViewTextBoxColumn"
+        Me.ConsecDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ConsecDataGridViewTextBoxColumn.Visible = False
+        '
+        'DetalleDataGridViewTextBoxColumn
+        '
+        Me.DetalleDataGridViewTextBoxColumn.DataPropertyName = "Detalle"
+        Me.DetalleDataGridViewTextBoxColumn.HeaderText = "Concepto"
+        Me.DetalleDataGridViewTextBoxColumn.Name = "DetalleDataGridViewTextBoxColumn"
+        Me.DetalleDataGridViewTextBoxColumn.ReadOnly = True
+        Me.DetalleDataGridViewTextBoxColumn.Width = 270
+        '
+        'Unidad
+        '
+        Me.Unidad.DataPropertyName = "Unidad"
+        Me.Unidad.HeaderText = "Unid SAT"
+        Me.Unidad.Name = "Unidad"
+        Me.Unidad.ReadOnly = True
+        Me.Unidad.Width = 80
+        '
+        'UnidadInterna
+        '
+        Me.UnidadInterna.DataPropertyName = "UnidadInterna"
+        Me.UnidadInterna.HeaderText = "Unid Int"
+        Me.UnidadInterna.Name = "UnidadInterna"
+        Me.UnidadInterna.ReadOnly = True
+        Me.UnidadInterna.Width = 80
+        '
+        'CantidadDataGridViewTextBoxColumn
+        '
+        Me.CantidadDataGridViewTextBoxColumn.DataPropertyName = "Cantidad"
+        DataGridViewCellStyle2.Format = "N1"
+        Me.CantidadDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
+        Me.CantidadDataGridViewTextBoxColumn.HeaderText = "Cantidad"
+        Me.CantidadDataGridViewTextBoxColumn.Name = "CantidadDataGridViewTextBoxColumn"
+        Me.CantidadDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'UnitarioDataGridViewTextBoxColumn
+        '
+        Me.UnitarioDataGridViewTextBoxColumn.DataPropertyName = "Unitario"
+        DataGridViewCellStyle3.Format = "n2"
+        Me.UnitarioDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle3
+        Me.UnitarioDataGridViewTextBoxColumn.HeaderText = "Precio"
+        Me.UnitarioDataGridViewTextBoxColumn.Name = "UnitarioDataGridViewTextBoxColumn"
+        Me.UnitarioDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'IvaDataGridViewTextBoxColumn
+        '
+        Me.IvaDataGridViewTextBoxColumn.DataPropertyName = "Iva"
+        DataGridViewCellStyle4.Format = "n2"
+        Me.IvaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle4
+        Me.IvaDataGridViewTextBoxColumn.HeaderText = "Iva"
+        Me.IvaDataGridViewTextBoxColumn.Name = "IvaDataGridViewTextBoxColumn"
+        Me.IvaDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'ImporteDataGridViewTextBoxColumn
+        '
+        Me.ImporteDataGridViewTextBoxColumn.DataPropertyName = "Importe"
+        DataGridViewCellStyle5.Format = "n2"
+        Me.ImporteDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle5
+        Me.ImporteDataGridViewTextBoxColumn.HeaderText = "SubTotal"
+        Me.ImporteDataGridViewTextBoxColumn.Name = "ImporteDataGridViewTextBoxColumn"
+        Me.ImporteDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'FechaDataGridViewTextBoxColumn
+        '
+        Me.FechaDataGridViewTextBoxColumn.DataPropertyName = "fecha"
+        Me.FechaDataGridViewTextBoxColumn.HeaderText = "fecha"
+        Me.FechaDataGridViewTextBoxColumn.Name = "FechaDataGridViewTextBoxColumn"
+        Me.FechaDataGridViewTextBoxColumn.ReadOnly = True
+        Me.FechaDataGridViewTextBoxColumn.Visible = False
+        '
+        'MonedaDataGridViewTextBoxColumn
+        '
+        Me.MonedaDataGridViewTextBoxColumn.DataPropertyName = "Moneda"
+        Me.MonedaDataGridViewTextBoxColumn.HeaderText = "Moneda"
+        Me.MonedaDataGridViewTextBoxColumn.Name = "MonedaDataGridViewTextBoxColumn"
+        Me.MonedaDataGridViewTextBoxColumn.ReadOnly = True
+        Me.MonedaDataGridViewTextBoxColumn.Visible = False
+        '
+        'TasaIvaDataGridViewTextBoxColumn
+        '
+        Me.TasaIvaDataGridViewTextBoxColumn.DataPropertyName = "TasaIva"
+        Me.TasaIvaDataGridViewTextBoxColumn.HeaderText = "TasaIva"
+        Me.TasaIvaDataGridViewTextBoxColumn.Name = "TasaIvaDataGridViewTextBoxColumn"
+        Me.TasaIvaDataGridViewTextBoxColumn.ReadOnly = True
+        Me.TasaIvaDataGridViewTextBoxColumn.Width = 60
+        '
+        'FacturadoDataGridViewCheckBoxColumn
+        '
+        Me.FacturadoDataGridViewCheckBoxColumn.DataPropertyName = "Facturado"
+        Me.FacturadoDataGridViewCheckBoxColumn.HeaderText = "Facturado"
+        Me.FacturadoDataGridViewCheckBoxColumn.Name = "FacturadoDataGridViewCheckBoxColumn"
+        Me.FacturadoDataGridViewCheckBoxColumn.ReadOnly = True
+        Me.FacturadoDataGridViewCheckBoxColumn.Visible = False
+        '
+        'NombreDataGridViewTextBoxColumn
+        '
+        Me.NombreDataGridViewTextBoxColumn.DataPropertyName = "Nombre"
+        Me.NombreDataGridViewTextBoxColumn.HeaderText = "Nombre"
+        Me.NombreDataGridViewTextBoxColumn.Name = "NombreDataGridViewTextBoxColumn"
+        Me.NombreDataGridViewTextBoxColumn.ReadOnly = True
+        Me.NombreDataGridViewTextBoxColumn.Visible = False
+        '
+        'CalleDataGridViewTextBoxColumn
+        '
+        Me.CalleDataGridViewTextBoxColumn.DataPropertyName = "Calle"
+        Me.CalleDataGridViewTextBoxColumn.HeaderText = "Calle"
+        Me.CalleDataGridViewTextBoxColumn.Name = "CalleDataGridViewTextBoxColumn"
+        Me.CalleDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CalleDataGridViewTextBoxColumn.Visible = False
+        '
+        'ColoniaDataGridViewTextBoxColumn
+        '
+        Me.ColoniaDataGridViewTextBoxColumn.DataPropertyName = "Colonia"
+        Me.ColoniaDataGridViewTextBoxColumn.HeaderText = "Colonia"
+        Me.ColoniaDataGridViewTextBoxColumn.Name = "ColoniaDataGridViewTextBoxColumn"
+        Me.ColoniaDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ColoniaDataGridViewTextBoxColumn.Visible = False
+        '
+        'MunicipioDataGridViewTextBoxColumn
+        '
+        Me.MunicipioDataGridViewTextBoxColumn.DataPropertyName = "Municipio"
+        Me.MunicipioDataGridViewTextBoxColumn.HeaderText = "Municipio"
+        Me.MunicipioDataGridViewTextBoxColumn.Name = "MunicipioDataGridViewTextBoxColumn"
+        Me.MunicipioDataGridViewTextBoxColumn.ReadOnly = True
+        Me.MunicipioDataGridViewTextBoxColumn.Visible = False
+        '
+        'EstadoDataGridViewTextBoxColumn
+        '
+        Me.EstadoDataGridViewTextBoxColumn.DataPropertyName = "Estado"
+        Me.EstadoDataGridViewTextBoxColumn.HeaderText = "Estado"
+        Me.EstadoDataGridViewTextBoxColumn.Name = "EstadoDataGridViewTextBoxColumn"
+        Me.EstadoDataGridViewTextBoxColumn.ReadOnly = True
+        Me.EstadoDataGridViewTextBoxColumn.Visible = False
+        '
+        'CPDataGridViewTextBoxColumn
+        '
+        Me.CPDataGridViewTextBoxColumn.DataPropertyName = "CP"
+        Me.CPDataGridViewTextBoxColumn.HeaderText = "CP"
+        Me.CPDataGridViewTextBoxColumn.Name = "CPDataGridViewTextBoxColumn"
+        Me.CPDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CPDataGridViewTextBoxColumn.Visible = False
+        '
+        'RFCDataGridViewTextBoxColumn
+        '
+        Me.RFCDataGridViewTextBoxColumn.DataPropertyName = "RFC"
+        Me.RFCDataGridViewTextBoxColumn.HeaderText = "RFC"
+        Me.RFCDataGridViewTextBoxColumn.Name = "RFCDataGridViewTextBoxColumn"
+        Me.RFCDataGridViewTextBoxColumn.ReadOnly = True
+        Me.RFCDataGridViewTextBoxColumn.Visible = False
+        '
+        'Mail1DataGridViewTextBoxColumn
+        '
+        Me.Mail1DataGridViewTextBoxColumn.DataPropertyName = "Mail1"
+        Me.Mail1DataGridViewTextBoxColumn.HeaderText = "Mail1"
+        Me.Mail1DataGridViewTextBoxColumn.Name = "Mail1DataGridViewTextBoxColumn"
+        Me.Mail1DataGridViewTextBoxColumn.ReadOnly = True
+        Me.Mail1DataGridViewTextBoxColumn.Visible = False
+        '
+        'Mail2DataGridViewTextBoxColumn
+        '
+        Me.Mail2DataGridViewTextBoxColumn.DataPropertyName = "Mail2"
+        Me.Mail2DataGridViewTextBoxColumn.HeaderText = "Mail2"
+        Me.Mail2DataGridViewTextBoxColumn.Name = "Mail2DataGridViewTextBoxColumn"
+        Me.Mail2DataGridViewTextBoxColumn.ReadOnly = True
+        Me.Mail2DataGridViewTextBoxColumn.Visible = False
+        '
+        'RetencionMonto
+        '
+        Me.RetencionMonto.DataPropertyName = "RetencionMonto"
+        DataGridViewCellStyle6.Format = "n2"
+        Me.RetencionMonto.DefaultCellStyle = DataGridViewCellStyle6
+        Me.RetencionMonto.HeaderText = "Retención"
+        Me.RetencionMonto.Name = "RetencionMonto"
+        Me.RetencionMonto.ReadOnly = True
+        '
+        'ColumnTotalX
+        '
+        DataGridViewCellStyle7.Format = "n2"
+        Me.ColumnTotalX.DefaultCellStyle = DataGridViewCellStyle7
+        Me.ColumnTotalX.HeaderText = "Total"
+        Me.ColumnTotalX.Name = "ColumnTotalX"
+        Me.ColumnTotalX.ReadOnly = True
+        '
+        'MetodoPago
+        '
+        Me.MetodoPago.DataPropertyName = "MetodoPago"
+        Me.MetodoPago.HeaderText = "MetodoPago"
+        Me.MetodoPago.Name = "MetodoPago"
+        Me.MetodoPago.ReadOnly = True
+        Me.MetodoPago.Visible = False
+        '
+        'Cuenta
+        '
+        Me.Cuenta.DataPropertyName = "Cuenta"
+        Me.Cuenta.HeaderText = "Cuenta"
+        Me.Cuenta.Name = "Cuenta"
+        Me.Cuenta.ReadOnly = True
+        Me.Cuenta.Visible = False
+        '
         'FrmFacturas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
-        Me.ClientSize = New System.Drawing.Size(1011, 715)
+        Me.ClientSize = New System.Drawing.Size(1011, 729)
+        Me.Controls.Add(Me.Label33)
+        Me.Controls.Add(Me.TextRetencion)
         Me.Controls.Add(Me.Label32)
         Me.Controls.Add(Me.dtpFechaArfin)
         Me.Controls.Add(Me.gpRetenciones)
@@ -1887,32 +1920,6 @@ Partial Class FrmFacturas
     Friend WithEvents CkDoctoRel As CheckBox
     Friend WithEvents Label27 As Label
     Friend WithEvents txtUnidadInterna As TextBox
-    Friend WithEvents SerieDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents FacturaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ConsecDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents DetalleDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents Unidad As DataGridViewTextBoxColumn
-    Friend WithEvents UnidadInterna As DataGridViewTextBoxColumn
-    Friend WithEvents CantidadDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents UnitarioDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents IvaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ImporteDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents FechaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents MonedaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents TasaIvaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents FacturadoDataGridViewCheckBoxColumn As DataGridViewCheckBoxColumn
-    Friend WithEvents NombreDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents CalleDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ColoniaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents MunicipioDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents EstadoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents CPDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents RFCDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents Mail1DataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents Mail2DataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ColumnTotalX As DataGridViewTextBoxColumn
-    Friend WithEvents MetodoPago As DataGridViewTextBoxColumn
-    Friend WithEvents Cuenta As DataGridViewTextBoxColumn
     Friend WithEvents btnCreaClientes As Button
     Friend WithEvents Clientes_ARFINBindingSource As BindingSource
     Friend WithEvents Clientes_ARFINTableAdapter As FinagilDS1TableAdapters.Clientes_ARFINTableAdapter
@@ -1947,4 +1954,33 @@ Partial Class FrmFacturas
     Friend WithEvents dtpFechaArfin As DateTimePicker
     Friend WithEvents Label32 As Label
     Friend WithEvents CodigoTextBox As TextBox
+    Friend WithEvents Label33 As Label
+    Friend WithEvents TextRetencion As TextBox
+    Friend WithEvents SerieDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents FacturaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ConsecDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents DetalleDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents Unidad As DataGridViewTextBoxColumn
+    Friend WithEvents UnidadInterna As DataGridViewTextBoxColumn
+    Friend WithEvents CantidadDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents UnitarioDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents IvaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ImporteDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents FechaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents MonedaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents TasaIvaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents FacturadoDataGridViewCheckBoxColumn As DataGridViewCheckBoxColumn
+    Friend WithEvents NombreDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents CalleDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ColoniaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents MunicipioDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents EstadoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents CPDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents RFCDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents Mail1DataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents Mail2DataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents RetencionMonto As DataGridViewTextBoxColumn
+    Friend WithEvents ColumnTotalX As DataGridViewTextBoxColumn
+    Friend WithEvents MetodoPago As DataGridViewTextBoxColumn
+    Friend WithEvents Cuenta As DataGridViewTextBoxColumn
 End Class

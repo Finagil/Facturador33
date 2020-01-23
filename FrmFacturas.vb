@@ -174,6 +174,9 @@
         r.Serie = CmbSerie.Text
         r.Factura = Consec
         r.Consec = Consec
+        r.RetencionBase = 0
+        r.RetencionMonto = 0
+        r.RetencionTasa = ""
 
         If TxtDesc.Text.Length > 0 Then
             r.Detalle = CmbConcepto.Text & " " & TxtDesc.Text.Trim
@@ -230,27 +233,32 @@
         r.Finagil = RDFinagil.Checked
 
         If chkRetenciones.Checked = True Then
-            'Dim taRet As New ProductionDSTableAdapters.CFDI_Impuestos_AdicionalesTableAdapter
-            'taRet.InsertQuery(CmbSerie.Text, CInt(LbFolio.Text), "Impuesto", "RE", txtBase.Text, CDec(txtMonto.Text), cmbImpuesto_Ret.Text.Replace("ISR", "001").Replace("IVA", "002").Replace("IEPS", "003"), cmbTFactor.Text, cmbTOC.Text, "", "", "")
-            'Dim ret As FinagilDS1.FacturasExternasRow
-            Dim ret As ProductionDS.CFDI_Impuestos_AdicionalesRow
-            ret = Me.ProductionDS.CFDI_Impuestos_Adicionales.NewRow
-
-            ret._27_Serie_Comprobante = CmbSerie.Text
-            ret._1_Folio = CInt(LbFolio.Text)
-            ret._1_Impuesto_TipoImpuesto = "Impuesto"
-            ret._2_Impuesto_Descripcion = "RE"
-            ret._3_Impuesto_Monto_base = txtBase.Text
-            ret._4_Impuesto_Monto_Impuesto = CDec(txtMonto.Text)
-            ret._5_Impuesto_Clave = cmbImpuesto_Ret.Text.Replace("ISR", "001").Replace("IVA", "002").Replace("IEPS", "003")
-            ret._6_Impuesto_Tasa = cmbTFactor.Text
-            ret._7_Impuesto_Porcentaje = cmbTOC.Text
-            ret.Spei_Certificado = ""
-            ret.Spei_Cadena = ""
-            ret.Spei_Sello = ""
-            ret.linea = Consec
-
-            Me.ProductionDS.CFDI_Impuestos_Adicionales.AddCFDI_Impuestos_AdicionalesRow(ret)
+            Select Case cmbImpuesto_Ret.Text
+                Case "ISR", "IEPS"
+                    'Dim taRet As New ProductionDSTableAdapters.CFDI_Impuestos_AdicionalesTableAdapter
+                    'taRet.InsertQuery(CmbSerie.Text, CInt(LbFolio.Text), "Impuesto", "RE", txtBase.Text, CDec(txtMonto.Text), cmbImpuesto_Ret.Text.Replace("ISR", "001").Replace("IVA", "002").Replace("IEPS", "003"), cmbTFactor.Text, cmbTOC.Text, "", "", "")
+                    'Dim ret As FinagilDS1.FacturasExternasRow
+                    Dim ret As ProductionDS.CFDI_Impuestos_AdicionalesRow
+                    ret = Me.ProductionDS.CFDI_Impuestos_Adicionales.NewRow
+                    ret._27_Serie_Comprobante = CmbSerie.Text
+                    ret._1_Folio = CInt(LbFolio.Text)
+                    ret._1_Impuesto_TipoImpuesto = "Impuesto"
+                    ret._2_Impuesto_Descripcion = "RE"
+                    ret._3_Impuesto_Monto_base = txtBase.Text
+                    ret._4_Impuesto_Monto_Impuesto = CDec(txtMonto.Text)
+                    ret._5_Impuesto_Clave = cmbImpuesto_Ret.Text.Replace("ISR", "001").Replace("IVA", "002").Replace("IEPS", "003")
+                    ret._6_Impuesto_Tasa = cmbTFactor.Text
+                    ret._7_Impuesto_Porcentaje = cmbTOC.Text
+                    ret.Spei_Certificado = ""
+                    ret.Spei_Cadena = ""
+                    ret.Spei_Sello = ""
+                    ret.linea = Consec
+                    Me.ProductionDS.CFDI_Impuestos_Adicionales.AddCFDI_Impuestos_AdicionalesRow(ret)
+                Case "IVA"
+                    r.RetencionBase = CDec(txtBase.Text)
+                    r.RetencionMonto = CDec(txtMonto.Text)
+                    r.RetencionTasa = cmbTOC.Text
+            End Select
         End If
 
         Me.FinagilDS1.FacturasExternas.AddFacturasExternasRow(r)
@@ -563,16 +571,19 @@
     Sub TotalGrid()
         Dim ST As Double
         Dim IVA As Double
+        Dim RETE As Double
         Dim TT As Double
         For Each rr As DataGridViewRow In GridFactura.Rows
             ST += rr.Cells("ImporteDataGridViewTextBoxColumn").Value
             IVA += rr.Cells("IvaDataGridViewTextBoxColumn").Value
-            rr.Cells("ColumnTotalX").Value = rr.Cells("ImporteDataGridViewTextBoxColumn").Value + rr.Cells("IvaDataGridViewTextBoxColumn").Value
+            rr.Cells("ColumnTotalX").Value = rr.Cells("ImporteDataGridViewTextBoxColumn").Value + rr.Cells("IvaDataGridViewTextBoxColumn").Value - rr.Cells("RetencionMonto").Value
             TT += rr.Cells("ColumnTotalX").Value
+            RETE += rr.Cells("RetencionMonto").Value
         Next
         txtSubtotal.Text = ST.ToString("N2")
         TxtIva.Text = IVA.ToString("N2")
-        TxtTotal.Text = (Val(TT) - Val(txtMonto.Text)).ToString("N2")
+        TextRetencion.Text = RETE.ToString("N2")
+        TxtTotal.Text = Val(TT).ToString("N2")
     End Sub
 
     Private Sub GridFactura_RowsRemoved(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewRowsRemovedEventArgs) Handles GridFactura.RowsRemoved
