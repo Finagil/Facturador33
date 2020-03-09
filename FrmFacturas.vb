@@ -745,10 +745,10 @@
                 r.MetodoPago = "99"
             Else
                 r.MetodoPago = UCase(CmbMetodo.SelectedValue)
-                If CmbSerie.Text = "C" Or CmbSerie.Text = "CA" Then
-                    r.MetodoPago = _29_FormaPagoTextBox.Text.Trim
-                    CmbMetodo.Enabled = False
-                End If
+                'If CmbSerie.Text = "C" Or CmbSerie.Text = "CA" Then
+                'r.MetodoPago = _29_FormaPagoTextBox.Text.Trim
+                'CmbMetodo.Enabled = False
+                'End If
             End If
             If RDArfin.Checked = True Then
                 If chkFormato.Checked = True Then
@@ -1107,8 +1107,11 @@
         If cmbPago.Text = "PPD" Then
             lblFormapago.Text = "99, Por Definir"
             lblFormapago.Visible = True
-            'CmbMetodo.Text = "99 Por Definir"
-            CmbMetodo.Visible = False
+            If CmbSerie.Text = "C" Or CmbSerie.Text = "CA" Then
+                CmbMetodo.Visible = True
+            Else
+                CmbMetodo.Visible = False
+            End If
         Else
             CmbMetodo.Visible = True
         End If
