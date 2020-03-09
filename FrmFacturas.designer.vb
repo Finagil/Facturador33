@@ -129,6 +129,7 @@ Partial Class FrmFacturas
         Me.RFCDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Mail1DataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Mail2DataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.RetencionMonto = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColumnTotalX = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.MetodoPago = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Cuenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -984,7 +985,7 @@ Partial Class FrmFacturas
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.GridFactura.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.GridFactura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.GridFactura.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.SerieDataGridViewTextBoxColumn, Me.FacturaDataGridViewTextBoxColumn, Me.ConsecDataGridViewTextBoxColumn, Me.DetalleDataGridViewTextBoxColumn, Me.Unidad, Me.UnidadInterna, Me.CantidadDataGridViewTextBoxColumn, Me.UnitarioDataGridViewTextBoxColumn, Me.IvaDataGridViewTextBoxColumn, Me.ImporteDataGridViewTextBoxColumn, Me.FechaDataGridViewTextBoxColumn, Me.MonedaDataGridViewTextBoxColumn, Me.TasaIvaDataGridViewTextBoxColumn, Me.FacturadoDataGridViewCheckBoxColumn, Me.NombreDataGridViewTextBoxColumn, Me.CalleDataGridViewTextBoxColumn, Me.ColoniaDataGridViewTextBoxColumn, Me.MunicipioDataGridViewTextBoxColumn, Me.EstadoDataGridViewTextBoxColumn, Me.CPDataGridViewTextBoxColumn, Me.RFCDataGridViewTextBoxColumn, Me.Mail1DataGridViewTextBoxColumn, Me.Mail2DataGridViewTextBoxColumn, Me.ColumnTotalX, Me.MetodoPago, Me.Cuenta})
+        Me.GridFactura.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.SerieDataGridViewTextBoxColumn, Me.FacturaDataGridViewTextBoxColumn, Me.ConsecDataGridViewTextBoxColumn, Me.DetalleDataGridViewTextBoxColumn, Me.Unidad, Me.UnidadInterna, Me.CantidadDataGridViewTextBoxColumn, Me.UnitarioDataGridViewTextBoxColumn, Me.IvaDataGridViewTextBoxColumn, Me.ImporteDataGridViewTextBoxColumn, Me.FechaDataGridViewTextBoxColumn, Me.MonedaDataGridViewTextBoxColumn, Me.TasaIvaDataGridViewTextBoxColumn, Me.FacturadoDataGridViewCheckBoxColumn, Me.NombreDataGridViewTextBoxColumn, Me.CalleDataGridViewTextBoxColumn, Me.ColoniaDataGridViewTextBoxColumn, Me.MunicipioDataGridViewTextBoxColumn, Me.EstadoDataGridViewTextBoxColumn, Me.CPDataGridViewTextBoxColumn, Me.RFCDataGridViewTextBoxColumn, Me.Mail1DataGridViewTextBoxColumn, Me.Mail2DataGridViewTextBoxColumn, Me.RetencionMonto, Me.ColumnTotalX, Me.MetodoPago, Me.Cuenta})
         Me.GridFactura.DataSource = Me.FacturasExternasBindingSource
         DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window
@@ -1196,6 +1197,13 @@ Partial Class FrmFacturas
         Me.Mail2DataGridViewTextBoxColumn.ReadOnly = True
         Me.Mail2DataGridViewTextBoxColumn.Visible = False
         '
+        'RetencionMonto
+        '
+        Me.RetencionMonto.DataPropertyName = "RetencionMonto"
+        Me.RetencionMonto.HeaderText = "RetencionMonto"
+        Me.RetencionMonto.Name = "RetencionMonto"
+        Me.RetencionMonto.ReadOnly = True
+        '
         'ColumnTotalX
         '
         DataGridViewCellStyle6.Format = "n2"
@@ -1228,7 +1236,7 @@ Partial Class FrmFacturas
         'txtSubtotal
         '
         Me.txtSubtotal.Enabled = False
-        Me.txtSubtotal.Location = New System.Drawing.Point(890, 628)
+        Me.txtSubtotal.Location = New System.Drawing.Point(889, 617)
         Me.txtSubtotal.Name = "txtSubtotal"
         Me.txtSubtotal.Size = New System.Drawing.Size(100, 20)
         Me.txtSubtotal.TabIndex = 7
@@ -1237,7 +1245,7 @@ Partial Class FrmFacturas
         'TxtIva
         '
         Me.TxtIva.Enabled = False
-        Me.TxtIva.Location = New System.Drawing.Point(890, 654)
+        Me.TxtIva.Location = New System.Drawing.Point(889, 643)
         Me.TxtIva.Name = "TxtIva"
         Me.TxtIva.Size = New System.Drawing.Size(100, 20)
         Me.TxtIva.TabIndex = 8
@@ -1246,7 +1254,7 @@ Partial Class FrmFacturas
         'TxtTotal
         '
         Me.TxtTotal.Enabled = False
-        Me.TxtTotal.Location = New System.Drawing.Point(890, 703)
+        Me.TxtTotal.Location = New System.Drawing.Point(889, 692)
         Me.TxtTotal.Name = "TxtTotal"
         Me.TxtTotal.Size = New System.Drawing.Size(100, 20)
         Me.TxtTotal.TabIndex = 9
@@ -1256,7 +1264,7 @@ Partial Class FrmFacturas
         '
         Me.Label18.AutoSize = True
         Me.Label18.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label18.Location = New System.Drawing.Point(830, 631)
+        Me.Label18.Location = New System.Drawing.Point(829, 620)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(54, 13)
         Me.Label18.TabIndex = 23
@@ -1266,7 +1274,7 @@ Partial Class FrmFacturas
         '
         Me.Label19.AutoSize = True
         Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label19.Location = New System.Drawing.Point(859, 657)
+        Me.Label19.Location = New System.Drawing.Point(858, 646)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(25, 13)
         Me.Label19.TabIndex = 24
@@ -1276,7 +1284,7 @@ Partial Class FrmFacturas
         '
         Me.Label20.AutoSize = True
         Me.Label20.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label20.Location = New System.Drawing.Point(848, 706)
+        Me.Label20.Location = New System.Drawing.Point(847, 695)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(36, 13)
         Me.Label20.TabIndex = 25
@@ -1789,7 +1797,7 @@ Partial Class FrmFacturas
         '
         Me.Label33.AutoSize = True
         Me.Label33.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label33.Location = New System.Drawing.Point(819, 681)
+        Me.Label33.Location = New System.Drawing.Point(818, 670)
         Me.Label33.Name = "Label33"
         Me.Label33.Size = New System.Drawing.Size(65, 13)
         Me.Label33.TabIndex = 207
@@ -1798,7 +1806,7 @@ Partial Class FrmFacturas
         'TxtRetencion
         '
         Me.TxtRetencion.Enabled = False
-        Me.TxtRetencion.Location = New System.Drawing.Point(890, 679)
+        Me.TxtRetencion.Location = New System.Drawing.Point(889, 668)
         Me.TxtRetencion.Name = "TxtRetencion"
         Me.TxtRetencion.Size = New System.Drawing.Size(100, 20)
         Me.TxtRetencion.TabIndex = 206
@@ -1809,7 +1817,7 @@ Partial Class FrmFacturas
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
-        Me.ClientSize = New System.Drawing.Size(1011, 740)
+        Me.ClientSize = New System.Drawing.Size(998, 716)
         Me.Controls.Add(Me.Label33)
         Me.Controls.Add(Me.TxtRetencion)
         Me.Controls.Add(Me.lklAgregarUuid)
@@ -1988,32 +1996,6 @@ Partial Class FrmFacturas
     Friend WithEvents CkDoctoRel As CheckBox
     Friend WithEvents Label27 As Label
     Friend WithEvents txtUnidadInterna As TextBox
-    Friend WithEvents SerieDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents FacturaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ConsecDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents DetalleDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents Unidad As DataGridViewTextBoxColumn
-    Friend WithEvents UnidadInterna As DataGridViewTextBoxColumn
-    Friend WithEvents CantidadDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents UnitarioDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents IvaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ImporteDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents FechaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents MonedaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents TasaIvaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents FacturadoDataGridViewCheckBoxColumn As DataGridViewCheckBoxColumn
-    Friend WithEvents NombreDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents CalleDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ColoniaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents MunicipioDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents EstadoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents CPDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents RFCDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents Mail1DataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents Mail2DataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ColumnTotalX As DataGridViewTextBoxColumn
-    Friend WithEvents MetodoPago As DataGridViewTextBoxColumn
-    Friend WithEvents Cuenta As DataGridViewTextBoxColumn
     Friend WithEvents btnCreaClientes As Button
     Friend WithEvents Clientes_ARFINBindingSource As BindingSource
     Friend WithEvents Clientes_ARFINTableAdapter As FinagilDS1TableAdapters.Clientes_ARFINTableAdapter
@@ -2057,4 +2039,31 @@ Partial Class FrmFacturas
     Friend WithEvents Eliminar As DataGridViewLinkColumn
     Friend WithEvents Label33 As Label
     Friend WithEvents TxtRetencion As TextBox
+    Friend WithEvents SerieDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents FacturaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ConsecDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents DetalleDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents Unidad As DataGridViewTextBoxColumn
+    Friend WithEvents UnidadInterna As DataGridViewTextBoxColumn
+    Friend WithEvents CantidadDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents UnitarioDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents IvaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ImporteDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents FechaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents MonedaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents TasaIvaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents FacturadoDataGridViewCheckBoxColumn As DataGridViewCheckBoxColumn
+    Friend WithEvents NombreDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents CalleDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ColoniaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents MunicipioDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents EstadoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents CPDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents RFCDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents Mail1DataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents Mail2DataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents RetencionMonto As DataGridViewTextBoxColumn
+    Friend WithEvents ColumnTotalX As DataGridViewTextBoxColumn
+    Friend WithEvents MetodoPago As DataGridViewTextBoxColumn
+    Friend WithEvents Cuenta As DataGridViewTextBoxColumn
 End Class
