@@ -1104,14 +1104,10 @@
         Else
             cmbUsoCfdi.Enabled = True
         End If
-        If cmbPago.Text = "PPD" Then
+        If cmbPago.Text = "PPD" And CmbSerie.Text <> "C" And CmbSerie.Text <> "CA" Then
             lblFormapago.Text = "99, Por Definir"
             lblFormapago.Visible = True
-            If CmbSerie.Text = "C" Or CmbSerie.Text = "CA" Then
-                CmbMetodo.Visible = True
-            Else
-                CmbMetodo.Visible = False
-            End If
+            CmbMetodo.Visible = False
         Else
             CmbMetodo.Visible = True
         End If
@@ -1140,7 +1136,7 @@
         End If
         For Each r As FinagilDS1.FacturasExternasRow In Me.FinagilDS1.FacturasExternas.Rows
             r.Factura = Folio
-            If cmbPago.Text = "PPD" Then
+            If cmbPago.Text = "PPD" And CmbSerie.Text <> "C" And CmbSerie.Text <> "CA" Then
                 MsgBox("Fijar Clave Forma de pago 99, Por Definir")
                 'CmbMetodo.Text = "99 Por Definir"
                 r.MetodoPago = "99"
