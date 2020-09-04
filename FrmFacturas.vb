@@ -254,6 +254,10 @@
                     ret.Spei_Sello = ""
                     ret.linea = Consec
                     Me.ProductionDS.CFDI_Impuestos_Adicionales.AddCFDI_Impuestos_AdicionalesRow(ret)
+
+                    r.RetencionBase = CDec(txtBase.Text)
+                    r.RetencionMonto = CDec(txtMonto.Text)
+                    r.RetencionTasa = cmbTOC.Text
                 Case "IVA"
                     r.RetencionBase = CDec(txtBase.Text)
                     r.RetencionMonto = CDec(txtMonto.Text)
